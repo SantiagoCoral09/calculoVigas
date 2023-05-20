@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+   <!-- site metas -->
+   <title>Estructuras de Concreto</title>
+   <meta name="keywords" content="">
+   <meta name="description" content="">
+   <meta name="author" content="">
+   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+   <!-- bootstrap css -->
+   <!-- bootstrap css -->
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+      crossorigin="anonymous"></script>
+   <!-- <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css" />
+   <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script> -->
+
+   <!-- awesome fontfamily -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <!-- bootstrap css -->
+   <link rel="stylesheet" href="./assets/dist/css/bootstrap.min.css">
+   <!-- style css -->
+   <link rel="stylesheet" href="./assets/dist/css/style.css">
+   <!-- responsive-->
+   <link rel="stylesheet" href="./assets/dist/css/responsive.css">
+
+
+</head>
+<!-- body -->
+
+<body class="main-layout">
+   <!-- loader  -->
+   <div class="loader_bg">
+      <div class="loader"><img src="./img/loading.gif" alt="..." /></div>
+   </div>
+   <!-- end loader -->
+   <div id="mySidepanel" class="sidepanel">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+      <a href="index.html">Inicio</a>
+      <a href="Introduccion.html">Introducción</a>
+      <a href="Normas.html">Normas</a>
+      <div class="dropdown">
+         <a href="#" type="button" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            Cálculos
+         </a>
+         <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="calculos.html"><button type="button" class="btn btn-light">Diseño de
+                     Vigas</button></a>
+            </li>
+            <li><a class="dropdown-item" href="calculos.html"><button type="button" class="btn btn-light">Diseño de
+                     Columnas</button></a>
+            </li>
+         </ul>
+      </div>
+
+   </div>
+   <!-- header -->
+   <header>
+      <!-- header inner -->
+      <div class="head-top">
+         <div class="container-fluid">
+            <div class="row">
+               <div class="col-sm-3">
+                  <div class="logo">
+                     <a href="index.html"><img src="./img/logo_footer.png" width="130px" /></a>
+                  </div>
+               </div>
+               <div class="col-sm-9">
+                  <ul class="email text_align_right">
+                     <li class="d_none"><a href="index.html"></li><button type="button"
+                        class="btn btn-primary">Inicio</button></a></li>
+                     <li class="d_none"><a href="Introduccion.html"><button type="button"
+                              class="btn btn-light">Introducción</button></a></li>
+                     <li class="d_none"><a href="Normas.html"><button type="button"
+                              class="btn btn-light">Normas</button></a>
+                     </li>
+
+                     <li class="d_none">
+                        <div class="dropdown">
+                           <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1"
+                              data-bs-toggle="dropdown" aria-expanded="false">
+                              Cálculos
+                           </button>
+                           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                              <li><a class="dropdown-item" href="calculos.html"><button type="button"
+                                       class="btn btn-light">Diseño de Vigas</button></a>
+                              </li>
+                              <li><a class="dropdown-item" href="calculos.html"><button type="button"
+                                       class="btn btn-light">Diseño de Columnas</button></a>
+                              </li>
+                           </ul>
+                        </div>
+
+                     </li>
+                     <li> <button class="openbtn" onclick="openNav()"><img src="./img/menu_btn.png"></button></li>
+                  </ul>
+
+               </div>
+            </div>
+         </div>
+      </div>
+   </header>
+   <!-- end header -->
+   <!-- start slider section -->
+   <div class="banner_main">
+      <div id="myCarousel" class="carousel slide" data-ride="carousel">
+         <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+         </ol>
+         <div class="carousel-inner">
+            <div class="carousel-item active">
+               <div class="container">
+                  <div class="carousel-caption relative">
+                     <div class="bg_white">
+                        <h1>Bienvenido a nuestro sitio <span class="yello">Introducción</span></h1>
+                        <p>El siguiente proyecto se trata del diseño de una estructura, la cual se encuentra ubicada en
+                           la ciudad de Pasto, departamento de Nariño, que de acuerdo al reglamentento NSR-10
+                           corresponde a una zona de amaneza sísmica alta. La edificacion tiene un área de 675m2 y
+                           consta de 10 niveles que equivalen a 30 metros de altura,...</p>
+                     </div>
+                     <a class="read_more ban_btn" href="Introduccion.html">Leer Más</a>
+                  </div>
+               </div>
+            </div>
+            <div class="carousel-item">
+               <div class="container">
+                  <div class="carousel-caption relative">
+                     <div class="bg_white">
+                        <h1>Normas <br>
+                           <a href="https://www.academia.edu/7206246/Decreto_092_de_20110" target="_blank"
+                              rel="noopener noreferrer"><span class="yello">Decreto 092 de 20110</span></a>
+                        </h1>
+                        <p> — El diseño, construcción y supervisión técnica de edificaciones en el territorio de la
+                           República de Colombia debe someterse a los criterios y requisitos mínimos que se establecen
+                           en la Normas Sismo Resistentes Colombianas, las cuales comprenden...</p>
+                     </div>
+                     <a class="read_more ban_btn" href="Normas.html">Leer Más</a>
+                  </div>
+               </div>
+            </div>
+            <div class="carousel-item">
+               <div class="container">
+                  <div class="carousel-caption relative">
+                     <div class="bg_white">
+                        <h1>Estructuras de concreto <span class="yello">Cálculos</span></h1>
+                        <p>Introducción al calculo de estructuras de concreto</p>
+                     </div>
+                     <!-- <a class="read_more ban_btn" href="calculos.html">Calcular</a> -->
+                     <div class="dropdown">
+                        <button class="read_more ban_btn dropdown-toggle" type="button" id="dropdownMenuButton1"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                           Calcular
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                           <li><a class="dropdown-item" href="calculos.html"><button type="button"
+                                    class="btn btn-light">Diseño de Vigas</button></a>
+                           </li>
+                           <li><a class="dropdown-item" href="calculos.html"><button type="button"
+                                    class="btn btn-light">Diseño de Columnas</button></a>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Anterior</span>
+         </a>
+         <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Siguiente</span>
+         </a>
+      </div>
+   </div>
+
+   <div class="building">
+      <div class="container">
+         <div class="row">
+            <div class="col-md-12">
+               <div class="bg_white">
+                  <h2><span class="yello">Complementos <br>Introducción al calculo de estructuras de concreto
+                        <br></span></h2>
+                  <div class="grupo-servicios">
+                     <h2>Normas Nsr10</h2>
+                  </div>
+                  <div class="grupo-servicios">
+                     <h2>Documentos</h2>
+                  </div>
+                  <div class="grupo-servicios">
+                     <h2>Libros guia</h2>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- end building -->
+
+   <!-- footer -->
+   <footer>
+      <div class="footer">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-10 offset-md-1">
+                  <ul class="social_icon text_align_center">
+                     <li> <a href="#"><i class="fa fa-facebook-f"></i></a></li>
+                     <li> <a href="#"><i class="fa fa-twitter"></i></a></li>
+                     <li> <a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
+                     <li> <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                  </ul>
+               </div>
+               <div class="col-md-4 col-sm-6">
+                  <div class="reader">
+                     <a href="index.html"><img src="./img/logo.jfif" alt="#" /></a>
+                  </div>
+               </div>
+               <div class="col-md-2 col-sm-6">
+                  <div class="reader">
+                     <h3>Explorar</h3>
+                     <ul class="xple_menu">
+                        <li><a href="index.html">Inicio</a>
+                        </li>
+                        <li><a href="Introduccion.html">Introducción</a>
+                        </li>
+                        <li><a href="Normas.html">Normas</a>
+                        </li>
+                        <li>
+                           <div class="dropdown">
+                              <a href="#" type="button" class="dropdown-toggle" data-bs-toggle="dropdown"
+                                 aria-expanded="false">
+                                 Cálculos
+                              </a>
+                              <ul class="dropdown-menu">
+                                 <li><a class="dropdown-item" href="calculos.html"><button type="button"
+                                          class="btn btn-light">Diseño de
+                                          Vigas</button></a>
+                                 </li>
+                                 <li><a class="dropdown-item" href="calculos.html"><button type="button"
+                                          class="btn btn-light">Diseño de
+                                          Columnas</button></a>
+                                 </li>
+                              </ul>
+                           </div>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+               <div class="col-md-3 col-sm-6">
+                  <div class="reader">
+                     <h3>Anexos</h3>
+                     <ul class="re_post">
+                        <li><img src="./img/re_img1.jpg" alt="#" /></li>
+                        <li><img src="./img/re_img2.jpg" alt="#" /></li>
+                        <li><img src="./img/re_img3.jpg" alt="#" /></li>
+                        <li><img src="./img/re_img4.jpg" alt="#" /></li>
+                     </ul>
+                  </div>
+               </div>
+               <div class="col-md-3 col-sm-6">
+                  <div class="reader">
+                     <h3>Contacto</h3>
+                     <ul class="email text_align_right" id="em">
+                        <li class="d_none"> <i class="fa fa-map-marker" aria-hidden="true"></i>Ubicación</a></li>
+                        <li class="d_none"><i class="fa fa-phone" aria-hidden="true"></i>+57 1234567890</a></li>
+                        <li class="d_none"> <a id="correo" href="#"><i class="fa fa-envelope"
+                                 aria-hidden="true"></i>correo@gmail.com</a>
+                        </li>
+
+                     </ul>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="copyright text_align_center">
+            <div class="container">
+               <div class="row">
+                  <div class="col-md-10 offset-md-1">
+                     <p>Copyright 2023 All Right Reserved</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </footer>
+   <!-- end footer -->
+   <!-- Javascript files-->
+   <script src="./assets/dist/js/jquery.min.js"></script>
+   <script src="./assets/dist/js/bootstrap.bundle.min.js"></script>
+   <script src="./assets/dist/js/custom.js"></script>
+   <script src="./assets/dist/js/jquery-3.0.0.min.js"></script>
+
+</body>
+
+</html>
