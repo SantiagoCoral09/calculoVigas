@@ -238,58 +238,30 @@ button {
 
 header {
      height: 105px;
-     background: #24282b;
+     background: rgba(36, 40, 43,1);
      width: 100%;
-     padding: 25px;
+     /* padding: 25px; */
      border-bottom: 5px solid#1293d4;
      min-height: 70px;
 
 }
 
 
-
+.logo{
+     padding: 3px 0px 0px 20px;
+}
 
 /** menu section **/
 
-ul.email {
-     padding-top: 4px;
-     display: flex;
-     align-items: center;
-     justify-content: end;
-     flex-wrap: wrap;
-}
 
-
-ul.email li {
+.li_menu {
      display: inline-block;
      color: #fff;
-     padding: 0 20px;
+     padding: 25px 20px 0px 20px;
      font-size: 17px;
 }
 
-ul.email li:last-child {
-     padding-right: 0;
-}
-
-ul.email li a {
-     font-size: 16px;
-}
-
-ul.email li a {
-     color: rgb(0, 0, 0);
-}
-
-ul.email li i {
-     color: #fff;
-     font-size: 20px;
-     padding-right: 10px;
-}
-
-ul.email li a:hover {
-     color: #000000;
-}
-
-#correo {
+.correo {
      color: white;
 }
 
@@ -543,7 +515,7 @@ ul.email li img {
 }
 
 .read_more:hover {
-     background: #504c46;
+     background-color: rgba(10, 35, 60, 1);
      color: #fff;
      transition: ease-in all 0.5s;
 }
@@ -992,7 +964,7 @@ ul.re_post li {
 }
 
 .btn:hover {
-     background: #49443e;
+     background-color: rgba(10, 35, 60, 1);
      color: #fff;
 }
 
@@ -1178,13 +1150,46 @@ td {
 }
 
 #universidad {
-     font-size: 17px;
+     font-size: 18px;
      font-weight: bolder;
      color: white;
 }
 
 #universidad:hover {
-     font-size: 17px;
      font-weight: bolder;
      color: rgb(1, 9, 26);
 }
+
+.colf_4 {
+     -ms-flex: 0 0 30.333333%;
+     flex: 0 0 30.333333%;
+     max-width: 30.333333%;
+
+}
+.d_none_primary{
+     background-color: rgba(0, 123, 255,0.5);
+     color: white;
+     border: rgba(0, 123, 255,1) solid 2px;
+}
+.d_none_primary:hover{
+     color: rgba(0, 123, 255,1);
+     background-color: white;
+     border: rgba(0, 123, 255,1) solid 2px;
+}
+.d_none_light{
+     color: #000000;
+    background-color: rgba(248, 249, 250,1);
+
+     border: rgba(0, 123, 255,1) solid 2px;
+}
+.d_none_light:hover{
+     color: rgb(255, 255, 255);
+     background-color: rgba(10, 35, 60, 0.5);
+     border: rgba(0, 123, 255,1) solid 2px;
+}
+.it_correo{
+     vertical-align: auto;
+     padding:0px 0px 0px 15px;
+}
+.it_correo:hover{
+     color: rgba(10, 35, 60, 1);}
