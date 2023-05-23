@@ -30,7 +30,13 @@
    <link rel="stylesheet" href="./assets/dist/css/style.css">
    <!-- responsive-->
    <link rel="stylesheet" href="./assets/dist/css/responsive.css">
-
+   <script>
+      // JavaScript para desplazamiento suave
+      document.querySelector('a[href="#inicio"]').addEventListener('click', function (e) {
+         e.preventDefault();
+         document.getElementById('inicio').scrollIntoView({ behavior: 'smooth' });
+      });
+   </script>
 
 </head>
 <!-- body -->
@@ -76,64 +82,63 @@
    <!-- header -->
    <header>
       <!-- header inner -->
-      <div class="head-top">
-         <div class="container-fluid">
-            <div class="row">
-               <div class="col-sm-3">
-                  <div class="logo">
-                     <a target="_blank" href="https://www.umariana.edu.co/index.html"><img src="./img/logo_footer.png"
-                           width="180px" /></a>
-                  </div>
+      <div class="container-fluid">
+         <div class="row">
+            <div class="col-sm-3">
+               <div class="logo">
+                  <a target="_blank" href="https://www.umariana.edu.co/index.html"><img src="./img/logo_footer.png"
+                        width="180px" /></a>
                </div>
-               <div class="col-sm-9">
-                  <ul class="text_align_right">
-                     <li class="li_menu"><a href="index.html"><button type="button"
-                        class="btn d_none_primary">Inicio</button></a></li>
-                     <li class="li_menu"><a href="Introduccion.html"><button type="button"
-                              class="btn d_none_light">Introducción</button></a></li>
-                     <li class="li_menu"><a href="Normas.html"><button type="button"
-                              class="btn d_none_light">Normas</button></a>
-                     </li>
+            </div>
+            <div class="col-sm-9">
+               <ul class="text_align_right">
+                  <li class="li_menu"><a href="index.html"><button type="button"
+                           class="btn d_none_primary">Inicio</button></a></li>
+                  <li class="li_menu"><a href="Introduccion.html"><button type="button"
+                           class="btn d_none_light">Introducción</button></a></li>
+                  <li class="li_menu"><a href="Normas.html"><button type="button"
+                           class="btn d_none_light">Normas</button></a>
+                  </li>
 
-                     <li class="li_menu">
-                        <div class="dropdown">
-                           <button class="btn d_none_light dropdown-toggle" type="button" id="dropdownMenuButton1"
-                              data-bs-toggle="dropdown" aria-expanded="false">
-                              Cálculos
-                           </button>
-                           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                              <li><a class="dropdown-item" href="calculos.html"><button type="button"
-                                       class="btn">Diseño de Vigas</button></a>
-                              </li>
-                              <li><a class="dropdown-item" href="calculos.html"><button type="button"
-                                       class="btn">Diseño de Columnas</button></a>
-                              </li>
-                           </ul>
-                        </div>
-                     <li class="li_menu">
-                        <div class="dropdown">
-                           <button class="btn d_none_light dropdown-toggle" type="button" id="dropdownMenuButton1"
-                              data-bs-toggle="dropdown" aria-expanded="false">
-                              Información
-                           </button>
-                           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                              <li><a class="dropdown-item" href="#"><button type="button" class="btn">Manual
-                                       de Usuario</button></a>
-                              </li>
-                              <li><a class="dropdown-item" sty="#"><button type="button"
-                                       class="btn">Autores</button></a>
-                              </li>
-                           </ul>
-                        </div>
+                  <li class="li_menu">
+                     <div class="dropdown">
+                        <button class="btn d_none_light dropdown-toggle" type="button" id="dropdownMenuButton1"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                           Cálculos
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                           <li><a class="dropdown-item" href="calculos.html"><button type="button" class="btn">Diseño de
+                                    Vigas</button></a>
+                           </li>
+                           <li><a class="dropdown-item" href="calculos.html"><button type="button" class="btn">Diseño de
+                                    Columnas</button></a>
+                           </li>
+                        </ul>
+                     </div>
+                  <li class="li_menu">
+                     <div class="dropdown">
+                        <button class="btn d_none_light dropdown-toggle" type="button" id="dropdownMenuButton1"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                           Información
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                           <li><a class="dropdown-item" href="#"><button type="button" class="btn">Manual
+                                    de Usuario</button></a>
+                           </li>
+                           <li><a class="dropdown-item" sty="#"><button type="button" class="btn">Autores</button></a>
+                           </li>
+                        </ul>
+                     </div>
 
-                     </li>
-                     <li class="li_menu"> <button class="openbtn" onclick="openNav()"><img src="./img/menu_btn.png"></button></li>
-                  </ul>
+                  </li>
+                  <li class="li_menu"> <button class="openbtn" onclick="openNav()"><img
+                           src="./img/menu_btn.png"></button></li>
+               </ul>
 
-               </div>
             </div>
          </div>
       </div>
+
    </header>
    <!-- end header -->
    <!-- start slider section -->
@@ -265,8 +270,8 @@
             <div class="row">
                <div class="col-md-10 offset-md-1">
                   <ul class="social_icon text_align_center">
-                     <li> <a href="https://www.facebook.com/civilunimar?mibextid=ZbWKwL"><i
-                              class="fa fa-facebook-f"></i></a></li>
+                     <li> <a  target="_blank" href="https://www.facebook.com/civilunimar?mibextid=ZbWKwL"><i
+                              class="fa fa-facebook-f" ></i></a></li>
                      <li> <a href="#"><i class="fa fa-twitter"></i></a></li>
                      <li> <a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
                      <li> <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
@@ -275,9 +280,9 @@
                <div class="colf_4">
                   <div class="reader text-center">
                      <ul class="xple_menu">
-                        
-                        <a  id="universidad" href="https://www.umariana.edu.co/index.html"><img src="./img/logo.jfif"
-                              alt="#" width="400px"/><span>Página principal Universidad Mariana</span></a>
+
+                        <a target="_blank" id="universidad" href="https://www.umariana.edu.co/index.html"><img src="./img/logo.jfif"
+                              alt="#" width="400px" /><span>Página principal Universidad Mariana</span></a>
                      </ul>
 
                   </div>
@@ -344,14 +349,18 @@
                   <div class="reader">
                      <h3 class="text-center">Contacto</h3>
                      <ul class="" id="em">
-                        <li> <i class="fa fa-map-marker" aria-hidden="true" style="font-size: 30px;"></i>&nbsp;&nbsp; &nbsp; Calle 18 No. 34-104 Pasto (N)<br>&nbsp; Bloque María Inmaculada - Oficina 204</li><br>
-                        <li><i class="fa fa-phone" aria-hidden="true" style="font-size: 30px;"></i>&nbsp;&nbsp;&nbsp; &nbsp; 52 +7244460 Ext 174</a></li>
-                        <li> <a class="correo" href="#"><i class="fa fa-envelope"
-                                 aria-hidden="true" style="font-size: 30px;"></i><span class="it_correo"> ingenieriacivil@umariana.edu.co</span></a>
+                        <li> <i class="fa fa-map-marker" aria-hidden="true" style="font-size: 30px;"></i>&nbsp;&nbsp;
+                           &nbsp; Calle 18 No. 34-104 Pasto (N)<br>&nbsp; Bloque María Inmaculada - Oficina 204</li><br>
+                        <li><i class="fa fa-phone" aria-hidden="true" style="font-size: 30px;"></i>&nbsp;&nbsp;&nbsp;
+                           &nbsp; 52 +7244460 Ext 174</a></li>
+                        <li> <a class="correo" href="#"><i class="fa fa-envelope" aria-hidden="true"
+                                 style="font-size: 30px;"></i><span class="it_correo">
+                                 ingenieriacivil@umariana.edu.co</span></a>
                         </li>
-                        <li> <a class="correo" href="#"><i class="fa fa-envelope"
-                           aria-hidden="true" style="font-size: 30px;"></i><span class="it_correo"> avgomeza@umariana.edu.co</span></a>
-                  </li>
+                        <li> <a class="correo" href="#"><i class="fa fa-envelope" aria-hidden="true"
+                                 style="font-size: 30px;"></i><span class="it_correo">
+                                 avgomeza@umariana.edu.co</span></a>
+                        </li>
                      </ul>
                   </div>
                </div>

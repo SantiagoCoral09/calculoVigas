@@ -98,11 +98,7 @@ function getURL() { window.location.href; } var protocol = location.protocol; $.
 
 });
 
- // JavaScript para desplazamiento suave
- document.querySelector('a[href="#inicio"]').addEventListener('click', function(e) {
-	e.preventDefault();
-	document.getElementById('inicio').scrollIntoView({ behavior: 'smooth' });
-  });
+
 
 
 /* Toggle sidebar
