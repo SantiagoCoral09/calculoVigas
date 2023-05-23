@@ -59,6 +59,18 @@
             </li>
          </ul>
       </div>
+      <div class="dropdown">
+         <a href="#" type="button" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            Información
+         </a>
+         <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#"><button type="button" class="btn btn-light">Manual de
+                     Usuario</button></a>
+            </li>
+            <li><a class="dropdown-item" href="#"><button type="button" class="btn btn-light">Autores</button></a>
+            </li>
+         </ul>
+      </div>
 
    </div>
    <!-- header -->
@@ -69,7 +81,8 @@
             <div class="row">
                <div class="col-sm-3">
                   <div class="logo">
-                     <a href="index.html"><img src="./img/logo_footer.png" width="130px" /></a>
+                     <a target="_blank" href="https://www.umariana.edu.co/index.html"><img src="./img/logo_footer.png"
+                           width="130px" /></a>
                   </div>
                </div>
                <div class="col-sm-9">
@@ -97,6 +110,21 @@
                               </li>
                            </ul>
                         </div>
+                     <li class="d_none">
+                        <div class="dropdown">
+                           <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1"
+                              data-bs-toggle="dropdown" aria-expanded="false">
+                              Información
+                           </button>
+                           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                              <li><a class="dropdown-item" href="#"><button type="button" class="btn btn-light">Manual
+                                       de Usuario</button></a>
+                              </li>
+                              <li><a class="dropdown-item" href="#"><button type="button"
+                                       class="btn btn-light">Autores</button></a>
+                              </li>
+                           </ul>
+                        </div>
 
                      </li>
                      <li> <button class="openbtn" onclick="openNav()"><img src="./img/menu_btn.png"></button></li>
@@ -115,17 +143,31 @@
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
             <li data-target="#myCarousel" data-slide-to="1"></li>
             <li data-target="#myCarousel" data-slide-to="2"></li>
+            <li data-target="#myCarousel" data-slide-to="3"></li>
          </ol>
          <div class="carousel-inner">
             <div class="carousel-item active">
                <div class="container">
                   <div class="carousel-caption relative">
                      <div class="bg_white">
-                        <h1>Bienvenido a nuestro sitio <span class="yello">Introducción</span></h1>
-                        <p>El siguiente proyecto se trata del diseño de una estructura, la cual se encuentra ubicada en
-                           la ciudad de Pasto, departamento de Nariño, que de acuerdo al reglamentento NSR-10
-                           corresponde a una zona de amaneza sísmica alta. La edificacion tiene un área de 675m2 y
-                           consta de 10 niveles que equivalen a 30 metros de altura,...</p>
+                        <h1><span style="font-size: 65px;"> Bienvenido al aplicativo web</span>
+                           <hr><span class="yello">Diseño de pórticos de concreto</span>
+                        </h1>
+                        <p>En este sitio, encontrarás información detallada y recursos útiles para aprender a diseñar
+                           pórticos de concreto basados en el reglamento colombiano NSR-10. </p>
+                     </div>
+                     <a class="read_more ban_btn" href="#inicio">Leer Más</a>
+                  </div>
+               </div>
+            </div>
+            <div class="carousel-item">
+               <div class="container">
+                  <div class="carousel-caption relative">
+                     <div class="bg_white">
+                        <h1 style="font-size: 60px;">Información que debes conocer para <span class="yello">diseñar
+                              pórticos de concreto</span></h1>
+                        <p>Para diseñar pórticos de concreto de manera efectiva, debes conocer algunos conceptos básicos
+                           e información detallada sobre el tema. </p>
                      </div>
                      <a class="read_more ban_btn" href="Introduccion.html">Leer Más</a>
                   </div>
@@ -135,13 +177,13 @@
                <div class="container">
                   <div class="carousel-caption relative">
                      <div class="bg_white">
-                        <h1>Normas <br>
-                           <a href="https://www.academia.edu/7206246/Decreto_092_de_20110" target="_blank"
-                              rel="noopener noreferrer"><span class="yello">Decreto 092 de 20110</span></a>
+                        <h1>Norma para <br>
+                           <span class="yello">diseño de pórticos de concreto</span>
                         </h1>
-                        <p> — El diseño, construcción y supervisión técnica de edificaciones en el territorio de la
-                           República de Colombia debe someterse a los criterios y requisitos mínimos que se establecen
-                           en la Normas Sismo Resistentes Colombianas, las cuales comprenden...</p>
+
+                        <h2 style="font-size: 25px; color: black; font-weight: bold;">Reglamento NSR-10</h2>
+                        <a href="https://www.academia.edu/7206246/Decreto_092_de_20110" target="_blank"
+                           rel="noopener noreferrer" style="font: 22px italic">Seguir el link Decreto_092_de_20110 </a>
                      </div>
                      <a class="read_more ban_btn" href="Normas.html">Leer Más</a>
                   </div>
@@ -151,10 +193,9 @@
                <div class="container">
                   <div class="carousel-caption relative">
                      <div class="bg_white">
-                        <h1>Estructuras de concreto <span class="yello">Cálculos</span></h1>
-                        <p>Introducción al calculo de estructuras de concreto</p>
+                        <h1 style="padding:80px;">Diseña aquí <br><span class="yello">tu pórtico de concreto</span></h1>
+                        <p>Cálculo de estructuras de concreto</p>
                      </div>
-                     <!-- <a class="read_more ban_btn" href="calculos.html">Calcular</a> -->
                      <div class="dropdown">
                         <button class="read_more ban_btn dropdown-toggle" type="button" id="dropdownMenuButton1"
                            data-bs-toggle="dropdown" aria-expanded="false">
@@ -184,21 +225,31 @@
       </div>
    </div>
 
-   <div class="building">
+   <div class="building" id="inicio">
       <div class="container">
          <div class="row">
             <div class="col-md-12">
-               <div class="bg_white">
-                  <h2><span class="yello">Complementos <br>Introducción al calculo de estructuras de concreto
-                        <br></span></h2>
-                  <div class="grupo-servicios">
-                     <h2>Normas Nsr10</h2>
+               <div class="bg_white" style="padding: 40px;">
+                  <h1 class="titulo"><span class="yello">Diseño de pórticos de concreto
+                        <br></span></h1>
+                  <div class="grupo-parrafo">
+                     <h2>En este sitio, encontrarás información detallada y recursos útiles para aprender a diseñar
+                        pórticos de concreto basados en el reglamento colombiano NSR-10. </h2>
                   </div>
-                  <div class="grupo-servicios">
-                     <h2>Documentos</h2>
+                  <div class="grupo-parrafo">
+                     <h2>El diseño de pórticos representa un tema importante en el campo de la ingeniería civil y de
+                        forma básica, un pórtico se define como una estructura de soporte compuesta por columnas y vigas
+                        que forman un marco resistente para soportar cargas y mantener la estabilidad de la estructura.
+                     </h2>
                   </div>
-                  <div class="grupo-servicios">
-                     <h2>Libros guia</h2>
+                  <div class="grupo-parrafo">
+                     <h2>Así que, en este aplicativo podrás diseñar las vigas a flexión y a cortante; y las columnas a
+                        carga flexo-axial y cortante, de un pórtico de concreto, a través de algunos datos suministrados
+                        por el usuario que serán la base para que este software realice los respectivos cálculos. </h2>
+                  </div>
+                  <div class="grupo-parrafo">
+                     <h2>¡Esperamos que encuentres útil y educativo este aplicativo web y que puedas diseñar pórticos de
+                        concreto! </h2>
                   </div>
                </div>
             </div>
@@ -210,11 +261,12 @@
    <!-- footer -->
    <footer>
       <div class="footer">
-         <div class="container">
+         <div class="container1">
             <div class="row">
                <div class="col-md-10 offset-md-1">
                   <ul class="social_icon text_align_center">
-                     <li> <a href="#"><i class="fa fa-facebook-f"></i></a></li>
+                     <li> <a href="https://www.facebook.com/civilunimar?mibextid=ZbWKwL"><i
+                              class="fa fa-facebook-f"></i></a></li>
                      <li> <a href="#"><i class="fa fa-twitter"></i></a></li>
                      <li> <a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
                      <li> <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
@@ -222,7 +274,12 @@
                </div>
                <div class="col-md-4 col-sm-6">
                   <div class="reader">
-                     <a href="index.html"><img src="./img/logo.jfif" alt="#" /></a>
+                     <ul class="xple_menu">
+                        
+                        <a href="https://www.umariana.edu.co/index.html"><img src="./img/logo.jfif"
+                              alt="#" /><span id="universidad">Página principal Universidad Mariana</span></a>
+                     </ul>
+
                   </div>
                </div>
                <div class="col-md-2 col-sm-6">
@@ -253,6 +310,22 @@
                               </ul>
                            </div>
                         </li>
+                        <li>
+                           <div class="dropdown">
+                              <a href="#" type="button" class="dropdown-toggle" data-bs-toggle="dropdown"
+                                 aria-expanded="false">
+                                 Información
+                              </a>
+                              <ul class="dropdown-menu">
+                                 <li><a class="dropdown-item" href="#"><button type="button"
+                                          class="btn btn-light">Manual de Usuario</button></a>
+                                 </li>
+                                 <li><a class="dropdown-item" href="#"><button type="button"
+                                          class="btn btn-light">Autores</button></a>
+                                 </li>
+                              </ul>
+                           </div>
+                        </li>
                      </ul>
                   </div>
                </div>
@@ -269,14 +342,16 @@
                </div>
                <div class="col-md-3 col-sm-6">
                   <div class="reader">
-                     <h3>Contacto</h3>
-                     <ul class="email text_align_right" id="em">
-                        <li class="d_none"> <i class="fa fa-map-marker" aria-hidden="true"></i>Ubicación</a></li>
-                        <li class="d_none"><i class="fa fa-phone" aria-hidden="true"></i>+57 1234567890</a></li>
+                     <h3 class="text-center">Contacto</h3>
+                     <ul class="" id="em">
+                        <li class="d_none"> <i class="fa fa-map-marker" aria-hidden="true" style="font-size: 25px;"></i>&nbsp;&nbsp; Calle 18 No. 34-104 Pasto (N)<br>Bloque María Inmaculada - Oficina 204</li><br>
+                        <li class="d_none"><i class="fa fa-phone" aria-hidden="true" style="font-size: 25px;"></i>&nbsp;&nbsp;52 +7244460 Ext 174</a></li>
                         <li class="d_none"> <a id="correo" href="#"><i class="fa fa-envelope"
-                                 aria-hidden="true"></i>correo@gmail.com</a>
+                                 aria-hidden="true" style="font-size: 25px;"></i>&nbsp;&nbsp;ingenieriacivil@umariana.edu.co</a>
                         </li>
-
+                        <li class="d_none"> <a id="correo" href="#"><i class="fa fa-envelope"
+                           aria-hidden="true" style="font-size: 25px;"></i>&nbsp;&nbsp;avgomeza@umariana.edu.co</a>
+                  </li>
                      </ul>
                   </div>
                </div>

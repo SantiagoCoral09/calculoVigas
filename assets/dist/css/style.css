@@ -198,6 +198,15 @@ button {
      max-width: 1170px;
 }
 
+.container1 {
+     max-width: 1370px;
+     width: 100%;
+     padding-right: 15px;
+     padding-left: 15px;
+     margin-right: auto;
+     margin-left: auto;
+}
+
 
 /*---------------------------- preloader area ----------------------------*/
 
@@ -342,6 +351,20 @@ ul.email li img {
      align-items: center;
 }
 
+.normas {
+     padding-top: 50px;
+     padding-bottom: 50px;
+
+     background: url(../../../img/cabecera.jpg);
+     background-size: 100% 100%;
+     background-position: center;
+     background-repeat: no-repeat;
+     /* height: 634px;
+     display: flex;
+     justify-content: center;
+     align-items: center; */
+}
+
 .carousel-indicators li {
      width: 20px;
      height: 20px;
@@ -373,14 +396,18 @@ ul.email li img {
 
 .bg_white {
      background: #fffffff0;
-     padding: 45px 20px 50px 20px;
+     padding: 45px 15px 50px 15px;
 }
 
-.bg_white2 {
-     background: #fffffff0;
-     padding: 15px 2px 5px 20px;
+.introduccion {
+     background: rgba(255, 255, 255, 0.9);
+     padding: 45px 20px 15px 20px;
 }
 
+/* .normas {
+     background: rgba(255, 255, 255, 0.9);
+     padding: 45px 20px 15px 20px;
+} */
 .banner_main .bg_white h1 {
      color: #141111;
      font-size: 70px;
@@ -430,6 +457,11 @@ ul.email li img {
      background-repeat: no-repeat;
      top: -257px;
 }*/
+.grupo-parrafo {
+     padding: 10px 25px 5px 25px;
+     text-align: justify;
+     font-size: 18px;
+}
 
 .about {
      padding-top: 10px;
@@ -520,12 +552,12 @@ ul.email li img {
 /** building **/
 
 .building {
-     padding-top: 32px;
+     padding-top: 50px;
      background: url(../../../img/bg.jpg);
      background-size: 100% 100%;
      background-position: center center;
      background-repeat: no-repeat;
-     padding-bottom: 223px;
+     padding-bottom: 100px;
 }
 
 .building .titlepage h2 {
@@ -754,6 +786,14 @@ ul.email li img {
      width: 100%;
 }
 
+.titulo {
+     font-size: 50px;
+     line-height: 84px;
+     font-weight: 700;
+     padding-bottom: 22px;
+     text-align: center;
+     color: #000;
+}
 
 /** end instant **/
 
@@ -962,10 +1002,13 @@ ul.re_post li {
 
 #em {
      padding-top: 24px;
-     display: flex;
+     text-align: justify;
+     /* display: flex;
      align-items: flex-start;
      justify-content: stretch;
-     flex-direction: column;
+     flex-direction: column; */
+     font-size: 15px;
+     color: white;
 }
 
 .flexion {
@@ -1103,6 +1146,10 @@ td {
      list-style-type: circle;
 }
 
+.visto {
+     list-style-type: symbols("✓");
+}
+
 .li_formulas::before {
      content: "";
      display: inline-block;
@@ -1112,10 +1159,32 @@ td {
      background-color: black;
      margin-right: 8px;
 }
-.li_formulas{
+
+.li_formulas {
      font-size: 20px;
      font-weight: bolder;
+     color: #000;
 }
-#formulas_cortante{
+
+.li_materiales {
+     font-size: 20px;
+     font-weight: bolder;
+     color: #000;
+     padding-left: 15px;
+}
+
+#formulas_cortante {
      padding: 10px 10% 10px 20%;
+}
+
+#universidad {
+     font-size: 17px;
+     font-weight: bolder;
+     color: white;
+}
+
+#universidad:hover {
+     font-size: 17px;
+     font-weight: bolder;
+     color: rgb(1, 9, 26);
 }

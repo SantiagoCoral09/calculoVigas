@@ -98,6 +98,12 @@ function getURL() { window.location.href; } var protocol = location.protocol; $.
 
 });
 
+ // JavaScript para desplazamiento suave
+ document.querySelector('a[href="#inicio"]').addEventListener('click', function(e) {
+	e.preventDefault();
+	document.getElementById('inicio').scrollIntoView({ behavior: 'smooth' });
+  });
+
 
 /* Toggle sidebar
      -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
@@ -117,6 +123,9 @@ function normas(titulo) {
 	}
 	if (titulo=="b"){
 	    document.getElementById("Normas").innerHTML="<h3>CARGAS</h3><iframe src='http://www.uptc.edu.co/export/sites/default/facultades/f_ingenieria/pregrado/civil/documentos/NSR-10_Titulo_B.pdf ' style='border: none; width: 95%; height: 780px;'></iframe>";
+	}
+	if (titulo=="c"){
+	    document.getElementById("Normas").innerHTML="<h3>CARGAS</h3><iframe src='http://www.uptc.edu.co/export/sites/default/facultades/f_ingenieria/pregrado/civil/documentos/NSR-10_Titulo_C.pdf' style='border: none; width: 95%; height: 780px;'></iframe>";
 	}
 	if (titulo=="j"){
 	    document.getElementById("Normas").innerHTML="<h3>REQUISITOS DE PROTECCIÓN CONTRA INCENDIOS </h3><iframe src='http://www.uptc.edu.co/export/sites/default/facultades/f_ingenieria/pregrado/civil/documentos/NSR-10_Titulo_J.pdf' style='border: none; width: 95%; height: 780px;'></iframe>";
