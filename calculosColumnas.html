@@ -7,7 +7,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
    <!-- site metas -->
-   <title>Cálculos</title>
+   <title>Columnas</title>
    <meta name="keywords" content="">
    <meta name="description" content="">
    <meta name="author" content="">
@@ -19,6 +19,8 @@
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
       crossorigin="anonymous"></script>
+   <!-- <script src="./js/columnas.js"></script> -->
+
    <!-- <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css" />
    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script> -->
 
@@ -33,6 +35,7 @@
    <!-- <script src="./Codigo.js"></script> -->
    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>
 <!-- body -->
@@ -56,7 +59,8 @@
             <li><a class="dropdown-item" href="calculos.html"><button type="button" class="btn btn-light">Diseño de
                      Vigas</button></a>
             </li>
-            <li><a class="dropdown-item" href="calculosColumnas.html"><button type="button" class="btn btn-light">Diseño de
+            <li><a class="dropdown-item" href="calculosColumnas.html"><button type="button" class="btn btn-light">Diseño
+                     de
                      Columnas</button></a>
             </li>
          </ul>
@@ -106,7 +110,8 @@
                            <li><a class="dropdown-item" href="calculos.html"><button type="button" class="btn">Diseño de
                                     Vigas</button></a>
                            </li>
-                           <li><a class="dropdown-item" href="calculosColumnas.html"><button type="button" class="btn">Diseño de
+                           <li><a class="dropdown-item" href="calculosColumnas.html"><button type="button"
+                                    class="btn">Diseño de
                                     Columnas</button></a>
                            </li>
                         </ul>
@@ -200,7 +205,7 @@
          <div class="row">
             <div class="col-md-12">
                <div class="titlepage text-center">
-                  <h2>Diseño de Vigas</h2>
+                  <h2>Diseño de Columnas</h2>
                </div>
             </div>
          </div>
@@ -208,7 +213,7 @@
 
       <div class="container-fluid">
          <div class="text-center">
-            <h3 class="flexion">Diseño a Flexión</h3>
+            <h3 class="flexion">Diseño Flexo - Axial</h3>
          </div>
 
          <div class="">
@@ -217,8 +222,9 @@
                <form onsubmit="event.preventDefault()">
 
                   <div class="card-header text-center">
-                     <h3 class="card-title"><b> Para diseñar una viga, ingresa los siguientes datos: Dimensiones de la
-                           Viga</b></h3>
+                     <h3 class="card-title"><b> Para diseñar una columna, ingresa los siguientes datos: Dimensiones de
+                           la
+                           Columna</b></h3>
                   </div>
                   <div class="card-body text-center">
                      <br>
@@ -283,7 +289,7 @@
                            <h4 for="fc">Resistencia a la compresion (f'c) MPa</h4>
                         </div>
                         <div class="columna-1">
-                           <select class="mpa" name="fc" id="fc1" onchange="actualizar_fc(this)">
+                           <select class="mpa" name="fc" id="fc1" onchange="actualizar_fc(this); limpiar()">
                               <option value="21">21</option>
                               <option value="28">28</option>
                            </select>
@@ -306,14 +312,15 @@
                         </div>
                         <div class="columna-1"></div>
 
-                        <div class="columna-2">
+                        <!-- <div class="columna-2">
                            <h4 class="mt-2">Tamaño máximo agregado (mm)</h4>
                         </div>
                         <div class="columna-2">
-                           <input type="number" class="form-control" id="ag" name="ag" min="10" required autofocus
-                              onkeydown="validarTeclaMenos(event,'ag')" oninput="validarValorMinimo('ag',10,'max_ag')"
+                           <input type="number" class="form-control" id="ag" name="ag" min="10" value="25" required
+                              autofocus onkeydown="validarTeclaMenos(event,'ag')"
+                              oninput="validarValorMinimo('ag',10,'max_ag')"
                               onblur="validarValorPositivo('ag','max_ag'); validarValorMinimo('ag',10,'max_ag');" />
-                        </div>
+                        </div> -->
                      </div>
                      <br>
                      <div class="row">
@@ -341,7 +348,7 @@
                                  <label for="recubrimirnto" class="mb-3">Recubrimiento (mm)</label>
                               </div>
                               <div class="col-3">
-                                 <select class="entrada" name="recubrimiento" id="recubrimiento">
+                                 <select class="entrada" name="recubrimiento" id="recubrimiento" onchange="limpiar()">
                                     <option value="40">40 </option>
                                     <option value="75">75 (exp. al suelo)</option>
                                  </select>
@@ -351,7 +358,7 @@
                               </div>
                               <div class="col-1 mb-3">
                                  <select class="entrada" name="numeroVarilla" id="numeroVarilla"
-                                    onchange="actualizar_varilla(this)">
+                                    onchange="actualizar_varilla(this); limpiar()">
                                     <option value="2">No. 2</option>
                                     <option value="3">No. 3</option>
                                     <option value="4">No. 4</option>
@@ -391,7 +398,7 @@
                               </div>
                               <div class="col-3 mb-3">
                                  <select class="entrada" name="numeroVarillaEstribo" id="numeroVarillaEstribo"
-                                    onchange="actualizar_varilla_estribo(this)">
+                                    onchange="actualizar_varilla_estribo(this); limpiar()">
                                     <option value="2">No. 2</option>
                                     <option value="3">No. 3</option>
                                     <option value="4">No. 4</option>
@@ -409,6 +416,8 @@
                               <div class="col-3-1">
                                  <input type="text" class="form-control" id="diametro_estribo" name="diametro_estribo"
                                     value="6.4" placeholder="" required disabled />
+                                 <input type="text" class="form-control" id="area_estribo" name="area_estribo"
+                                    value="6.4" placeholder="" required disabled hidden />
                               </div>
                            </div>
                         </div>
@@ -497,8 +506,8 @@
                         la TABLA 1</h5>
                      <hr><br>
                      <button type="submit" id="btn_calcular1" class="btn btn-primary"
-                        onclick="calcular()">Calcular</button>
-                     <button type="button" class="btn btn-success" onclick="habilitar()">Limpiar</button>
+                        onclick="calcularColumna()">Calcular</button>
+                     <button type="button" class="btn btn-success" onclick="limpiar()">Limpiar</button>
 
                      <h3 id="base" class="text-danger"></h3>
                   </div>
@@ -533,239 +542,155 @@
                               <td>Cuantía mínima</td>
                            </tr>
                            <tr>
-                              <td>d</td>
-                              <td>Distancia desde la parte superior o inferior de la viga hasta el centroide de la
-                                 varilla</td>
+                              <td>Ac</td>
+                              <td></td>
                            </tr>
 
                            <tr>
                               <td>AsMin</td>
-                              <td>Área del acero mínimo</td>
+                              <td>Acero mínimo que requiere</td>
                            </tr>
 
                            <tr>
-                              <td>AsMin suministrado</td>
+                              <td>As-suministrado</td>
                               <td>Acero mínimo suministrado</td>
                            </tr>
                            <tr>
                               <td>Exceso de As</td>
                               <td>Exceso de acero</td>
                            </tr>
-                           <tr>
-                              <td>Mn</td>
-                              <td>Resistencia Nominal</td>
-                           </tr>
-                           <tr>
-                              <td>Mu</td>
-                              <td>Resistencia Última</td>
-                           </tr>
+                           
                         </tbody>
                      </table>
                   </div>
                </div>
+
             </div>
             <div id="condiciones" class="resultado d-flex justify-content-center"
                style="display: none; padding-bottom:10px;"></div>
          </div><br>
+
+
       </div>
       <br>
-      <div class="container-fluid" style="display: none;" id="form_resistencia">
+      <div class="container-fluid" style="display: none;" id="diagrama_interaccion">
+
          <div class="card">
-            <form>
-               <div class="card-header text-center">
-                  <h3 class="card-title"><b> Resistencia de la viga (Mn)</b></h3>
+            <div class="card-header text-center">
+               <b> DIAGRAMA DE INTERACCIÓN </b>
+            </div>
+            <div class="card-body">
+               <div class="d-flex justify-content-center">
+                  <div id="datos_concreto" class="col-5">
+                     <h2>Datos para concreto</h2>
+                     <table class="peque">
+
+                        <tbody>
+                           <tr>
+                              <th>#Fibras</th>
+                              <td id="nfibras"></td>
+                              <td>und</td>
+                           </tr>
+                           <tr>
+                              <th>Longitud de fibra</th>
+                              <td id="lfibra"></td>
+                              <td>mm</td>
+                           </tr>
+                           <tr>
+                              <th>Es concreto</th>
+                              <td id="es_concreto"></td>
+                              <td>MPa</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <br>
+                     <button class="btn btn-warning" id="boton_gra" disabled onclick="diagramaInteraccion()">Mostrar
+                        gráfico</button>
+                  </div>
+                  <div id="datos_acero" class="col-5">
+                     <h2>Datos para acero</h2>
+                     <table class="peque">
+
+                        <tbody>
+                           <tr>
+                              <th>Es acero</th>
+                              <td id="es_acero"></td>
+                              <td>MPa</td>
+                           </tr>
+                           <tr>
+                              <th>Recubrimiento</th>
+                              <td id="recub"></td>
+                              <td>mm</td>
+                           </tr>
+                           <tr>
+                              <th>Diámetro Varilla Long</th>
+                              <td id="dvlong"></td>
+                              <td>mm</td>
+                           </tr>
+                           <tr>
+                              <th>Área Varilla Long</th>
+                              <td id="avlong"></td>
+                              <td>mm<sup>2</sup></td>
+                           </tr>
+                           <tr>
+                              <th>Diámetro Estribo</th>
+                              <td id="destribo"></td>
+                              <td>mm</td>
+                           </tr>
+
+                        </tbody>
+                     </table>
+                  </div>
                </div>
-               <div class="card-body text-center">
-                  <h3 class="card-title">NOTA: Tenga en cuenta que se debe cumplir que el momento que resiste (Mn) debe
-                     ser mayor al momento que se solicita (Mu) <br>Mn > Mu</h3>
-                  <div class="row d-flex justify-content-center">
-                     <div class="col-2">
-                        <label class="">Acero suministrado por cuantía mínima</label>
-                     </div>
-                     <div id="asCalculado" class="col-2">
-                        <input type="text" class="form-control" id="asSum" name="asSum" value="" placeholder="" required
-                           disabled />
-                     </div>
-                     <div class="col-1"></div>
-                     <div class="col-2">
-                        <label class="">Resistencia Nominal por cuantía mínima</label>
-                     </div>
-                     <div class="col-2">
-                        <input type="text" class="form-control" id="OMn" name="OMn" value="" placeholder="" required
-                           disabled />
-                     </div>
-                  </div>
-                  <hr>
-                  <h4 class="card-title">Ingrese el momento máximo que se solicita (Mu) para la parte superior e
-                     inferior de la viga</h4>
-                  <br>
-                  <div class="row">
-                     <div class="col-3">
-                        <h4 class="mt-3">Mu máximo parte superior (kN - m)</h4>
-                     </div>
-                     <div class="col-3">
-                        <input type="number" class="form-control" id="muSup" name="muSup" placeholder="" required
-                           autofocus onkeydown="validarTeclaMenos(event,'muSup')"
-                           oninput="validarValorMinimo('muSup',0,'val_ms')"
-                           onblur="validarValorPositivo('muSup','val_ms');validarValorMinimo('muSup',0,'val_ms');" />
-                     </div>
-                     <div class="col-3">
-                        <h4 class="mt-3">Mu máximo parte inferior (kN - m)</h4>
-                     </div>
-                     <div class="col-3">
-                        <input type="number" class="form-control" id="muInf" name="muInf" placeholder="" required
-                           autofocus onkeydown="validarTeclaMenos(event,'muInf')"
-                           oninput="validarValorMinimo('muInf',0,'val_mi')"
-                           onblur="validarValorPositivo('muInf','val_mi'); validarValorMinimo('muInf',0,'val_mi');" />
-                     </div>
-                  </div>
-                  <div class="row">
-                     <div class="col-5">
-                        <div id="val_ms" class="text-center" style="color: red;">
-                        </div>
-                     </div>
-                     <div class="col-1"></div>
-                     <div class="col-5">
-                        <div id="val_mi" class="text-center" style="color: red;">
-                        </div>
-                     </div>
-                  </div>
-                  <div id="res" class="text-danger"></div>
-                  <button type="button" class="btn btn-warning" onclick="verificar_resistencia()">Calcular</button>
-                  <div id="ver_datos_resistencia" class="text-danger"></div>
-                  <hr>
-                  <div id="resultadoFinal" style="display: none;">
-                     <div class="resultado">
 
-                        <h1>Chequeo de resistencia por cuantía mínima</h1><br>
-                        <h1>Mn > Mu</h1><br>
-
-                        <div class="row">
-                           <div class="col-6 ">
-                              <div id="msgSup" class="row d-flex justify-content-center">
-                                 <div class="col-2">
-                                    <img src="./img/wrong.png">
-                                 </div>
-                                 <div class="col-8">
-                                    Para la parte superior <b style="color:rgba(255,0,0,0.8);">no se cumple</b> que
-                                    Mn>Mu,
-                                    por lo tanto, la cantidad de varillas
-                                    con el número de varilla supuesta anteriormente <b>no es la correcta</b>.</div>
-                              </div>
-                           </div>
-                           <div class="col-6">
-                              <div id="msgInf" class="row d-flex justify-content-center">
-                                 <div class="col-2">
-                                    <img src="./img/wrong.png">
-                                 </div>
-                                 <div class="col-8">
-                                    Para la parte inferior <b style="color:rgba(255,0,0,0.8);">no se cumple</b> que
-                                    Mn>Mu, por lo tanto, la cantidad de varillas
-                                    con el número de varilla supuesta anteriormente <b>no es la correcta</b>.</div>
-                              </div>
-
-                           </div>
-                        </div><br>
-
-                     </div><br>
-                     <div class="resultado"><br>
-                        <h1>Diseño a flexión recomendado</h1><br>
-                        <div class="row">
-                           <div class="col-6">
-                              <h3>Datos recomendados parte superior de la viga</h3>
-                              <div id="superior">tabla</div>
-
-                              <div>
-                                 <div id="condicionSup">
-                                    Para este caso, en la parte superior de la viga <b class="red">no
-                                       se cumple</b> con la separación mínima entre varillas, por lo tanto, para esta
-                                    parte
-                                    suponga otro número de varilla en los datos de entrada y vuelva a ingresar el
-                                    momento
-                                    último.</div>
-                                 <div class="row" style="padding-top:25px;">
-                                    <div class="col-1"></div>
-                                    <div class="col-2 mt-2 ml-5">No. Varilla</div>
-                                    <div class="col-3"><select class="entrada" name="numeroVarilla_superior"
-                                          id="numeroVarilla_superior" style="height:38px;">
-                                          <option value="2">No. 2</option>
-                                          <option value="3">No. 3</option>
-                                          <option value="4">No. 4</option>
-                                          <option value="5">No. 5</option>
-                                          <option value="6">No. 6</option>
-                                          <option value="7">No. 7</option>
-                                          <option value="8">No. 8</option>
-                                       </select>
-                                    </div>
-                                    <div class="col-3">
-                                       <button type="button" class="btn btn-warning"
-                                          onclick="recalcularResistencia('superior')">Calcular</button>
-                                    </div>
-                                 </div>
-                                 <div id="res_superior" class="text-danger"></div>
-                              </div>
-
-                           </div>
-                           <div class="col-6">
-                              <h3>Datos recomendados parte inferior de la viga</h3>
-                              <div id="inferior">tabla</div>
-
-                              <div>
-                                 <div id="condicionInf">
-                                    Para este caso, en la parte inferior de la viga <b class="red">no se cumple</b>
-                                    con
-                                    la
-                                    separación mínima entre varillas, por lo tanto, para esta parte suponga otro número
-                                    de
-                                    varilla en los datos de entrada y vuelva a ingresar el momento último.
-                                 </div>
-                                 <div class="row" style="padding-top:25px;">
-                                    <div class="col-1"></div>
-                                    <div class="col-2 mt-2 ml-5">No. Varilla</div>
-                                    <div class="col-3">
-                                       <select class="entrada" name="numeroVarilla_inferior" id="numeroVarilla_inferior"
-                                          style="height:38px;">
-                                          <option value="2">No. 2</option>
-                                          <option value="3">No. 3</option>
-                                          <option value="4">No. 4</option>
-                                          <option value="5">No. 5</option>
-                                          <option value="6">No. 6</option>
-                                          <option value="7">No. 7</option>
-                                          <option value="8">No. 8</option>
-                                       </select>
-                                    </div>
-                                    <div class="col-3">
-                                       <button type="button" class="btn btn-warning"
-                                          onclick="recalcularResistencia('inferior')">Calcular</button>
-                                    </div>
-
-                                 </div>
-                                 <div id="res_inferior" class="text-danger"></div>
-                              </div>
-                           </div>
-
-                        </div>
-                     </div>
-                  </div>
-
-
-
-               </div>
+            </div>
 
          </div>
       </div>
+      <br>
+      <div class="container-fluid" style="display: none;" id="tabla_diagrama">
+         <div class="row">
+            <div class="col">
+               <div class="card">
+                  <div class="card-header text-center">
+                     <b> Tabla </b>
+                  </div>
+                  <div class="card-body" id="">
+                     <table class="peque text-center">
+                        <thead>
+                           <th>c</th>
+                           <th>Mn</th>
+                           <th>Pn</th>
+                           <th>&phi;Mn</th>
+                           <th>&phi;Pn</th>
+                        </thead>
+                        <tbody id="tablagrafico">
+
+                        </tbody>
+                     </table>
+
+                  </div>
+               </div>
+            </div>
+            <div class="col">
+               <div class="card">
+                  <div class="card-header text-center">
+                     <b> Gráfico </b>
+                  </div>
+                  <div class="card-body" id="grafico">
+                     <canvas id="myChart" width="800" height="400"
+                        style="display: block;box-sizing: border-box;height: 400px; width: 800px; "></canvas>
+
+                  </div>
+               </div>
+            </div>
+         </div>
+
+
+      </div>
 
    </div>
-   </form>
-   </div>
-   </div>
-   <div id="check_cond">
-      <input type="text" name="check_separacion_superior" value="false" id="check_separacion_superior" disabled hidden>
-      <input type="text" name="check_separacion_inferior" value="false" id="check_separacion_inferior" disabled hidden>
-      <input type="text" value="0" id="nvarilla_inferior" disabled hidden>
-      <input type="text" value="0" id="nvarilla_superior" disabled hidden>
 
-   </div>
    <br>
    <hr><br>
    <div class="container-fluid" id="campos_cortante" style="display: none;">
@@ -780,11 +705,10 @@
                   <h3 class="card-title"><b> Para el cálculo a cortante de una viga, se toman los datos ingresados con
                         anterioridad referentes a
                         las dimensiones de la
-                        viga (Base y altura), datos de los materiales (f'c y Fy) y datos para la cuantía mínima
-                        (recubrimiento, número de la varilla longitudinal y del estribo) </b></h3>
+                        columna (Base y altura) y datos de los materiales (f'c y Fy)</b></h3>
                   <br>
-                  <div class="row">
-                     <div class="col-6">
+                  <div class="d-flex justify-content-center">
+                     <!-- <div class="col-6">
                         <div class="row d-flex justify-content-center">
                            <h4>Debe ingresar el valor de cortante última:</h4>
 
@@ -801,25 +725,54 @@
 
                            <div id="inputVu" class="text-center" style="color: red;"></div>
                         </div>
-                     </div>
+                     </div> -->
 
 
                      <div class="col-5">
-                        <h4>Por norma se seleccionan los siguientes datos para calcular el acero suministrado:</h4>
+                        <h4>Se seleccionan los siguientes datos de Flexo Axial</h4>
 
                         <table class="peque">
                            <tr>
+                              <th>Recubrimiento</th>
+                              <td id="rec_cortante">40</td>
+                              <td>mm</td>
+                           </tr>
+                           <tr>
+                              <th>No. Varilla Long</th>
+                              <td id="noVar_cortante">6</td>
+                              <td>&nbsp;</td>
+                           </tr>
+                           <tr>
+                              <th>Área Varilla Long</th>
+                              <td id="areaVar_cortante">284</td>
+                              <td>mm<sup>2</sup></td>
+                           </tr>
+                           <tr>
+                              <th>Diámetro Varilla Long</th>
+                              <td id="diametroVar_cortante">19.1</td>
+                              <td>mm</td>
+                           </tr>
+                           <tr>
+                              <th>Cantidad Varillas Long</th>
+                              <td id="cantVar_cortante">10</td>
+                              <td>und</td>
+                           </tr>
+                           <tr>
                               <th>No. Varilla Estribo</th>
-                              <td>3</td>
+                              <td id="noVarEstribo">3</td>
+                              <td>&nbsp;</td>
                            </tr>
                            <tr>
-                              <th>Area Varilla Estribo</th>
-                              <td>71 mm</td>
+                              <th>Diámetro Varilla Estribo</th>
+                              <td id="diamEstribo">9.5</td>
+                              <td>mm</td>
                            </tr>
                            <tr>
-                              <th>Cantidad de Varillas</th>
-                              <td>2</td>
+                              <th>Área Varilla Estribo</th>
+                              <td id="areaEstribo">71</td>
+                              <td>mm<sup>2</sup></td>
                            </tr>
+
                         </table>
 
                      </div>
@@ -827,14 +780,14 @@
                   <hr>
 
                   <br><br>
-                  <button type="button" class="btn btn-warning" onclick="calcular_cortante()">Calcular</button>
-                  <button type="button" class="btn btn-success" onclick="limpiar_cortante()">Limpiar</button>
+                  <button type="button" class="btn btn-warning" onclick="calcular_cortante_columna()">Calcular</button>
+                  <!-- <button type="button" class="btn btn-success" onclick="limpiar_cortante()">Limpiar</button> -->
 
                   <h3 id="datos_cortante" class="text-danger"></h3>
                </div>
             </form>
          </div>
-         <div id="chequeo_acero" class="resultado" style="display: none;">
+         <!-- <div id="chequeo_separacion" class="resultado" style="display: none;">
             <br>
             <h3 class="card-title">NOTA: Tenga en cuenta que para el diseño en vigas se selecciona el diámetro
                de la varilla menor entre la parte superior e inferior de la viga</h3>
@@ -854,199 +807,221 @@
                </div>
             </div>
             <hr><br>
-         </div>
+         </div> -->
 
       </div><br>
       <hr>
       <div class="card" id="formulas_cortante" style="display: none;">
-         <div id="separacion_longitudinal">
+         <div id="separacion_varillas">
             <br>
             <ul class="formulas">
-               <li class="li_formulas">Separación longitudinal</li>
+               <li class="li_formulas">Separación entre varillas</li>
                <div class="text-center"><br>
-                  <p>\( s = \ mín\left(\dfrac{d}{4}; 6 \cdot d_{\text{varilla mínima}}; 15 \, \text{cm}\right) \) =
-                     <span id="sep_long">70mm</span>
+                  <p>\( S = \)
+                     <span id="sep_varillas">70mm</span>
                   </p>
                </div>
             </ul>
+            <br>
+            <h3 class="text-center"><b>Debe ser mayor a 50</b></h3><br>
+            <div id="condicion_separacion" class="resultado text-center"></div><br>
          </div><br><br><br>
-         <hr>
-         <h2 class="text-center" style="font-size: 30px; font-weight: bolder;">Chequeo de Acero</h2><br>
-         <div id="acero_avmin">
-            <ul class="formulas">
-               <li class="li_formulas">Acero de refuerzo mínimo</li>
-               <div class="text-center"><br>
-                  <p>\(A_{\text{vmin}} = \max\left(\dfrac{{0.062 \cdot \sqrt{ fc } \cdot b \cdot s}}{{F_{yt}}};
-                     \dfrac{{0.35 \cdot b
-                     \cdot s}}{{F_{yt}}}\right)\) = <span id="av_min">mm<sup>2</sup></span></p>
+         <div id="seguir_proceso" style="display: none;">
+            <div id="area_confinada">
+               <br>
+               <ul class="formulas">
+                  <li class="li_formulas">Área confinada</li>
+                  <div class="text-center"><br>
+                     <p>\( Ach = \ Base * Altura \) =
+                        <span id="a_conf">70mm</span>
+                     </p>
+                  </div>
+               </ul>
+            </div><br><br><br>
+            <div id="refuerzo_minimo">
+               <br>
+               <ul class="formulas">
+                  <li class="li_formulas">Refuerzo mínimo</li>
+                  <div class="text-center"><br>
+                     <p>\( Ash = \ máx \)
+                        <span id="ref_min">70mm</span>
+                     </p>
+                     <p>\( No. Estribos = \) 
+                        <span id="noEstribs">70mm</span>
+                     </p>
+                     <br>
+                     <div class="resultado">
+                        <b><h3 id="cumple_estribos"></h3>
+                        </b><b><h3  id="NOcumple_estribos"></h3></b>
+                     </div>
+                  </div>
+               </ul>
+            </div><br><br><br>
+            <hr>
+            <div id="reducir_separacion" style="display: none;">
+               <h2 class="text-center" style="font-size: 30px; font-weight: bolder;">REDUCCIÓN DE SEPARACIÓN</h2><br>
+               <div id="refuerzo_minimo">
+                  <br>
+                  <ul class="formulas">
+                     <li class="li_formulas">Refuerzo mínimo</li>
+                     <div class="text-center"><br>
+                        <p>\( Separación = \) 
+                           <span id="sep2">50mm</span>
+                        </p>
+                        <p>\( Ash = \ máx \) =
+                           <span id="ashReduc">70mm</span>
+                        </p>
+                        <p>\( No. Estribos = \)
+                           <span id="NoEstribsRed">70mm</span>
+                        </p>
+                        
+                     </div>
+                     <br><div class="resultado text-center">
+                        <b><h3 id="cumple_estribos2"></h3></b>
+                        <b><h3  id="NOcumple_estribos2"></h3></b>
+                     </div>
+                  </ul>
+               </div><br><br><br>
+            </div>
 
-               </div><br><br>
-               <li class="li_formulas">Acero suministrado</li>
-               <div class="text-center"><br>
-                  <p>\(A_{\text{v sum}} = (\text{Cantidad de varillas de estribo}) \cdot (\text{Área de la varilla de estribo})\)
-                  </p>
-                  <p>Por norma:</p>
-                  <p>\(A_s = 2 \cdot 71 \, \text{mm}^2 = 142 \, \text{mm}^2\)</p><br>
-                  <div class="resultado" id="condicion_acero">Para si cumple</div><br>
-                  <hr>
-               </div>
-            </ul>
          </div>
-
-         <h2 class="text-center" style="font-size: 30px; font-weight: bolder;">Chequeo de Resistencia</h2><br>
-         <div class="text-center">
-            <p style="font-size: 20px;"> \(\varphi V_n = \dfrac{{\varphi \cdot 𝐴_{{\text{v sum}}} \cdot 𝐹_y \cdot
-               𝑑}}{{s}}\) = <span id="cortante_fin"></span></p>
-         </div><br>
-         <p>Tenga en cuenta que \(\varphi\) = 0.75 por cortante</p>
-         <h3 class="text-center"><b>Vn > Vu</b></h3><br>
-         <div id="condicion_resistencia" class="resultado text-center"></div><br>
       </div>
-
-
 
       <br>
-      <div class="resultado text-center" style="display: none;" id="tabla_resultado_cortante"><br>
-         <div class="d-flex justify-content-center">
-            <div class="col-7">
-               <div id="resultado_cortante" class=""></div><br>
-            </div>
-         </div>
-      </div>
-
-   </div>
-
-   <br>
 
 
 
-
-   <!-- end contact  -->
-   <!-- footer -->
-   <footer>
-      <div class="footer">
-         <div class="container1">
-            <div class="row">
-               <div class="col-md-10 offset-md-1">
-                  <ul class="social_icon text_align_center">
-                     <li> <a  target="_blank" href="https://www.facebook.com/civilunimar?mibextid=ZbWKwL"><i
-                              class="fa fa-facebook-f" ></i></a></li>
-                     <li> <a href="#"><i class="fa fa-twitter"></i></a></li>
-                     <li> <a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
-                     <li> <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                  </ul>
-               </div>
-               <div class="colf_4">
-                  <div class="reader text-center">
-                     <ul class="xple_menu">
-
-                        <a target="_blank" id="universidad" href="https://www.umariana.edu.co/index.html"><img src="./img/logo.jfif"
-                              alt="#" width="400px" /><span>Página principal Universidad Mariana</span></a>
-                     </ul>
-
-                  </div>
-               </div>
-               <div class="col-md-2 col-sm-6">
-                  <div class="reader">
-                     <h3>Explorar</h3>
-                     <ul class="xple_menu">
-                        <li><a href="index.html">Inicio</a>
-                        </li>
-                        <li><a href="Introduccion.html">Introducción</a>
-                        </li>
-                        <li><a href="Normas.html">Normas</a>
-                        </li>
-                        <li>
-                           <div class="dropdown">
-                              <a href="#" type="button" class="dropdown-toggle" data-bs-toggle="dropdown"
-                                 aria-expanded="false">
-                                 Cálculos
-                              </a>
-                              <ul class="dropdown-menu">
-                                 <li><a class="dropdown-item" href="calculos.html"><button type="button"
-                                          class="btn btn-light">Diseño de
-                                          Vigas</button></a>
-                                 </li>
-                                 <li><a class="dropdown-item" href="calculosColumnas.html"><button type="button"
-                                          class="btn btn-light">Diseño de
-                                          Columnas</button></a>
-                                 </li>
-                              </ul>
-                           </div>
-                        </li>
-                        <li>
-                           <div class="dropdown">
-                              <a href="#" type="button" class="dropdown-toggle" data-bs-toggle="dropdown"
-                                 aria-expanded="false">
-                                 Información
-                              </a>
-                              <ul class="dropdown-menu">
-                                 <li><a class="dropdown-item" href="#"><button type="button"
-                                          class="btn btn-light">Manual de Usuario</button></a>
-                                 </li>
-                                 <li><a class="dropdown-item" href="#"><button type="button"
-                                          class="btn btn-light">Autores</button></a>
-                                 </li>
-                              </ul>
-                           </div>
-                        </li>
-                     </ul>
-                  </div>
-               </div>
-               <div class="col-md-3 col-sm-6">
-                  <div class="reader">
-                     <h3 style="padding-left: 55px;">Anexos</h3>
-                     <ul class="re_post">
-                        <li><img src="./img/re_img1.jpg" alt="#" /></li>
-                        <li><img src="./img/re_img2.jpg" alt="#" /></li>
-                        <li><img src="./img/re_img3.jpg" alt="#" /></li>
-                        <li><img src="./img/re_img4.jpg" alt="#" /></li>
-                     </ul>
-                  </div>
-               </div>
-               <div class="col-md-3 col-sm-6">
-                  <div class="reader">
-                     <h3 class="text-center">Contacto</h3>
-                     <ul class="" id="em">
-                        <li> <i class="fa fa-map-marker" aria-hidden="true" style="font-size: 30px;"></i>&nbsp;&nbsp;
-                           &nbsp; Calle 18 No. 34-104 Pasto (N)<br>&nbsp; Bloque María Inmaculada - Oficina 204</li><br>
-                        <li><i class="fa fa-phone" aria-hidden="true" style="font-size: 30px;"></i>&nbsp;&nbsp;&nbsp;
-                           &nbsp; 52 +7244460 Ext 174</a></li>
-                        <li> <a class="correo" href="#"><i class="fa fa-envelope" aria-hidden="true"
-                                 style="font-size: 30px;"></i><span class="it_correo">
-                                 ingenieriacivil@umariana.edu.co</span></a>
-                        </li>
-                        <li> <a class="correo" href="#"><i class="fa fa-envelope" aria-hidden="true"
-                                 style="font-size: 30px;"></i><span class="it_correo">
-                                 avgomeza@umariana.edu.co</span></a>
-                        </li>
-                     </ul>
-                  </div>
-               </div>
-            </div>
-         </div>
-         <div class="copyright text_align_center">
-            <div class="container">
+      <!-- end contact  -->
+      <!-- footer -->
+      <footer>
+         <div class="footer">
+            <div class="container1">
                <div class="row">
                   <div class="col-md-10 offset-md-1">
-                     <p>Copyright 2023 All Right Reserved</p>
+                     <ul class="social_icon text_align_center">
+                        <li> <a target="_blank" href="https://www.facebook.com/civilunimar?mibextid=ZbWKwL"><i
+                                 class="fa fa-facebook-f"></i></a></li>
+                        <li> <a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li> <a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
+                        <li> <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                     </ul>
+                  </div>
+                  <div class="colf_4">
+                     <div class="reader text-center">
+                        <ul class="xple_menu">
+
+                           <a target="_blank" id="universidad" href="https://www.umariana.edu.co/index.html"><img
+                                 src="./img/logo.jfif" alt="#" width="400px" /><span>Página principal Universidad
+                                 Mariana</span></a>
+                        </ul>
+
+                     </div>
+                  </div>
+                  <div class="col-md-2 col-sm-6">
+                     <div class="reader">
+                        <h3>Explorar</h3>
+                        <ul class="xple_menu">
+                           <li><a href="index.html">Inicio</a>
+                           </li>
+                           <li><a href="Introduccion.html">Introducción</a>
+                           </li>
+                           <li><a href="Normas.html">Normas</a>
+                           </li>
+                           <li>
+                              <div class="dropdown">
+                                 <a href="#" type="button" class="dropdown-toggle" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Cálculos
+                                 </a>
+                                 <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="calculos.html"><button type="button"
+                                             class="btn btn-light">Diseño de
+                                             Vigas</button></a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="calculosColumnas.html"><button type="button"
+                                             class="btn btn-light">Diseño de
+                                             Columnas</button></a>
+                                    </li>
+                                 </ul>
+                              </div>
+                           </li>
+                           <li>
+                              <div class="dropdown">
+                                 <a href="#" type="button" class="dropdown-toggle" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Información
+                                 </a>
+                                 <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#"><button type="button"
+                                             class="btn btn-light">Manual de Usuario</button></a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="#"><button type="button"
+                                             class="btn btn-light">Autores</button></a>
+                                    </li>
+                                 </ul>
+                              </div>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="col-md-3 col-sm-6">
+                     <div class="reader">
+                        <h3 style="padding-left: 55px;">Anexos</h3>
+                        <ul class="re_post">
+                           <li><img src="./img/re_img1.jpg" alt="#" /></li>
+                           <li><img src="./img/re_img2.jpg" alt="#" /></li>
+                           <li><img src="./img/re_img3.jpg" alt="#" /></li>
+                           <li><img src="./img/re_img4.jpg" alt="#" /></li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="col-md-3 col-sm-6">
+                     <div class="reader">
+                        <h3 class="text-center">Contacto</h3>
+                        <ul class="" id="em">
+                           <li> <i class="fa fa-map-marker" aria-hidden="true" style="font-size: 30px;"></i>&nbsp;&nbsp;
+                              &nbsp; Calle 18 No. 34-104 Pasto (N)<br>&nbsp; Bloque María Inmaculada - Oficina 204</li>
+                           <br>
+                           <li><i class="fa fa-phone" aria-hidden="true" style="font-size: 30px;"></i>&nbsp;&nbsp;&nbsp;
+                              &nbsp; 52 +7244460 Ext 174</a></li>
+                           <li> <a class="correo" href="#"><i class="fa fa-envelope" aria-hidden="true"
+                                    style="font-size: 30px;"></i><span class="it_correo">
+                                    ingenieriacivil@umariana.edu.co</span></a>
+                           </li>
+                           <li> <a class="correo" href="#"><i class="fa fa-envelope" aria-hidden="true"
+                                    style="font-size: 30px;"></i><span class="it_correo">
+                                    avgomeza@umariana.edu.co</span></a>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="copyright text_align_center">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-md-10 offset-md-1">
+                        <p>Copyright 2023 All Right Reserved</p>
+                     </div>
                   </div>
                </div>
             </div>
          </div>
-      </div>
-   </footer>
-   <!-- end footer -->
-   <!-- Javascript files-->
-   <script src="./assets/dist/js/jquery.min.js"></script>
-   <script src="./assets/dist/js/bootstrap.bundle.min.js"></script>
-   <script src="./assets/dist/js/custom.js"></script>
-   <script src="./assets/dist/js/jquery-3.0.0.min.js"></script>
-   <script src="./assets/dist/js/calculos.js"></script>
-   <script src="./assets/dist/js/resistencia_ultima.js"></script>
-   <script src="./assets/dist/js/calculo_cortante.js"></script>
+      </footer>
+      <!-- end footer -->
+      <!-- Javascript files-->
+      <script src="./assets/dist/js/jquery.min.js"></script>
+      <script src="./assets/dist/js/bootstrap.bundle.min.js"></script>
+      <script src="./assets/dist/js/custom.js"></script>
+      <script src="./assets/dist/js/jquery-3.0.0.min.js"></script>
+      <!-- <script src="./assets/dist/js/calculos.js"></script> -->
+      <!-- <script src="./assets/dist/js/resistencia_ultima.js"></script> -->
+      <!-- <script src="./assets/dist/js/calculo_cortante.js"></script> -->
+      <!-- <script src="./assets/dist/js/columnas.js"></script> -->
+      <script src="./js/columnas.js"></script>
+      <script src="./js/cortanteColumnas.js"></script>
+      <script src="./js/diagrama.js"></script>
 
- 
 
 </body>
 

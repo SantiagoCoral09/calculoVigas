@@ -30,13 +30,7 @@
    <link rel="stylesheet" href="./assets/dist/css/style.css">
    <!-- responsive-->
    <link rel="stylesheet" href="./assets/dist/css/responsive.css">
-   <script>
-      // JavaScript para desplazamiento suave
-      document.querySelector('a[href="#inicio"]').addEventListener('click', function (e) {
-         e.preventDefault();
-         document.getElementById('inicio').scrollIntoView({ behavior: 'smooth' });
-      });
-   </script>
+   
 
 </head>
 <!-- body -->
@@ -60,7 +54,7 @@
             <li><a class="dropdown-item" href="calculos.html"><button type="button" class="btn btn-light">Diseño de
                      Vigas</button></a>
             </li>
-            <li><a class="dropdown-item" href="calculos.html"><button type="button" class="btn btn-light">Diseño de
+            <li><a class="dropdown-item" href="calculosColumnas.html"><button type="button" class="btn btn-light">Diseño de
                      Columnas</button></a>
             </li>
          </ul>
@@ -110,7 +104,7 @@
                            <li><a class="dropdown-item" href="calculos.html"><button type="button" class="btn">Diseño de
                                     Vigas</button></a>
                            </li>
-                           <li><a class="dropdown-item" href="calculos.html"><button type="button" class="btn">Diseño de
+                           <li><a class="dropdown-item" href="calculosColumnas.html"><button type="button" class="btn">Diseño de
                                     Columnas</button></a>
                            </li>
                         </ul>
@@ -210,7 +204,7 @@
                            <li><a class="dropdown-item" href="calculos.html"><button type="button"
                                     class="btn btn-light">Diseño de Vigas</button></a>
                            </li>
-                           <li><a class="dropdown-item" href="calculos.html"><button type="button"
+                           <li><a class="dropdown-item" href="calculosColumnas.html"><button type="button"
                                     class="btn btn-light">Diseño de Columnas</button></a>
                            </li>
                         </ul>
@@ -308,7 +302,7 @@
                                           class="btn btn-light">Diseño de
                                           Vigas</button></a>
                                  </li>
-                                 <li><a class="dropdown-item" href="calculos.html"><button type="button"
+                                 <li><a class="dropdown-item" href="calculosColumnas.html"><button type="button"
                                           class="btn btn-light">Diseño de
                                           Columnas</button></a>
                                  </li>
@@ -379,6 +373,13 @@
    </footer>
    <!-- end footer -->
    <!-- Javascript files-->
+   <script>
+      // JavaScript para desplazamiento suave
+      document.querySelector('a[href="#inicio"]').addEventListener('click', function (e) {
+         e.preventDefault();
+         document.getElementById('inicio').scrollIntoView({ behavior: 'smooth' });
+      });
+   </script>
    <script src="./assets/dist/js/jquery.min.js"></script>
    <script src="./assets/dist/js/bootstrap.bundle.min.js"></script>
    <script src="./assets/dist/js/custom.js"></script>
