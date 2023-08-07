@@ -111,7 +111,7 @@ function minimoExcesoCol(b, h, recubrimiento, diametroBarraEstribo, Ag) {
         return [];
     }
 }
-console.log("Excesos");
+console.log("Excesos--");
 console.log(minimoExcesoCol(500, 500, 40, 9.5, 10));
 
 function separacionBarras(b, recubrimiento, dEstribo, NoVarillas, dVarilla) {
