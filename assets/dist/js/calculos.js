@@ -193,7 +193,7 @@ function minimoExceso(b, h, Fc, Fy, recubrimiento, diametroBarraEstribo, ag) {
       AsMin = cuantiaAceroMinimo(Ac, roMin);
       NoVarillas = cantidadVarillas(AsMin, area);
       AsSuministrado = aceroSuministrado(area, NoVarillas);
-      excesAs = excesoAs(AsSuministrado, AsMin);
+      let excesAs = excesoAs(AsSuministrado, AsMin);
       //if
       separacion = separacionBarras(b, recubrimiento, diametroBarraEstribo, NoVarillas, diametro);
       separacionMinimaBarras = separacionMinima(diametro, ag);

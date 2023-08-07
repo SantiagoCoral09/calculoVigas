@@ -70,7 +70,7 @@ function excesoAs(As_Suministrado, AsMin) {
     return excAs;
 }
 
-function minimoExcesoCol(b, h, recubrimiento, diametroBarraEstribo) {
+function minimoExcesoCol(b, h, recubrimiento, diametroBarraEstribo, Ag) {
     //Debemos retornar el numero de varilla con el menor exceso
     let excesos = [];
     let noVars = [];
@@ -89,10 +89,11 @@ function minimoExcesoCol(b, h, recubrimiento, diametroBarraEstribo) {
         //if
         separacion = separacionBarras(b, recubrimiento, diametroBarraEstribo, NoVarillas, diametro);
         let separacionMaxima = 150;
+        let separacionMinima = separacionMinimaVars(diametro, Ag);
 
-        console.log(`No.${numeroVarilla} sep=${separacion.toFixed(2)} >= sepMin=${separacionMaxima}, cantVars:${NoVarillas}, AsMin:${AsMin}, asSUM:${AsSuministrado},exceso:${excesAs}`);
+        console.log(`No.${numeroVarilla} sep=${separacion.toFixed(2)} >= sepMin=${separacionMinima}, sepMax:${separacionMaxima}, cantVars:${NoVarillas}, AsMin:${AsMin}, asSUM:${AsSuministrado},exceso:${excesAs}`);
 
-        if (separacion <= separacionMaxima) {
+        if (separacion >= separacionMinima && separacion <= separacionMaxima) {
             excesos.push(Number(excesAs.toFixed(4)));
             noVars.push(numeroVarilla);
         }
@@ -100,14 +101,18 @@ function minimoExcesoCol(b, h, recubrimiento, diametroBarraEstribo) {
 
     }
     console.log(excesos);
-    let minimoExc = Math.min(...excesos);
-    console.log(excesos.indexOf(minimoExc));
-    let posMenorExc = excesos.indexOf(minimoExc);
-    let NoVarillaMenorExc = `No. ${noVars[posMenorExc]}`;
-    return [minimoExc, NoVarillaMenorExc];
+    if (excesos.length > 0) {
+        let minimoExc = Math.min(...excesos);
+        console.log(excesos.indexOf(minimoExc));
+        let posMenorExc = excesos.indexOf(minimoExc);
+        let NoVarillaMenorExc = `No. ${noVars[posMenorExc]}`;
+        return [minimoExc, NoVarillaMenorExc];
+    } else {
+        return [];
+    }
 }
 console.log("Excesos");
-console.log(minimoExcesoCol(500, 500, 40, 9.5));
+console.log(minimoExcesoCol(500, 500, 40, 9.5, 10));
 
 function separacionBarras(b, recubrimiento, dEstribo, NoVarillas, dVarilla) {
     //Separacion entre barras
@@ -115,8 +120,13 @@ function separacionBarras(b, recubrimiento, dEstribo, NoVarillas, dVarilla) {
     return separacion;
 }
 
+function separacionMinimaVars(diametroVarLong, Ag) {
+    let sep_min = Math.max(25, diametroVarLong, 1.33 * Ag);
+    return sep_min;
+}
+
 ////Datos para concreto
-function numeroFibras(b) {
+function numeroFibras(base) {
     let nFibras = base / 25;
     return nFibras;
 }
@@ -416,14 +426,14 @@ function calcularColumna() {
     document.getElementById('campos_cortante').style.display = 'none';
     document.getElementById('tabla_diagrama').style.display = 'none';
 
-    let b, h, Fc, Fy, recubrimiento, numeroVarilla, diametro, area, numeroBarraEstribo, diametroBarraEstribo;
+    let b, h, Fc, Fy, ag, recubrimiento, numeroVarilla, diametro, area, numeroBarraEstribo, diametroBarraEstribo;
     // Obtiene el valor de los inputs con los id
     b = Number(document.getElementById("b").value); //
     h = Number(document.getElementById("h").value); //
     Fc = Number(document.getElementById("fc").value); //
     Fc1 = Number(document.getElementById("fc1").value); //
     Fy = Number(document.getElementById("fy").value); //
-    //    ag = Number(document.getElementById("ag").value);
+    ag = Number(document.getElementById("ag").value);
     recubrimiento = Number(document.getElementById("recubrimiento").value); //
     numeroVarilla = Number(document.getElementById("numeroVarilla").value); //
     diametro = Number(document.getElementById("diametro").value); //
@@ -454,16 +464,16 @@ function calcularColumna() {
         document.getElementById("base").textContent = '(*) Hay campos incorrectos';
     }
 
-    //    else if (ag == '') {
-    //       console.log("Hay campos vacíos");
-    //       document.getElementById("max_ag").innerHTML = '<h3 class="text-danger">Debe ingresar un tamaño máximo</h3>';
-    //       document.getElementById("base").textContent = '(*) Complete los campos vacios';
-    //    }
-    //    else if (ag < 10) {
-    //       console.log("Hay campos incorrectos");
-    //       document.getElementById("max_ag").innerHTML = '<h3 class="text-danger">Debe ingresar un tamaño máximo mayor a 10 mm</h3>';
-    //       document.getElementById("base").textContent = '(*) Complete los campos incorrectos';
-    //    }
+    else if (ag == '') {
+        console.log("Hay campos vacíos");
+        document.getElementById("max_ag").innerHTML = '<h3 class="text-danger">Debe ingresar un tamaño máximo</h3>';
+        document.getElementById("base").textContent = '(*) Complete los campos vacios';
+    }
+    else if (ag < 10) {
+        console.log("Hay campos incorrectos");
+        document.getElementById("max_ag").innerHTML = '<h3 class="text-danger">Debe ingresar un tamaño máximo mayor a 10 mm</h3>';
+        document.getElementById("base").textContent = '(*) Complete los campos incorrectos';
+    }
 
     else {
         if (Fc == '') {
@@ -478,6 +488,7 @@ function calcularColumna() {
         let roMin, Ac, AsMin, NoVarillas, As_Suministrado, excesAs, separacion, separacionMaxima;
         roMin = 0.01;
         separacionMaxima = 150;
+        let sep_minima = separacionMinimaVars(diametro, ag);
 
         Ac = cuantiaConcreto(b, h);
         console.log("Cuantia minima roMin=>", roMin);
@@ -561,6 +572,11 @@ function calcularColumna() {
                           <td>mm</td>
                        </tr>
                        <tr>
+                          <td>Separación mínima</td>
+                          <td>${sep_minima.toFixed(2)}</td>
+                          <td>mm</td>
+                       </tr>
+                       <tr>
                           <td>Separación máxima</td>
                           <td>${separacionMaxima.toFixed(2)}</td>
                           <td>mm</td>
@@ -570,24 +586,30 @@ function calcularColumna() {
                  </table>
               `;
         ///Recomendar el menor exceso
-        let menorExceso = minimoExcesoCol(b, h, recubrimiento, diametroBarraEstribo)[0];
-        let varMenorExceso = minimoExcesoCol(b, h, recubrimiento, diametroBarraEstribo)[1];
-        document.getElementById('exceso').style.display = 'block';
-        document.getElementById('exceso').innerHTML = `<h3>Se recomienda utilizar la varilla ${varMenorExceso} ya que se obtiene un menor exceso de ${menorExceso.toFixed(2)}%<h3/>`;
 
+        if (minimoExcesoCol(b, h, recubrimiento, diametroBarraEstribo, ag).length > 0) {
+            let menorExceso = minimoExcesoCol(b, h, recubrimiento, diametroBarraEstribo, ag)[0];
+            let varMenorExceso = minimoExcesoCol(b, h, recubrimiento, diametroBarraEstribo, ag)[1];
+            console.log("Menor Exc", menorExceso);
+
+            document.getElementById('exceso').style.display = 'block';
+            document.getElementById('exceso').innerHTML = `<h3>Se recomienda utilizar la varilla ${varMenorExceso} ya que se obtiene un menor exceso de ${menorExceso.toFixed(2)}%<h3/>`;
+        } else {
+            document.getElementById('exceso').style.display = 'none';
+        }
         //Verificar condicion
         document.getElementById('condiciones').style.display = 'block';
-        if (separacion <= separacionMaxima) {
-            console.log(`Si cumple separacion ${separacion} >= sepMinima ${separacionMaxima}`);
-            document.getElementById("condiciones").innerHTML = `<b style="color:rgba(0,255,0,1);">Si cumple</b>&nbsp; la condición: separación entre varillas=${separacion.toFixed(2)}mm <= separación
-              máxima=${separacionMaxima}mm`;
+        if (separacion >= sep_minima && separacion <= separacionMaxima) {
+            console.log(`Si cumple separacion ${separacion} >= sepMinima ${sep_minima} y ${separacion}<=${separacionMaxima}`);
+            document.getElementById("condiciones").innerHTML = `<b style="color:rgba(0,255,0,1);">Si cumple</b>&nbsp; la condición: separación entre varillas=${separacion.toFixed(2)}mm >= separación
+              mínima=${sep_minima.toFixed(2)}mm y ${separacion.toFixed(2)}mm <= ${separacionMaxima}mm`;
             document.getElementById('diagrama_interaccion').style.display = 'block';
             document.getElementById('boton_gra').disabled = false;
         }
         else {
             console.log(`No cumple separacion ${separacion} >= sepMinima ${separacionMaxima}`);
-            document.getElementById("condiciones").innerHTML = `<b style="color:rgba(255,0,0,0.8);"> No cumple </b>&nbsp; la condición: separacion entre varillas=${separacion.toFixed(2)}mm <= separación
-              máxima=${separacionMaxima}mm`;
+            document.getElementById("condiciones").innerHTML = `<b style="color:rgba(255,0,0,0.8);"> No cumple </b>&nbsp; la condición: separacion entre varillas=${separacion.toFixed(2)}mm >= separación
+            mínima=${sep_minima.toFixed(2)}mm y ${separacion.toFixed(2)}mm <= ${separacionMaxima}mm`;
         }
 
         ////Datos para concreto
