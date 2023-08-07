@@ -659,8 +659,8 @@
                      <table class="peque text-center">
                         <thead>
                            <th>c</th>
-                           <th>Mn</th>
-                           <th>Pn</th>
+                           <th>Mn (KN-m)</th>
+                           <th>Pn (KN)</th>
                            <th>&phi;Mn</th>
                            <th>&phi;Pn</th>
                         </thead>
@@ -817,13 +817,13 @@
             <ul class="formulas">
                <li class="li_formulas">Separación entre varillas</li>
                <div class="text-center"><br>
-                  <p>\( S = \)
+                  <p>\( S = \min\left(\dfrac{\min(a,b)}{4}; 6d_{\text{blong}}; 150\text{mm}\right) = \)
                      <span id="sep_varillas">70mm</span>
                   </p>
                </div>
             </ul>
             <br>
-            <h3 class="text-center"><b>Debe ser mayor a 50</b></h3><br>
+            <h3 class="text-center"><b>Debe ser mayor a 50mm</b></h3><br>
             <div id="condicion_separacion" class="resultado text-center"></div><br>
          </div><br><br><br>
          <div id="seguir_proceso" style="display: none;">
@@ -832,6 +832,13 @@
                <ul class="formulas">
                   <li class="li_formulas">Área confinada</li>
                   <div class="text-center"><br>
+                     <p>\( Base = \ b - 2d - 2e \) =
+                        <span id="baseCort">70mm</span>
+                     </p><br>
+                     
+                     <p>\( Altura = \ h - 2d - 2e \) =
+                        <span id="altCort">70mm</span>
+                     </p><br>
                      <p>\( Ach = \ Base * Altura \) =
                         <span id="a_conf">70mm</span>
                      </p>
@@ -843,9 +850,11 @@
                <ul class="formulas">
                   <li class="li_formulas">Refuerzo mínimo</li>
                   <div class="text-center"><br>
-                     <p>\( Ash = \ máx \)
+                     <p>\(Ash1 = \dfrac{{0.3 \cdot (S \cdot bc \cdot F`c)}}{{Fy}} \cdot \left(\dfrac{{Ag}}{{Ach}} - 1\right) = \)<span id="ash1Cort">70mm</span></p><br>
+                     <p>\(Ash2 = \dfrac{{0.09 \cdot (S \cdot bc \cdot F`c)}}{{Fy}} = \)<span id="ash2Cort">70mm</span></p><br>
+                     <p>\( Ash = \max(Ash1; Ash2) = \)<br>\(\ máx  \)
                         <span id="ref_min">70mm</span>
-                     </p>
+                     </p><br>
                      <p>\( No. Estribos = \) 
                         <span id="noEstribs">70mm</span>
                      </p>
@@ -867,10 +876,12 @@
                      <div class="text-center"><br>
                         <p>\( Separación = \) 
                            <span id="sep2">50mm</span>
-                        </p>
-                        <p>\( Ash = \ máx \) =
-                           <span id="ashReduc">70mm</span>
-                        </p>
+                        </p><br><br>
+                        <p>\(Ash1 = \dfrac{{0.3 \cdot (S \cdot bc \cdot F`c)}}{{Fy}} \cdot \left(\dfrac{{Ag}}{{Ach}} - 1\right) = \)<span id="ash1CortR">70mm</span></p><br>
+                  <p>\(Ash2 = \dfrac{{0.09 \cdot (S \cdot bc \cdot F`c)}}{{Fy}} = \)<span id="ash2CortR">70mm</span></p><br>
+                     <p>\( Ash = \max(Ash1; Ash2) = \)<br>\(\ máx  \)
+                        <span id="ashReduc">70mm</span>
+                     </p><br>
                         <p>\( No. Estribos = \)
                            <span id="NoEstribsRed">70mm</span>
                         </p>

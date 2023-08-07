@@ -15,6 +15,7 @@ function calcular_cortante_columna() {
     let areaBarraLong = Number(document.getElementById("area").value);
     let recubrimiento = Number(document.getElementById("recubrimiento").value);
     let diametroBarraEstribo = Number(document.getElementById("diametro_estribo").value);
+    let ag = Number(document.getElementById("ag").value);
 
     if (b == '' || h == '') {
         console.log("Hay campos vacíos");
@@ -35,6 +36,15 @@ function calcular_cortante_columna() {
         console.log("Hay campos incorrectos");
         document.getElementById("val_fc").innerHTML = '<h3 class="text-danger">La resistencia a la compresión no puede ser negativa o cero</h3>';
         document.getElementById("base").textContent = '(*) Hay campos incorrectos';
+    }else if (ag == '') {
+        console.log("Hay campos vacíos");
+        document.getElementById("max_ag").innerHTML = '<h3 class="text-danger">Debe ingresar un tamaño máximo</h3>';
+        document.getElementById("base").textContent = '(*) Complete los campos vacios';
+    }
+    else if (ag < 10) {
+        console.log("Hay campos incorrectos");
+        document.getElementById("max_ag").innerHTML = '<h3 class="text-danger">Debe ingresar un tamaño máximo mayor a 10 mm</h3>';
+        document.getElementById("base").textContent = '(*) Complete los campos incorrectos';
     } else {
         if (Fc == '') {
             Fc = Fc1;
@@ -75,6 +85,8 @@ function calcular_cortante_columna() {
             let base = b - (recubrimiento * 2) - (diametroBarraEstribo * 2);
             let altura = h - (recubrimiento * 2) - (diametroBarraEstribo * 2);
             let ach = base * altura;
+            document.getElementById('baseCort').innerHTML = `${base}mm`;
+            document.getElementById('altCort').innerHTML = `${altura}mm`;
             document.getElementById('a_conf').innerHTML = `${base}mm * ${altura}mm = ${ach}mm<sup>2</sup>`;
 
             //refuerzo minimo (vertical)
@@ -82,7 +94,8 @@ function calcular_cortante_columna() {
             let ash2 = ((0.09 * separacion * b * Fc) / Fy);
             let ash = Math.max(ash1, ash2);
             let noEstribos = Math.max(2, Math.round(ash / areaBarraEstribo));
-
+            document.getElementById('ash1Cort').innerHTML = `${ash1.toFixed(2)}mm<sup>2</sup>`;
+            document.getElementById('ash2Cort').innerHTML = `${ash2.toFixed(2)}mm<sup>2</sup>`;
             document.getElementById('ref_min').innerHTML = `(${ash1.toFixed(2)}mm<sup>2</sup>; ${ash2.toFixed(2)}mm<sup>2</sup>) = ${ash.toFixed(2)}mm<sup>2</sup>`;
             document.getElementById('noEstribs').innerHTML = `${noEstribos} und`;
 
@@ -98,13 +111,16 @@ function calcular_cortante_columna() {
             if (noEstribos > numeroEstribos) {
                 ///se debe disminuir la separacion  hasta 50mm
                 document.getElementById('reducir_separacion').style.display = 'block';
-                document.getElementById('NOcumple_estribos').innerHTML = `<b class="text-warning">El número de estribos debe ser suficiente. Se debe disminuir la separación hasta 50mm</b>`;
+                document.getElementById('NOcumple_estribos').innerHTML = `<b class="text-warning">La cantidad de estribos sobrepasa la cantidad de las varillas a amarrar. Se debe disminuir la separación hasta 50mm.</b>`;
                 separacion = 50;
                 //refuerzo minimo (vertical)
-                ash1 = ((0.3 * separacion * b * Fc) / Fy) * (((b * h) / (base * altura)) - 1);
+                ash1 = ((0.3 * separacion * b * Fc) / Fy) * (((ag) / (ach)) - 1);
                 ash2 = ((0.09 * separacion * b * Fc) / Fy);
                 ash = Math.max(ash1, ash2);
                 noEstribos = Math.max(2, Math.round(ash / areaBarraEstribo));
+                document.getElementById('ash1CortR').innerHTML = `${ash1.toFixed(2)}mm<sup>2</sup>`;
+            document.getElementById('ash2CortR').innerHTML = `${ash2.toFixed(2)}mm<sup>2</sup>`;
+            
                 document.getElementById('ashReduc').innerHTML = `(${ash1.toFixed(2)}mm<sup>2</sup>; ${ash2.toFixed(2)}mm<sup>2</sup>) = ${ash.toFixed(2)}mm<sup>2</sup>`;
                 document.getElementById('NoEstribsRed').innerHTML = `${noEstribos} und`;
 
