@@ -335,13 +335,13 @@ function validarValorMinimo(id, min, msgErr) {
             mensajeError.textContent = "";
         }
     }
-    else if (id == 'muSup' || id == 'muInf' || id == 'Vu') {
-        if (isNaN(valor) || valor <= min) {
-            mensajeError.textContent = "Ingrese un número corecto, mayor a " + min;
-        } else {
-            mensajeError.textContent = "";
-        }
-    }
+    // else if (id == 'muSup' || id == 'muInf' || id == 'Vu') {
+    //     if (isNaN(valor) || valor <= min) {
+    //         mensajeError.textContent = "Ingrese un número corecto, mayor a " + min;
+    //     } else {
+    //         mensajeError.textContent = "";
+    //     }
+    // }
     else if (isNaN(valor) || valor < min) {
         mensajeError.textContent = "Ingrese un número mayor o igual a " + min;
         // input.value = "";
@@ -413,6 +413,37 @@ function actualizar_varilla_estribo(opcion) {
         }
     }
 }
+
+function validarBaseAltura() {
+    let b = Number(document.getElementById('b').value);
+    let h = Number(document.getElementById('h').value);
+    let boton = document.getElementById('btn_calcular1');
+    if (b < 250) {
+        console.log('NOTA: No puede ser menor a 25cm');
+        document.getElementById("base").textContent = "(*) NOTA: Tener en cuenta el valor de la base y altura";
+        document.getElementById("bh").innerHTML = '<h3 id="bh" class="text-danger">La base o la altura de la columna debe ser mínimo 250mm</h3>';
+        boton.disabled = true;
+        if (h >= 250) {
+            document.getElementById("base").textContent = "";
+            document.getElementById("bh").innerHTML = '';
+            boton.disabled = false;
+
+        }
+    }
+    if (h < 250) {
+        console.log('NOTA: No puede ser menor a 25cm');
+        document.getElementById("base").textContent = "(*) NOTA: Tener en cuenta el valor de la base y altura";
+        document.getElementById("bh").innerHTML = '<h3 id="bh" class="text-danger">La base o la altura de la columna debe ser mínimo 250mm</h3>';
+        boton.disabled = true;
+
+        if (b >= 250) {
+            document.getElementById("base").textContent = "";
+            document.getElementById("bh").innerHTML = '';
+            boton.disabled = false;
+
+        }
+    }
+}
 function calcularColumna() {
     // console.log("Vamos a calcular columnas");
 
@@ -448,16 +479,16 @@ function calcularColumna() {
         document.getElementById("bh").innerHTML = '<h3 class="text-danger">Debe ingresar base y altura</h3>';
         document.getElementById("base").textContent = '(*) Complete los campos vacios';
     }
-    else if (b < 200) {
-        console.log('NOTA: No puede ser menor a 200mm');
-        document.getElementById("base").textContent = "(*) NOTA: Tener en cuenta el valor de la base";
-        document.getElementById("bh").innerHTML = '<h3 id="bh" class="text-danger">La base de la columna No puede ser menor a 200mm</h3>';
-    }
-    else if (h < 0) {
-        console.log('NOTA: No puede ser negativo');
-        document.getElementById("base").textContent = "(*) NOTA: Tener en cuenta el valor de la altura";
-        document.getElementById("bh").innerHTML = '<h3 id="bh" class="text-danger">Los valores no pueden ser negativos</h3>';
-    }
+    // else if (b < 200) {
+    //     console.log('NOTA: No puede ser menor a 200mm');
+    //     document.getElementById("base").textContent = "(*) NOTA: Tener en cuenta el valor de la base";
+    //     document.getElementById("bh").innerHTML = '<h3 id="bh" class="text-danger">La base de la columna No puede ser menor a 200mm</h3>';
+    // }
+    // else if (h < 0) {
+    //     console.log('NOTA: No puede ser negativo');
+    //     document.getElementById("base").textContent = "(*) NOTA: Tener en cuenta el valor de la altura";
+    //     document.getElementById("bh").innerHTML = '<h3 id="bh" class="text-danger">Los valores no pueden ser negativos</h3>';
+    // }
     else if (Fc <= 0 && Fc != '') {
         console.log("Hay campos incorrectos");
         document.getElementById("val_fc").innerHTML = '<h3 class="text-danger">La resistencia a la compresión no puede ser negativa o cero</h3>';

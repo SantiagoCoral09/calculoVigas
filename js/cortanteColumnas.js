@@ -119,7 +119,7 @@ function calcular_cortante_columna() {
                 ash = Math.max(ash1, ash2);
                 noEstribos = Math.max(2, Math.round(ash / areaBarraEstribo));
                 document.getElementById('ash1CortR').innerHTML = `${ash1.toFixed(2)}mm<sup>2</sup>`;
-            document.getElementById('ash2CortR').innerHTML = `${ash2.toFixed(2)}mm<sup>2</sup>`;
+                document.getElementById('ash2CortR').innerHTML = `${ash2.toFixed(2)}mm<sup>2</sup>`;
             
                 document.getElementById('ashReduc').innerHTML = `(${ash1.toFixed(2)}mm<sup>2</sup>; ${ash2.toFixed(2)}mm<sup>2</sup>) = ${ash.toFixed(2)}mm<sup>2</sup>`;
                 document.getElementById('NoEstribsRed').innerHTML = `${noEstribos} und`;
