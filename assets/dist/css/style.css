@@ -238,15 +238,24 @@ button {
 
 header {
      height: 105px;
-     background: rgba(36, 40, 43,1);
+     background: rgba(36, 40, 43, 1);
      width: 100%;
      border-bottom: 5px solid#1293d4;
      min-height: 70px;
 
 }
 
+.barra_nav {
+     background: rgba(36, 40, 43, 1);
+     border-bottom: 5px solid#1293d4;
+     color: white;
+}
 
-.logo{
+.navbar .navbar-toggler-icon {
+     color: red;
+}
+
+.logo {
      padding: 3px 0px 0px 20px;
 }
 
@@ -341,6 +350,7 @@ ul.email li img {
      background-position: center;
      background-repeat: no-repeat;
 }
+
 .carousel-indicators li {
      width: 20px;
      height: 20px;
@@ -379,6 +389,7 @@ ul.email li img {
      background: rgba(255, 255, 255, 0.9);
      padding: 45px 20px 15px 20px;
 }
+
 .manual {
      background: rgba(255, 255, 255, 1);
      padding: 45px 20px 15px 20px;
@@ -1174,30 +1185,37 @@ td {
      max-width: 30.333333%;
 
 }
-.d_none_primary{
-     background-color: rgba(0, 123, 255,0.5);
-     color: white;
-     border: rgba(0, 123, 255,1) solid 2px;
-}
-.d_none_primary:hover{
-     color: rgba(0, 123, 255,1);
-     background-color: white;
-     border: rgba(0, 123, 255,1) solid 2px;
-}
-.d_none_light{
-     color: #000000;
-    background-color: rgba(248, 249, 250,1);
 
-     border: rgba(0, 123, 255,1) solid 2px;
+.d_none_primary {
+     background-color: rgba(0, 123, 255, 0.5);
+     color: white;
+     border: rgba(0, 123, 255, 1) solid 2px;
 }
-.d_none_light:hover{
+
+.d_none_primary:hover {
+     color: rgba(0, 123, 255, 1);
+     background-color: white;
+     border: rgba(0, 123, 255, 1) solid 2px;
+}
+
+.d_none_light {
+     color: #000000;
+     background-color: rgba(248, 249, 250, 1);
+
+     border: rgba(0, 123, 255, 1) solid 2px;
+}
+
+.d_none_light:hover {
      color: rgb(255, 255, 255);
      background-color: rgba(10, 35, 60, 0.5);
-     border: rgba(0, 123, 255,1) solid 2px;
+     border: rgba(0, 123, 255, 1) solid 2px;
 }
-.it_correo{
+
+.it_correo {
      vertical-align: auto;
-     padding:0px 0px 0px 15px;
+     padding: 0px 0px 0px 15px;
 }
-.it_correo:hover{
-     color: rgba(10, 35, 60, 1);}
+
+.it_correo:hover {
+     color: rgba(10, 35, 60, 1);
+}
