@@ -330,12 +330,17 @@ ul.email li img {
      background-size: 100% 100%;
      background-position: center;
      background-repeat: no-repeat;
-     /* height: 634px;
-     display: flex;
-     justify-content: center;
-     align-items: center; */
 }
 
+.autores {
+     padding-top: 50px;
+     padding-bottom: 50px;
+
+     background: url(../../../img/autores/univ.jpg);
+     background-size: 100% 100%;
+     background-position: center;
+     background-repeat: no-repeat;
+}
 .carousel-indicators li {
      width: 20px;
      height: 20px;
@@ -372,6 +377,10 @@ ul.email li img {
 
 .introduccion {
      background: rgba(255, 255, 255, 0.9);
+     padding: 45px 20px 15px 20px;
+}
+.manual {
+     background: rgba(255, 255, 255, 1);
      padding: 45px 20px 15px 20px;
 }
 
