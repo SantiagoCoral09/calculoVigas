@@ -24,9 +24,12 @@ function limpiar() {
     document.getElementById('condiciones').innerHTML = '';
     document.getElementById('tabla_diagrama').style.display = 'none';
     document.getElementById('campos_cortante').style.display = 'none';
-
-
 }
+function borrar() {
+    document.getElementById('b').value = '';
+    document.getElementById('h').value = '';
+}
+
 const numerosVarilla = ['2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '14', '18'];
 const diametrosVarillas = [6.4, 9.5, 12.7, 15.9, 19.1, 22.2, 25.4, 28.7, 32.3, 35.8, 43, 57.3];
 const areasVarillas = [32, 71, 129, 199, 284, 387, 510, 645, 819, 1006, 1452, 2581];
@@ -631,16 +634,24 @@ function calcularColumna() {
         //Verificar condicion
         document.getElementById('condiciones').style.display = 'block';
         if (separacion >= sep_minima && separacion <= separacionMaxima) {
-            console.log(`Si cumple separacion ${separacion} >= sepMinima ${sep_minima} y ${separacion}<=${separacionMaxima}`);
-            document.getElementById("condiciones").innerHTML = `<b style="color:rgba(0,255,0,1);">Si cumple</b>&nbsp; la condición: separación entre varillas=${separacion.toFixed(2)}mm >= separación
-              mínima=${sep_minima.toFixed(2)}mm y ${separacion.toFixed(2)}mm <= ${separacionMaxima}mm`;
+            console.log(`Si cumple separacion entre varillas (${separacion}mm) >= sepMinima ${sep_minima} y ${separacion}<= separación máxima (${separacionMaxima}`);
+            document.getElementById("condiciones").innerHTML = `<b style="color:rgba(0,255,0,1);">Si cumple</b>&nbsp; la condición: separación entre varillas (${separacion.toFixed(2)}mm) >= separación
+              mínima (${sep_minima.toFixed(2)}mm) y ${separacion.toFixed(2)}mm <= separación máxima (${separacionMaxima}mm)`;
             document.getElementById('diagrama_interaccion').style.display = 'block';
             document.getElementById('boton_gra').disabled = false;
         }
         else {
             console.log(`No cumple separacion ${separacion} >= sepMinima ${separacionMaxima}`);
-            document.getElementById("condiciones").innerHTML = `<b style="color:rgba(255,0,0,0.8);"> No cumple </b>&nbsp; la condición: separacion entre varillas=${separacion.toFixed(2)}mm >= separación
-            mínima=${sep_minima.toFixed(2)}mm y ${separacion.toFixed(2)}mm <= ${separacionMaxima}mm`;
+            if (separacion < sep_minima) {
+                document.getElementById("condiciones").innerHTML = `<b style="color:rgba(255,0,0,0.8);"> No cumple </b>&nbsp; la condición: separacion entre varillas (${separacion.toFixed(2)}mm) < separación
+            mínima (${sep_minima.toFixed(2)}mm).`;
+            }else if (separacion > separacionMaxima) {
+                document.getElementById("condiciones").innerHTML = `<b style="color:rgba(255,0,0,0.8);"> No cumple </b>&nbsp; la condición: separacion entre varillas (${separacion.toFixed(2)}mm) <= separación
+                máxima (${separacionMaxima.toFixed(2)}mm).`;
+            }else{
+                alert("Separación fuera de rango");
+            }
+
         }
 
         ////Datos para concreto

@@ -7,7 +7,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
    <!-- site metas -->
-  <link rel="icon" href="./img/umjpg.jpg">
+   <link rel="icon" href="./img/umjpg.jpg">
 
    <title>Columnas</title>
    <meta name="keywords" content="">
@@ -75,7 +75,8 @@
             <li><a class="dropdown-item" href="manual.html"><button type="button" class="btn btn-light">Manual de
                      Usuario</button></a>
             </li>
-            <li><a class="dropdown-item" href="autores.html"><button type="button" class="btn btn-light">Autores</button></a>
+            <li><a class="dropdown-item" href="autores.html"><button type="button"
+                     class="btn btn-light">Autores</button></a>
             </li>
          </ul>
       </div>
@@ -148,50 +149,55 @@
                   width="180px" /></a>
          </div>
          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" style="background-color: white; color:black;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
-               <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"></path>
-             </svg></span>
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"
+            style="background-color: white; color:black;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-list"
+               viewBox="0 0 16 16">
+               <path fill-rule="evenodd"
+                  d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z">
+               </path>
+            </svg></span>
          </button>
          <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
                <li class="nav-item">
-                  <a href="index.html"><button type="button"
-                     class="btn d_none_primary me-5">Inicio</button></a>
+                  <a href="index.html"><button type="button" class="btn d_none_primary me-5">Inicio</button></a>
                </li>
                <li class="nav-item">
                   <a href="Introduccion.html"><button type="button"
-                     class="btn d_none_light me-5">Introducción</button></a>
+                        class="btn d_none_light me-5">Introducción</button></a>
                </li>
                <li class="nav-item">
                   <a href="Normas.html"><button type="button" class="btn d_none_light me-5">Normas</button>
                </li>
                <li class="nav-item dropdown">
                   <a class="btn dropdown-toggle d_none_light me-5" href="#" id="navbarDropdown1" role="button"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                    Cálculos
+                     data-bs-toggle="dropdown" aria-expanded="false">
+                     Cálculos
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                    <li><a class="dropdown-item" href="calculos.html"><button type="button" class="btn">Diseño de
-                          Vigas</button></a></li>
-                    <li><a class="dropdown-item" href="calculosColumnas.html"><button type="button" class="btn">Diseño de
-                          Columnas</button></a></li>
+                     <li><a class="dropdown-item" href="calculos.html"><button type="button" class="btn">Diseño de
+                              Vigas</button></a></li>
+                     <li><a class="dropdown-item" href="calculosColumnas.html"><button type="button" class="btn">Diseño
+                              de
+                              Columnas</button></a></li>
                   </ul>
-                </li>
+               </li>
                <li class="nav-item">
                   <div class="dropdown">
                      <button class="btn d_none_light dropdown-toggle me-5" type="button" id="dropdownMenuButton1"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                       Información
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Información
                      </button>
                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                       <li><a class="dropdown-item" href="manual.html"><button type="button" class="btn">Manual
-                             de Usuario</button></a>
-                       </li>
-                       <li><a class="dropdown-item" href="autores.html"><button type="button" class="btn">Autores</button></a>
-                       </li>
+                        <li><a class="dropdown-item" href="manual.html"><button type="button" class="btn">Manual
+                                 de Usuario</button></a>
+                        </li>
+                        <li><a class="dropdown-item" href="autores.html"><button type="button"
+                                 class="btn">Autores</button></a>
+                        </li>
                      </ul>
-                   </div>
+                  </div>
                </li>
                <li class="nav-item">
                   <button class="openbtn" onclick="openNav()"><img src="./img/menu_btn.png"></button>
@@ -349,7 +355,7 @@
                            <h4 for="fc">Resistencia a la compresion (f'c) MPa</h4>
                         </div>
                         <div class="columna-1">
-                           <select class="mpa" name="fc" id="fc1" onchange="actualizar_fc(this); limpiar()">
+                           <select class="mpa" name="fc" id="fc1" onchange="actualizar_fc(this); limpiar(); ">
                               <option value="21">21</option>
                               <option value="28">28</option>
                            </select>
@@ -568,7 +574,7 @@
                      <hr><br>
                      <button type="submit" id="btn_calcular1" class="btn btn-primary"
                         onclick="calcularColumna()">Calcular</button>
-                     <button type="button" class="btn btn-success" onclick="limpiar()">Limpiar</button>
+                     <button type="button" class="btn btn-success" onclick="limpiar(); borrar()">Limpiar</button>
 
                      <h3 id="base" class="text-danger"></h3>
                   </div>
@@ -928,8 +934,8 @@
                   <li class="li_formulas">Refuerzo mínimo</li>
                   <div class="text-center"><br>
                      <p>\(Ash1 = \dfrac{{0.3 \cdot (S \cdot bc \cdot F`c)}}{{Fy}} \cdot \left(\dfrac{{Ag}}{{Ach}} -
-                        1\right) = \)<span id="ash1Cort">70mm</span></p><br>
-                     <p>\(Ash2 = \dfrac{{0.09 \cdot (S \cdot bc \cdot F`c)}}{{Fy}} = \)<span id="ash2Cort">70mm</span>
+                        1\right) = \) <span id="ash1Cort">70mm</span></p><br>
+                     <p>\(Ash2 = \dfrac{{0.09 \cdot (S \cdot bc \cdot F`c)}}{{Fy}} = \) <span id="ash2Cort">70mm</span>
                      </p><br>
                      <p>\( Ash = \max(Ash1; Ash2) = \)<br>\(\ máx \)
                         <span id="ref_min">70mm</span>
@@ -962,8 +968,8 @@
                            <span id="sep2">50mm</span>
                         </p><br><br>
                         <p>\(Ash1 = \dfrac{{0.3 \cdot (S \cdot bc \cdot F`c)}}{{Fy}} \cdot \left(\dfrac{{Ag}}{{Ach}} -
-                           1\right) = \)<span id="ash1CortR">70mm</span></p><br>
-                        <p>\(Ash2 = \dfrac{{0.09 \cdot (S \cdot bc \cdot F`c)}}{{Fy}} = \)<span
+                           1\right) = \) <span id="ash1CortR">70mm</span></p><br>
+                        <p>\(Ash2 = \dfrac{{0.09 \cdot (S \cdot bc \cdot F`c)}}{{Fy}} = \) <span
                               id="ash2CortR">70mm</span></p><br>
                         <p>\( Ash = \max(Ash1; Ash2) = \)<br>\(\ máx \)
                            <span id="ashReduc">70mm</span>
@@ -991,138 +997,148 @@
 
       <br>
 
+   </div>
 
 
-      <!-- end contact  -->
-      <!-- footer -->
-      <footer>
-         <div class="footer">
-            <div class="container1">
-               <div class="row">
-                  <div class="col-md-10 offset-md-1">
-                     <ul class="social_icon text_align_center">
-                        <li> <a target="_blank" href="https://www.facebook.com/civilunimar?mibextid=ZbWKwL"><i
-                                 class="fa fa-facebook-f"></i></a></li>
-                        <li> <a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li> <a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
-                        <li> <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+   <!-- end contact  -->
+   <!-- footer -->
+   <footer>
+      <div class="footer">
+         <div class="container1">
+            <div class="row">
+               <div class="col-md-10 offset-md-1">
+                  <ul class="social_icon text_align_center">
+                     <li> <a target="_blank" href="https://www.facebook.com/UniversidadMariana.Pasto"><i
+                              class="fa fa-facebook-f"></i></a></li>
+                     <li> <a target="_blank" href="https://twitter.com/UMarianaPasto"><i class="fa fa-twitter"></i></a>
+                     </li>
+                     <li> <a target="_blank" href="https://www.youtube.com/user/UniversidadMariana/"><i
+                              class="fa fa-youtube" aria-hidden="true"></i></a></li>
+                     <li> <a target="_blank" href="https://www.instagram.com/universidadmariana/"><i
+                              class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                     <li> <a target="_blank" href="https://www.tiktok.com/@universidadmariana"><svg
+                              xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                              class="bi bi-tiktok" viewBox="0 0 16 16" aria-hidden="true">
+                              <path
+                                 d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3V0Z" />
+                           </svg></a></li>
+                  </ul>
+               </div>
+               <div class="colf_4">
+                  <div class="reader text-center">
+                     <ul class="xple_menu">
+
+                        <a target="_blank" id="universidad" href="https://www.umariana.edu.co/index.html"><img
+                              src="./img/logo.jfif" alt="#" width="400px" /><span>Página principal Universidad
+                              Mariana</span></a>
                      </ul>
-                  </div>
-                  <div class="colf_4">
-                     <div class="reader text-center">
-                        <ul class="xple_menu">
 
-                           <a target="_blank" id="universidad" href="https://www.umariana.edu.co/index.html"><img
-                                 src="./img/logo.jfif" alt="#" width="400px" /><span>Página principal Universidad
-                                 Mariana</span></a>
-                        </ul>
-
-                     </div>
-                  </div>
-                  <div class="col-md-2 col-sm-6">
-                     <div class="reader">
-                        <h3>Explorar</h3>
-                        <ul class="xple_menu">
-                           <li><a href="index.html">Inicio</a>
-                           </li>
-                           <li><a href="Introduccion.html">Introducción</a>
-                           </li>
-                           <li><a href="Normas.html">Normas</a>
-                           </li>
-                           <li>
-                              <div class="dropdown">
-                                 <a href="#" type="button" class="dropdown-toggle" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    Cálculos
-                                 </a>
-                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="calculos.html"><button type="button"
-                                             class="btn btn-light">Diseño de
-                                             Vigas</button></a>
-                                    </li>
-                                    <li><a class="dropdown-item" href="calculosColumnas.html"><button type="button"
-                                             class="btn btn-light">Diseño de
-                                             Columnas</button></a>
-                                    </li>
-                                 </ul>
-                              </div>
-                           </li>
-                           <li>
-                              <div class="dropdown">
-                                 <a href="#" type="button" class="dropdown-toggle" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    Información
-                                 </a>
-                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="manual.html"><button type="button"
-                                             class="btn btn-light">Manual de Usuario</button></a>
-                                    </li>
-                                    <li><a class="dropdown-item" href="autores.html"><button type="button"
-                                             class="btn btn-light">Autores</button></a>
-                                    </li>
-                                 </ul>
-                              </div>
-                           </li>
-                        </ul>
-                     </div>
-                  </div>
-                  <div class="col-md-3 col-sm-6">
-                     <div class="reader">
-                        <h3 style="padding-left: 55px;">Anexos</h3>
-                        <ul class="re_post">
-                           <li><img src="./img/re_img1.jpg" alt="#" /></li>
-                           <li><img src="./img/re_img2.jpg" alt="#" /></li>
-                           <li><img src="./img/re_img3.jpg" alt="#" /></li>
-                           <li><img src="./img/re_img4.jpg" alt="#" /></li>
-                        </ul>
-                     </div>
-                  </div>
-                  <div class="col-md-3 col-sm-6">
-                     <div class="reader">
-                        <h3 class="text-center">Contacto</h3>
-                        <ul class="" id="em">
-                           <li> <i class="fa fa-map-marker" aria-hidden="true" style="font-size: 30px;"></i>&nbsp;&nbsp;
-                              &nbsp; Calle 18 No. 34-104 Pasto (N)<br>&nbsp; Bloque María Inmaculada - Oficina 204</li>
-                           <br>
-                           <li><i class="fa fa-phone" aria-hidden="true" style="font-size: 30px;"></i>&nbsp;&nbsp;&nbsp;
-                              &nbsp; 52 +7244460 Ext 174</a></li>
-                           <li> <a class="correo" href="#"><i class="fa fa-envelope" aria-hidden="true"
-                                    style="font-size: 30px;"></i><span class="it_correo">
-                                    ingenieriacivil@umariana.edu.co</span></a>
-                           </li>
-                           <li> <a class="correo" href="#"><i class="fa fa-envelope" aria-hidden="true"
-                                    style="font-size: 30px;"></i><span class="it_correo">
-                                    avgomeza@umariana.edu.co</span></a>
-                           </li>
-                        </ul>
-                     </div>
                   </div>
                </div>
-            </div>
-            <div class="copyright text_align_center">
-               <div class="container">
-                  <div class="row">
-                     <div class="col-md-10 offset-md-1">
-                        <p>Copyright 2023 All Right Reserved</p>
-                     </div>
+               <div class="col-md-2 col-sm-6">
+                  <div class="reader">
+                     <h3>Explorar</h3>
+                     <ul class="xple_menu">
+                        <li><a href="index.html">Inicio</a>
+                        </li>
+                        <li><a href="Introduccion.html">Introducción</a>
+                        </li>
+                        <li><a href="Normas.html">Normas</a>
+                        </li>
+                        <li>
+                           <div class="dropdown">
+                              <a href="#" type="button" class="dropdown-toggle" data-bs-toggle="dropdown"
+                                 aria-expanded="false">
+                                 Cálculos
+                              </a>
+                              <ul class="dropdown-menu">
+                                 <li><a class="dropdown-item" href="calculos.html"><button type="button"
+                                          class="btn btn-light">Diseño de
+                                          Vigas</button></a>
+                                 </li>
+                                 <li><a class="dropdown-item" href="calculosColumnas.html"><button type="button"
+                                          class="btn btn-light">Diseño de
+                                          Columnas</button></a>
+                                 </li>
+                              </ul>
+                           </div>
+                        </li>
+                        <li>
+                           <div class="dropdown">
+                              <a href="#" type="button" class="dropdown-toggle" data-bs-toggle="dropdown"
+                                 aria-expanded="false">
+                                 Información
+                              </a>
+                              <ul class="dropdown-menu">
+                                 <li><a class="dropdown-item" href="manual.html"><button type="button"
+                                          class="btn btn-light">Manual de Usuario</button></a>
+                                 </li>
+                                 <li><a class="dropdown-item" href="autores.html"><button type="button"
+                                          class="btn btn-light">Autores</button></a>
+                                 </li>
+                              </ul>
+                           </div>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+               <div class="col-md-3 col-sm-6">
+                  <div class="reader">
+                     <h3 style="padding-left: 55px;">Anexos</h3>
+                     <ul class="re_post">
+                        <li><img src="./img/re_img1.jpg" alt="#" /></li>
+                        <li><img src="./img/re_img2.jpg" alt="#" /></li>
+                        <li><img src="./img/re_img3.jpg" alt="#" /></li>
+                        <li><img src="./img/re_img4.jpg" alt="#" /></li>
+                     </ul>
+                  </div>
+               </div>
+               <div class="col-md-3 col-sm-6">
+                  <div class="reader">
+                     <h3 class="text-center">Contacto</h3>
+                     <ul class="" id="em">
+                        <li> <i class="fa fa-map-marker" aria-hidden="true" style="font-size: 30px;"></i>&nbsp;&nbsp;
+                           &nbsp; Calle 18 No. 34-104 Pasto (N)<br>&nbsp; Bloque María Inmaculada - Oficina 204</li>
+                        <br>
+                        <li><i class="fa fa-phone" aria-hidden="true" style="font-size: 30px;"></i>&nbsp;&nbsp;&nbsp;
+                           &nbsp; 52 +7244460 Ext 174</a></li>
+                        <li> <a class="correo" href="#"><i class="fa fa-envelope" aria-hidden="true"
+                                 style="font-size: 30px;"></i><span class="it_correo">
+                                 ingenieriacivil@umariana.edu.co</span></a>
+                        </li>
+                        <li> <a class="correo" href="#"><i class="fa fa-envelope" aria-hidden="true"
+                                 style="font-size: 30px;"></i><span class="it_correo">
+                                 avgomeza@umariana.edu.co</span></a>
+                        </li>
+                     </ul>
                   </div>
                </div>
             </div>
          </div>
-      </footer>
-      <!-- end footer -->
-      <!-- Javascript files-->
-      <script src="./assets/dist/js/jquery.min.js"></script>
-      <script src="./assets/dist/js/bootstrap.bundle.min.js"></script>
-      <script src="./assets/dist/js/custom.js"></script>
-      <script src="./assets/dist/js/jquery-3.0.0.min.js"></script>
-      <!-- <script src="./assets/dist/js/calculos.js"></script> -->
-      <!-- <script src="./assets/dist/js/resistencia_ultima.js"></script> -->
-      <!-- <script src="./assets/dist/js/calculo_cortante.js"></script> -->
-      <!-- <script src="./assets/dist/js/columnas.js"></script> -->
-      <script src="./js/columnas.js"></script>
-      <script src="./js/cortanteColumnas.js"></script>
-      <script src="./js/diagrama.js"></script>
+         <div class="copyright text_align_center">
+            <div class="container">
+               <div class="row">
+                  <div class="col-md-10 offset-md-1">
+                     <p>Copyright 2023 All Right Reserved</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </footer>
+   <!-- end footer -->
+   <!-- Javascript files-->
+   <script src="./assets/dist/js/jquery.min.js"></script>
+   <script src="./assets/dist/js/bootstrap.bundle.min.js"></script>
+   <script src="./assets/dist/js/custom.js"></script>
+   <script src="./assets/dist/js/jquery-3.0.0.min.js"></script>
+   <!-- <script src="./assets/dist/js/calculos.js"></script> -->
+   <!-- <script src="./assets/dist/js/resistencia_ultima.js"></script> -->
+   <!-- <script src="./assets/dist/js/calculo_cortante.js"></script> -->
+   <!-- <script src="./assets/dist/js/columnas.js"></script> -->
+   <script src="./js/columnas.js"></script>
+   <script src="./js/cortanteColumnas.js"></script>
+   <script src="./js/diagrama.js"></script>
 
 
 </body>
