@@ -7,7 +7,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
    <!-- site metas -->
-  <link rel="icon" href="./img/umjpg.jpg">
+   <link rel="icon" href="./img/umjpg.jpg">
 
    <title>Cálculos</title>
    <meta name="keywords" content="">
@@ -31,11 +31,15 @@
    <!-- style css -->
    <link rel="stylesheet" href="./assets/dist/css/style.css">
    <!-- responsive-->
-   <link rel="stylesheet" href="./assets/dist/css/responsive.css">
+   <!-- <link rel="stylesheet" href="./assets/dist/css/responsive.css"> -->
    <!-- <script src="./Codigo.js"></script> -->
    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
+   <style>
+      .scroll-horizontal {
+         overflow-x: auto;
+      }
+   </style>
 </head>
 <!-- body -->
 
@@ -58,7 +62,8 @@
             <li><a class="dropdown-item" href="calculos.html"><button type="button" class="btn btn-light">Diseño de
                      Vigas</button></a>
             </li>
-            <li><a class="dropdown-item" href="calculosColumnas.html"><button type="button" class="btn btn-light">Diseño de
+            <li><a class="dropdown-item" href="calculosColumnas.html"><button type="button" class="btn btn-light">Diseño
+                     de
                      Columnas</button></a>
             </li>
          </ul>
@@ -71,7 +76,8 @@
             <li><a class="dropdown-item" href="manual.html"><button type="button" class="btn btn-light">Manual de
                      Usuario</button></a>
             </li>
-            <li><a class="dropdown-item" href="autores.html"><button type="button" class="btn btn-light">Autores</button></a>
+            <li><a class="dropdown-item" href="autores.html"><button type="button"
+                     class="btn btn-light">Autores</button></a>
             </li>
          </ul>
       </div>
@@ -144,50 +150,55 @@
                   width="180px" /></a>
          </div>
          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" style="background-color: white; color:black;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
-               <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"></path>
-             </svg></span>
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"
+            style="background-color: white; color:black;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-list"
+               viewBox="0 0 16 16">
+               <path fill-rule="evenodd"
+                  d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z">
+               </path>
+            </svg></span>
          </button>
          <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
                <li class="nav-item">
-                  <a href="index.html"><button type="button"
-                     class="btn d_none_primary me-5">Inicio</button></a>
+                  <a href="index.html"><button type="button" class="btn d_none_primary me-5">Inicio</button></a>
                </li>
                <li class="nav-item">
                   <a href="Introduccion.html"><button type="button"
-                     class="btn d_none_light me-5">Introducción</button></a>
+                        class="btn d_none_light me-5">Introducción</button></a>
                </li>
                <li class="nav-item">
                   <a href="Normas.html"><button type="button" class="btn d_none_light me-5">Normas</button>
                </li>
                <li class="nav-item dropdown">
                   <a class="btn dropdown-toggle d_none_light me-5" href="#" id="navbarDropdown1" role="button"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                    Cálculos
+                     data-bs-toggle="dropdown" aria-expanded="false">
+                     Cálculos
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                    <li><a class="dropdown-item" href="calculos.html"><button type="button" class="btn">Diseño de
-                          Vigas</button></a></li>
-                    <li><a class="dropdown-item" href="calculosColumnas.html"><button type="button" class="btn">Diseño de
-                          Columnas</button></a></li>
+                     <li><a class="dropdown-item" href="calculos.html"><button type="button" class="btn">Diseño de
+                              Vigas</button></a></li>
+                     <li><a class="dropdown-item" href="calculosColumnas.html"><button type="button" class="btn">Diseño
+                              de
+                              Columnas</button></a></li>
                   </ul>
-                </li>
+               </li>
                <li class="nav-item">
                   <div class="dropdown">
                      <button class="btn d_none_light dropdown-toggle me-5" type="button" id="dropdownMenuButton1"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                       Información
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Información
                      </button>
                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                       <li><a class="dropdown-item" href="manual.html"><button type="button" class="btn">Manual
-                             de Usuario</button></a>
-                       </li>
-                       <li><a class="dropdown-item" href="autores.html"><button type="button" class="btn">Autores</button></a>
-                       </li>
+                        <li><a class="dropdown-item" href="manual.html"><button type="button" class="btn">Manual
+                                 de Usuario</button></a>
+                        </li>
+                        <li><a class="dropdown-item" href="autores.html"><button type="button"
+                                 class="btn">Autores</button></a>
+                        </li>
                      </ul>
-                   </div>
+                  </div>
                </li>
                <li class="nav-item">
                   <button class="openbtn" onclick="openNav()"><img src="./img/menu_btn.png"></button>
@@ -282,55 +293,53 @@
                   </div>
                   <div class="card-body text-center">
                      <br>
-                     <div class="row">
-                        <div class="col-8">
-                           <div class="row d-flex justify-content-center">
-                              <div class="col-2">
-                                 <h4 class="mt-3">* Base (mm)</h4>
-                              </div>
-                              <div class="col-3">
-                                 <input type="number" class="form-control" min="200"
-                                    onkeydown="validarTeclaMenos(event,'b')" oninput="validarValorMinimo('b',200,'bh1')"
-                                    onblur="validarValorPositivo('b','bh1'); validarValorMinimo('b',200,'bh1');" id="b"
-                                    name="b" placeholder="" onended="" required autofocus />
-                                 <div id="bh1" class="text-center " style="color: red;"></div>
-
-                              </div>
-                              <div class="col-1"></div>
-                              <div class="col-2">
-                                 <h4 class="mt-3">* Altura (mm)</h4>
-                              </div>
-                              <div class="col-3">
-                                 <input type="number" class="form-control" id="h" name="h" min="200" required autofocus
-                                    onkeydown="validarTeclaMenos(event,'h')" oninput="validarValorMinimo('h',200,'bh2')"
-                                    onblur="validarValorPositivo('h','bh2'); validarValorMinimo('h',200,'bh2');" />
-                                 <div id="bh2" class="text-center " style="color: red;"></div>
-
-                              </div>
-                              <br>
-                              <div id="bh" class="text-center " style="color: red;"></div>
-
-                           </div>
-                           <hr>
-                           <div class="row d-flex justify-content-center">
-                              <div class="col-8">
-                                 <h4 class="nota" style="text-align: justify;">NOTA: Tenga en cuenta que para un sistema
-                                    de capacidad de disipación
-                                    especial
-                                    (DES) empleado
-                                    para una zona de amenaza sísmica alta, la base de la viga debe ser: &nbsp; b=25cm ó
-                                    0.3*h
-                                 </h4>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="col-4">
-                           <h4 class="nota">Dimensiones base y altura de una viga</h4>
-
-                           <img src="./img/Imagen1.png" alt="imagen1" width="350px">
-
-                        </div>
+                     <div class="table-responsive">
+                        <table class="table table-borderless">
+                           <tbody>
+                              <tr>
+                                 <td style="width: 150px; text-align: right;"><h4 class="mt-3">*Base (mm)</h4></td>
+                                 <td style="width: 200px;">
+                                    <input style="width: 100%; min-width: 100px;" type="number" class="form-control" min="200"
+                                       onkeydown="validarTeclaMenos(event,'b')" oninput="validarValorMinimo('b',200,'bh1')"
+                                       onblur="validarValorPositivo('b','bh1'); validarValorMinimo('b',200,'bh1');" id="b"
+                                       name="b" placeholder="" onended="" required autofocus />
+                                    <div id="bh1" class="text-center " style="color: red;"></div>
+                                 </td>
+                                 <td style="width: 100px;"></td>
+                                 <td style="width: 150px; text-align: right;"><h4 class="mt-3">*Altura (mm)</h4></td>
+                                 <td style="width: 200px;">
+                                    <input style="width: 100%; min-width: 100px;" type="number" class="form-control" id="h" name="h" min="200" required autofocus
+                                       onkeydown="validarTeclaMenos(event,'h')" oninput="validarValorMinimo('h',200,'bh2')"
+                                       onblur="validarValorPositivo('h','bh2'); validarValorMinimo('h',200,'bh2');" />
+                                    <div id="bh2" class="text-center " style="color: red;"></div>
+                                 </td>
+                                 <td rowspan="3" style="vertical-align: top;">
+                                    <h4 class="nota">Dimensiones base y altura de una viga</h4>
+                                    <img src="./img/Imagen1.png" alt="imagen1" width="350px" style="min-width: 300px;">
+                                 </td>
+                              </tr>
+                              <tr>
+                                 <td colspan="5">
+                                    <div id="bh" class="text-center " style="color: red;"></div>
+                                 </td>
+                              </tr>
+                              <tr>
+                                 <td colspan="5"><hr>
+                                    <h4 class="nota" style="text-align: justify; padding: 0px 80px 0px 80px;">NOTA: Tenga en cuenta que para un sistema
+                                       de capacidad de disipación
+                                       especial
+                                       (DES) empleado
+                                       para una zona de amenaza sísmica alta, la base de la viga debe ser: &nbsp; b=25cm ó
+                                       0.3*h
+                                    </h4>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
                      </div>
+                     
+                     
+
 
                   </div>
 
@@ -943,7 +952,8 @@
                </div><br><br>
                <li class="li_formulas">Acero suministrado</li>
                <div class="text-center"><br>
-                  <p>\(A_{\text{v sum}} = (\text{Cantidad de varillas de estribo}) \cdot (\text{Área de la varilla de estribo})\)
+                  <p>\(A_{\text{v sum}} = (\text{Cantidad de varillas de estribo}) \cdot (\text{Área de la varilla de
+                     estribo})\)
                   </p>
                   <p>Por norma:</p>
                   <p>\(A_s = 2 \cdot 71 \, \text{mm}^2 = 142 \, \text{mm}^2\)</p><br>
@@ -989,8 +999,8 @@
             <div class="row">
                <div class="col-md-10 offset-md-1">
                   <ul class="social_icon text_align_center">
-                     <li> <a  target="_blank" href="https://www.facebook.com/civilunimar?mibextid=ZbWKwL"><i
-                              class="fa fa-facebook-f" ></i></a></li>
+                     <li> <a target="_blank" href="https://www.facebook.com/civilunimar?mibextid=ZbWKwL"><i
+                              class="fa fa-facebook-f"></i></a></li>
                      <li> <a href="#"><i class="fa fa-twitter"></i></a></li>
                      <li> <a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
                      <li> <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
@@ -1000,8 +1010,9 @@
                   <div class="reader text-center">
                      <ul class="xple_menu">
 
-                        <a target="_blank" id="universidad" href="https://www.umariana.edu.co/index.html"><img src="./img/logo.jfif"
-                              alt="#" width="400px" /><span>Página principal Universidad Mariana</span></a>
+                        <a target="_blank" id="universidad" href="https://www.umariana.edu.co/index.html"><img
+                              src="./img/logo.jfif" alt="#" width="400px" /><span>Página principal Universidad
+                              Mariana</span></a>
                      </ul>
 
                   </div>
@@ -1106,7 +1117,7 @@
    <script src="./assets/dist/js/resistencia_ultima.js"></script>
    <script src="./assets/dist/js/calculo_cortante.js"></script>
 
- 
+
 
 </body>
 
