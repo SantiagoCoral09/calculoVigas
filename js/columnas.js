@@ -698,7 +698,7 @@ function calcularColumna() {
         }
 
         ////Datos para concreto
-        let numFibras = b / 25;
+        let numFibras = Math.round(b / 20);
         let longFibra = h / numFibras;
         let es_concreto = esConcreto(Fc);
 

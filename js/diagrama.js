@@ -247,7 +247,7 @@ function llenarTabla(listaMn, listaPn, listaPhiMn, listaPhiPn, h, longFibra) {
             celdaC.textContent = 1;
         }
         else {
-            celdaC.textContent = c;
+            celdaC.textContent = c.toFixed(0);
         }
         const celdaMn = document.createElement('td');
         celdaMn.textContent = listaMn[i];
