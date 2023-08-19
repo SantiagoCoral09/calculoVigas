@@ -140,12 +140,12 @@ function calcular_cortante_columna() {
 
                 } else {
                     //se muestra resultados
-                    document.getElementById("refMinVert2").innerHTML = `<img src="./img/refVertical_${numeroEstribosVertical}_${cantidadVarillas}.png" alt="" width="250">`;
+                    document.getElementById("refMinVert2").innerHTML = `<img src="./img/refVertical_${noEstribosVert}_${cantidadVarillas}.png" alt="" width="250">`;
                     document.getElementById('cumple_estribos2').innerHTML = `<b class="green">El Número de estribos es suficiente</b>`;
                 }
             } else {
                 //se muestra resultados
-                document.getElementById("refMinVert1").innerHTML = `<img src="./img/refVertical_${numeroEstribosVertical}_${cantidadVarillas}.png" alt="" width="250">`;
+                document.getElementById("refMinVert1").innerHTML = `<img src="./img/refVertical_${noEstribosVert}_${cantidadVarillas}.png" alt="" width="250">`;
                 document.getElementById('reducir_separacion').style.display = 'none';
                 document.getElementById('cumple_estribos').innerHTML = `<b class="green">El Número de estribos es suficiente</b>`;
             }
@@ -196,12 +196,12 @@ function calcular_cortante_columna() {
 
                 } else {
                     //se muestra resultados
-                    document.getElementById("refMinHor2").innerHTML = `<img src="./img/refHorizontal_${numeroEstribosHorizontal}_${cantidadVarillas}.png" alt="" width="250">`;
+                    document.getElementById("refMinHor2").innerHTML = `<img src="./img/refHorizontal_${noEstribosHor}_${cantidadVarillas}.png" alt="" width="250">`;
                     document.getElementById('cumple_estribos2Hor').innerHTML = `<b class="green">El Número de estribos es suficiente</b>`;
                 }
             } else {
                 //se muestra resultados
-                document.getElementById("refMinHor1").innerHTML = `<img src="./img/refHorizontal_${numeroEstribosHorizontal}_${cantidadVarillas}.png" alt="" width="250">`;
+                document.getElementById("refMinHor1").innerHTML = `<img src="./img/refHorizontal_${noEstribosHor}_${cantidadVarillas}.png" alt="" width="250">`;
                 document.getElementById('reducir_separacionHor').style.display = 'none';
                 document.getElementById('cumple_estribosHor').innerHTML = `<b class="green">El Número de estribos es suficiente</b>`;
             }
