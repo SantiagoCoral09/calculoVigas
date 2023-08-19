@@ -12,6 +12,11 @@ function calcular_cortante_columna() {
     document.getElementById('NOcumple_estribosHor').innerHTML = '';
     document.getElementById('cumple_estribos2Hor').innerHTML = '';
     document.getElementById('NOcumple_estribos2Hor').innerHTML = '';
+
+    document.getElementById('refMinVert2').innerHTML = '';
+    document.getElementById('refMinVert1').innerHTML = '';
+    document.getElementById('refMinHor1').innerHTML = '';
+    document.getElementById('refMinHor2').innerHTML = '';
     
     let b = Number(document.getElementById("b").value);
     let h = Number(document.getElementById("h").value);
