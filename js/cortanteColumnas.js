@@ -2,10 +2,17 @@
 
 function calcular_cortante_columna() {
     document.getElementById('formulas_cortante').style.display = 'block';
+
     document.getElementById('cumple_estribos').innerHTML = '';
     document.getElementById('NOcumple_estribos').innerHTML = '';
     document.getElementById('cumple_estribos2').innerHTML = '';
     document.getElementById('NOcumple_estribos2').innerHTML = '';
+
+    document.getElementById('cumple_estribosHor').innerHTML = '';
+    document.getElementById('NOcumple_estribosHor').innerHTML = '';
+    document.getElementById('cumple_estribos2Hor').innerHTML = '';
+    document.getElementById('NOcumple_estribos2Hor').innerHTML = '';
+    
     let b = Number(document.getElementById("b").value);
     let h = Number(document.getElementById("h").value);
     let Fc = Number(document.getElementById("fc").value);
