@@ -133,10 +133,12 @@ function calcular_cortante_columna() {
 
                 } else {
                     //se muestra resultados
+                    document.getElementById("refMinVert2").innerHTML = `<img src="./img/refVertical_${numeroEstribosVertical}_${cantidadVarillas}.png" alt="" width="250">`;
                     document.getElementById('cumple_estribos2').innerHTML = `<b class="green">El Número de estribos es suficiente</b>`;
                 }
             } else {
                 //se muestra resultados
+                document.getElementById("refMinVert1").innerHTML = `<img src="./img/refVertical_${numeroEstribosVertical}_${cantidadVarillas}.png" alt="" width="250">`;
                 document.getElementById('reducir_separacion').style.display = 'none';
                 document.getElementById('cumple_estribos').innerHTML = `<b class="green">El Número de estribos es suficiente</b>`;
             }
@@ -187,12 +189,21 @@ function calcular_cortante_columna() {
 
                 } else {
                     //se muestra resultados
+                    document.getElementById("refMinHor2").innerHTML = `<img src="./img/refHorizontal_${numeroEstribosHorizontal}_${cantidadVarillas}.png" alt="" width="250">`;
                     document.getElementById('cumple_estribos2Hor').innerHTML = `<b class="green">El Número de estribos es suficiente</b>`;
                 }
             } else {
                 //se muestra resultados
+                document.getElementById("refMinHor1").innerHTML = `<img src="./img/refHorizontal_${numeroEstribosHorizontal}_${cantidadVarillas}.png" alt="" width="250">`;
                 document.getElementById('reducir_separacionHor').style.display = 'none';
                 document.getElementById('cumple_estribosHor').innerHTML = `<b class="green">El Número de estribos es suficiente</b>`;
+            }
+            console.log(`Horiz: ${noEstribosHor} de ${numeroEstribosHorizontal}. Vert: ${noEstribosVert} de ${numeroEstribosVertical}`);
+            if (noEstribosHor == numeroEstribosHorizontal && noEstribosVert == numeroEstribosVertical) {
+                document.getElementById("refFinal").innerHTML = `<div class="text-center">
+                <h3>Por lo tanto, el refuerzo final debe ser:</h3><br><br><img src="./img/refFinal_${noEstribosHor}_${noEstribosVert}.png" alt=""
+                   style="width: 300px;">
+             </div>`;
             }
         }
     }
@@ -204,7 +215,7 @@ function calcularLongEst() {
     document.getElementById("TXTluzLibre").textContent = '';
     let b = Number(document.getElementById("b").value); //
     let h = Number(document.getElementById("h").value); //
-    let  diametro = Number(document.getElementById("diametro").value);
+    let diametro = Number(document.getElementById("diametro").value);
 
     let luzLibreLong = Number(document.getElementById("luzLibreLong").value);
     let alturaCol = Number(document.getElementById("alturaCol").value);
@@ -228,14 +239,14 @@ function calcularLongEst() {
         let minDimCol = Math.min(b, h);
         document.getElementById("minDimCol").innerHTML = minDimCol;
 
-        let sextoCol=1/6*luzLibreLong;
-        document.getElementById("sextoCol").innerHTML=sextoCol.toFixed(2);
+        let sextoCol = 1 / 6 * luzLibreLong;
+        document.getElementById("sextoCol").innerHTML = sextoCol.toFixed(2);
 
-        let minDimColSep=1/4*Math.min(b,h);
-        document.getElementById("minDimColSep").innerHTML=minDimColSep;
+        let minDimColSep = 1 / 4 * Math.min(b, h);
+        document.getElementById("minDimColSep").innerHTML = minDimColSep;
 
-        let ochoDiametro=8*diametro;
-        document.getElementById("ochoDiametro").innerHTML=ochoDiametro;
+        let ochoDiametro = 8 * diametro;
+        document.getElementById("ochoDiametro").innerHTML = ochoDiametro;
     }
 
 }
