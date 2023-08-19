@@ -257,12 +257,12 @@ function reducirSeparacionVert(separacion, b, Fc, Fy, h, ach, areaBarraEstribo, 
     document.getElementById('NoEstribsRed').innerHTML = `${noEstribosVert} und`;
 
     if (noEstribosVert != numeroEstribosVertical) {
-        if (separacion > 50) {
+        if (separacion >= 50) {
             reducirSeparacionVert(separacion, b, Fc, Fy, h, ach, areaBarraEstribo, numeroEstribosVertical, cantidadVarillas);
         } else {
             //se debe cambiar la barra longitudinal
             document.getElementById('NoEstribsRed').innerHTML = `${noEstribosVert} und`;
-            document.getElementById('NOcumple_estribos2').innerHTML = `<b class="text-warning">Se recomienda cambiar de barra longitudinal supuesta para tener un número de estribos suficiente.</b>
+            document.getElementById('NOcumple_estribos2').innerHTML = `<b class="text-warning">Se recomienda cambiar de valores para tener un número de estribos suficiente.</b>
         
     `;
         }
@@ -294,12 +294,12 @@ function reducirSeparacionHor(separacion, b, Fc, Fy, h, ach, areaBarraEstribo, n
     document.getElementById('NoEstribsRedHor').innerHTML = `${noEstribosHor} und`;
 
     if (noEstribosHor != numeroEstribosHorizontal) {
-        if (separacion > 50) {
+        if (separacion >= 50) {
             reducirSeparacionHor(separacion, b, Fc, Fy, h, ach, areaBarraEstribo, numeroEstribosHorizontal, cantidadVarillas);
         } else {
             //se debe cambiar la barra longitudinal
             document.getElementById('NoEstribsRedHor').innerHTML = `${noEstribosHor} und`;
-            document.getElementById('NOcumple_estribos2Hor').innerHTML = `<b class="text-warning">Se recomienda cambiar de barra longitudinal supuesta para tener un número de estribos suficiente.</b>
+            document.getElementById('NOcumple_estribos2Hor').innerHTML = `<b class="text-warning">Se recomienda cambiar de valores para tener un número de estribos suficiente.</b>
     `;
         }
 
