@@ -77,7 +77,7 @@ function minimoExcesoCol(b, h, recubrimiento, diametroBarraEstribo, Ag) {
     //Debemos retornar el numero de varilla con el menor exceso
     let excesos = [];
     let noVars = [];
-    let roMin, Ac, AsMin, NoVarillas, AsSuministrado, numeroVarilla, diametro, area, excesAs, separacion;
+    let roMin, Ac, AsMin, NoVarillas, AsSuministrado, numeroVarilla, diametro, area, excesAs, separacion, separacionBase, separacionAltura;
     roMin = 0.01;
     for (i = 0; i < 7; i++) {
         numeroVarilla = i + 2;
@@ -90,7 +90,9 @@ function minimoExcesoCol(b, h, recubrimiento, diametroBarraEstribo, Ag) {
         AsSuministrado = area * NoVarillas;
         excesAs = excesoAs(AsSuministrado, AsMin);
         //if
-        separacion = separacionBarras(b, recubrimiento, diametroBarraEstribo, NoVarillas, diametro);
+        separacionBase = separacionBarrasBase(b, recubrimiento, diametroBarraEstribo, NoVarillas, diametro);
+        separacionAltura = separacionBarrasAltura(h, recubrimiento, diametroBarraEstribo, NoVarillas, diametro);
+        separacion = Math.max(separacionBase, separacionAltura);
         let separacionMaxima = 150;
         let separacionMinima = separacionMinimaVars(diametro, Ag);
 
@@ -117,12 +119,40 @@ function minimoExcesoCol(b, h, recubrimiento, diametroBarraEstribo, Ag) {
 console.log("Excesos--");
 console.log(minimoExcesoCol(500, 500, 40, 9.5, 10));
 
-function separacionBarras(b, recubrimiento, dEstribo, NoVarillas, dVarilla) {
-    //Separacion entre barras
-    let separacion = (b - recubrimiento * 2 - 2 * dEstribo - NoVarillas * dVarilla) / (NoVarillas - 1);
-    return separacion;
+function separacionBarrasBase(b, recubrimiento, dEstribo, NoVarillas, dLong) {
+    //Separacion entre barras en la base
+    switch (NoVarillas) {
+        case 4:
+            return (b - recubrimiento * 2 - 2 * dEstribo - 2 * dLong);
+        case 6:
+            return (b - recubrimiento * 2 - 2 * dEstribo - 2 * dLong);
+        case 8:
+            return (b - recubrimiento * 2 - 2 * dEstribo - 3 * dLong) / 2;
+        case 10:
+            return (b - recubrimiento * 2 - 2 * dEstribo - 4 * dLong) / 3;
+        case 12:
+            return (b - recubrimiento * 2 - 2 * dEstribo - 4 * dLong) / 3;
+        default:
+            return 0;
+    }
 }
-
+function separacionBarrasAltura(h, recubrimiento, dEstribo, NoVarillas, dLong) {
+    //Separacion entre barras en la altura
+    switch (NoVarillas) {
+        case 4:
+            return (h - recubrimiento * 2 - 2 * dEstribo - 2 * dLong);
+        case 6:
+            return (h - recubrimiento * 2 - 2 * dEstribo - 3 * dLong) / 2;
+        case 8:
+            return (h - recubrimiento * 2 - 2 * dEstribo - 3 * dLong) / 2;
+        case 10:
+            return (h - recubrimiento * 2 - 2 * dEstribo - 3 * dLong) / 2;
+        case 12:
+            return (h - recubrimiento * 2 - 2 * dEstribo - 4 * dLong) / 3;
+        default:
+            return 0;
+    }
+}
 function separacionMinimaVars(diametroVarLong, Ag) {
     let sep_min = Math.max(25, diametroVarLong, 1.33 * Ag);
     return sep_min;
@@ -159,7 +189,13 @@ function ai_Concreto(Ac, nFibras) {
     return Ai;
 }
 function yi_Concreto(h, lFibra, FIBRA) {
-    let Yi = h / 2 - (lFibra / 2 + lFibra * (FIBRA - 1));
+    let Yi;
+    if (FIBRA <= 10) {
+        Yi = h / 2 - (lFibra / 2 + lFibra * (FIBRA - 1));
+    }else{
+        Yi = -(h / 2 - (lFibra / 2 + lFibra * (20-FIBRA)));
+
+    }
     return Yi;
 }
 function ei_ConcretoAcero(Fi, c, h, Yi) {
@@ -519,7 +555,7 @@ function calcularColumna() {
             // document.getElementById("base").textContent = '(*) Complete los campos vacios';
         }
 
-        let roMin, Ac, AsMin, NoVarillas, As_Suministrado, excesAs, separacion, separacionMaxima;
+        let roMin, Ac, AsMin, NoVarillas, As_Suministrado, excesAs, separacion, separacionBase, separacionAltura, separacionMaxima;
         roMin = 0.01;
         separacionMaxima = 150;
         let sep_minima = separacionMinimaVars(diametro, ag);
@@ -539,8 +575,10 @@ function calcularColumna() {
         excesAs = excesoAs(As_Suministrado, AsMin);
         console.log("Exceso As =>", excesAs);
 
-        separacion = separacionBarras(b, recubrimiento, diametroBarraEstribo, NoVarillas, diametro);
-        console.log('Separación =>', separacion, 'mm');
+        separacionBase = separacionBarrasBase(b, recubrimiento, diametroBarraEstribo, NoVarillas, diametro);
+        separacionAltura = separacionBarrasAltura(h, recubrimiento, diametroBarraEstribo, NoVarillas, diametro);
+        separacion = Math.max(separacionBase, separacionAltura);
+        console.log('Separación =>', separacion, 'mm', separacionBase, separacionAltura);
 
         document.getElementById('asmin_mayor').style.display = 'block';
 
@@ -601,8 +639,13 @@ function calcularColumna() {
                           <td>%</td>
                        </tr>
                        <tr>
-                          <td>Separación entre varillas</td>
-                          <td>${separacion.toFixed(2)}</td>
+                          <td>Separación entre varillas (BASE)</td>
+                          <td>${separacionBase.toFixed(2)}</td>
+                          <td>mm</td>
+                       </tr>
+                       <tr>
+                          <td>Separación entre varillas (ALTURA)</td>
+                          <td>${separacionAltura.toFixed(2)}</td>
                           <td>mm</td>
                        </tr>
                        <tr>
@@ -645,10 +688,10 @@ function calcularColumna() {
             if (separacion < sep_minima) {
                 document.getElementById("condiciones").innerHTML = `<b style="color:rgba(255,0,0,0.8);"> No cumple </b>&nbsp; la condición: separacion entre varillas (${separacion.toFixed(2)}mm) < separación
             mínima (${sep_minima.toFixed(2)}mm).`;
-            }else if (separacion > separacionMaxima) {
+            } else if (separacion > separacionMaxima) {
                 document.getElementById("condiciones").innerHTML = `<b style="color:rgba(255,0,0,0.8);"> No cumple </b>&nbsp; la condición: separacion entre varillas (${separacion.toFixed(2)}mm) <= separación
                 máxima (${separacionMaxima.toFixed(2)}mm).`;
-            }else{
+            } else {
                 alert("Separación fuera de rango");
             }
 

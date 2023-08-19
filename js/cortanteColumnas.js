@@ -36,7 +36,7 @@ function calcular_cortante_columna() {
         console.log("Hay campos incorrectos");
         document.getElementById("val_fc").innerHTML = '<h3 class="text-danger">La resistencia a la compresión no puede ser negativa o cero</h3>';
         document.getElementById("base").textContent = '(*) Hay campos incorrectos';
-    }else if (ag == '') {
+    } else if (ag == '') {
         console.log("Hay campos vacíos");
         document.getElementById("max_ag").innerHTML = '<h3 class="text-danger">Debe ingresar un tamaño máximo</h3>';
         document.getElementById("base").textContent = '(*) Complete los campos vacios';
@@ -54,6 +54,7 @@ function calcular_cortante_columna() {
             // document.getElementById("val_fc").innerHTML = '<h3 class="text-danger">Se necesita la resistencia a la compresión</h3>';
             // document.getElementById("base").textContent = '(*) Complete los campos vacios';
         }
+        recubrimiento = 40;
         let areaBarraEstribo = 71;
         // let cantidadVarillas = 10;
         let Ac = b * h;
@@ -89,57 +90,152 @@ function calcular_cortante_columna() {
             document.getElementById('altCort').innerHTML = `${altura}mm`;
             document.getElementById('a_conf').innerHTML = `${base}mm * ${altura}mm = ${ach}mm<sup>2</sup>`;
 
-            //refuerzo minimo (vertical)
-            let ash1 = ((0.3 * separacion * b * Fc) / Fy) * (((b * h) / (base * altura)) - 1);
-            let ash2 = ((0.09 * separacion * b * Fc) / Fy);
-            let ash = Math.max(ash1, ash2);
-            let noEstribos = Math.max(2, Math.round(ash / areaBarraEstribo));
-            document.getElementById('ash1Cort').innerHTML = `${ash1.toFixed(2)}mm<sup>2</sup>`;
-            document.getElementById('ash2Cort').innerHTML = `${ash2.toFixed(2)}mm<sup>2</sup>`;
-            document.getElementById('ref_min').innerHTML = `(${ash1.toFixed(2)}mm<sup>2</sup>; ${ash2.toFixed(2)}mm<sup>2</sup>) = ${ash.toFixed(2)}mm<sup>2</sup>`;
-            document.getElementById('noEstribs').innerHTML = `${noEstribos} und`;
+            //--refuerzo minimo (vertical)
+            let ash1Vertical = ((0.3 * separacion * b * Fc) / Fy) * (((b * h) / (ach)) - 1);
+            let ash2Vertical = ((0.09 * separacion * b * Fc) / Fy);
+            let ashVertical = Math.max(ash1Vertical, ash2Vertical);
+            let noEstribosVert = Math.max(2, Math.floor(ashVertical / areaBarraEstribo));
+            document.getElementById('ash1Cort').innerHTML = `${ash1Vertical.toFixed(2)}mm<sup>2</sup>`;
+            document.getElementById('ash2Cort').innerHTML = `${ash2Vertical.toFixed(2)}mm<sup>2</sup>`;
+            document.getElementById('ref_min').innerHTML = `(${ash1Vertical.toFixed(2)}mm<sup>2</sup>; ${ash2Vertical.toFixed(2)}mm<sup>2</sup>) = ${ashVertical.toFixed(2)}mm<sup>2</sup>`;
+            document.getElementById('noEstribs').innerHTML = `${noEstribosVert} und`;
 
-            let numeroEstribos;
+            let numeroEstribosVertical;
             if (cantidadVarillas == 4 || cantidadVarillas == 6) {
-                numeroEstribos = 2;
+                numeroEstribosVertical = 2;
             } else if (cantidadVarillas == 8) {
-                numeroEstribos = 3;
+                numeroEstribosVertical = 3;
             } else {
-                numeroEstribos = 4;
+                numeroEstribosVertical = 4;
             }
 
-            if (noEstribos > numeroEstribos) {
+            if (noEstribosVert != numeroEstribosVertical) {
                 ///se debe disminuir la separacion  hasta 50mm
                 document.getElementById('reducir_separacion').style.display = 'block';
                 document.getElementById('NOcumple_estribos').innerHTML = `<b class="text-warning">La cantidad de estribos sobrepasa la cantidad de las varillas a amarrar. Se debe disminuir la separación hasta 50mm.</b>`;
                 separacion = 50;
                 //refuerzo minimo (vertical)
-                ash1 = ((0.3 * separacion * b * Fc) / Fy) * (((ag) / (ach)) - 1);
-                ash2 = ((0.09 * separacion * b * Fc) / Fy);
-                ash = Math.max(ash1, ash2);
-                noEstribos = Math.max(2, Math.round(ash / areaBarraEstribo));
-                document.getElementById('ash1CortR').innerHTML = `${ash1.toFixed(2)}mm<sup>2</sup>`;
-                document.getElementById('ash2CortR').innerHTML = `${ash2.toFixed(2)}mm<sup>2</sup>`;
-            
-                document.getElementById('ashReduc').innerHTML = `(${ash1.toFixed(2)}mm<sup>2</sup>; ${ash2.toFixed(2)}mm<sup>2</sup>) = ${ash.toFixed(2)}mm<sup>2</sup>`;
-                document.getElementById('NoEstribsRed').innerHTML = `${noEstribos} und`;
+                ash1Vertical = ((0.3 * separacion * b * Fc) / Fy) * (((b * h) / (ach)) - 1);
+                ash2Vertical = ((0.09 * separacion * b * Fc) / Fy);
+                ashVertical = Math.max(ash1Vertical, ash2Vertical);
+                noEstribosVert = Math.max(2, Math.floor(ashVertical / areaBarraEstribo));
+                document.getElementById('ash1CortR').innerHTML = `${ash1Vertical.toFixed(2)}mm<sup>2</sup>`;
+                document.getElementById('ash2CortR').innerHTML = `${ash2Vertical.toFixed(2)}mm<sup>2</sup>`;
 
-                if (noEstribos > numeroEstribos) {
+                document.getElementById('ashReduc').innerHTML = `(${ash1Vertical.toFixed(2)}mm<sup>2</sup>; ${ash2Vertical.toFixed(2)}mm<sup>2</sup>) = ${ashVertical.toFixed(2)}mm<sup>2</sup>`;
+                document.getElementById('NoEstribsRed').innerHTML = `${noEstribosVert} und`;
+
+                if (noEstribosVert != numeroEstribosVertical) {
                     //se debe cambiar la barra longitudinal
-                    document.getElementById('NoEstribsRed').innerHTML = `${noEstribos} und`;
+                    document.getElementById('NoEstribsRed').innerHTML = `${noEstribosVert} und`;
                     document.getElementById('NOcumple_estribos2').innerHTML = `<b class="text-warning">Se recomienda cambiar de barra longitudinal supuesta para tener un número de estribos suficiente.</b>
                 `;
 
                 } else {
                     //se muestra resultados
                     document.getElementById('cumple_estribos2').innerHTML = `<b class="green">El Número de estribos es suficiente</b>`;
-
                 }
             } else {
                 //se muestra resultados
                 document.getElementById('reducir_separacion').style.display = 'none';
                 document.getElementById('cumple_estribos').innerHTML = `<b class="green">El Número de estribos es suficiente</b>`;
             }
+
+
+            /////////////////////////////////////////////
+            //--refuerzo minimo (horizontal)
+            separacion = Math.round(sep / 10) * 10;
+            let ash1Horizontal = ((0.3 * separacion * h * Fc) / Fy) * (((b * h) / (ach)) - 1);
+            let ash2Horizontal = ((0.09 * separacion * h * Fc) / Fy);
+            let ashHorizontal = Math.max(ash1Horizontal, ash2Horizontal);
+            let noEstribosHor = Math.max(2, Math.floor(ashHorizontal / areaBarraEstribo));
+            document.getElementById('ash1CortHor').innerHTML = `${ash1Horizontal.toFixed(2)}mm<sup>2</sup>`;
+            document.getElementById('ash2CortHor').innerHTML = `${ash2Horizontal.toFixed(2)}mm<sup>2</sup>`;
+            document.getElementById('ref_minHor').innerHTML = `(${ash1Horizontal.toFixed(2)}mm<sup>2</sup>; ${ash2Horizontal.toFixed(2)}mm<sup>2</sup>) = ${ashHorizontal.toFixed(2)}mm<sup>2</sup>`;
+            document.getElementById('noEstribsHor').innerHTML = `${noEstribosHor} und`;
+
+            let numeroEstribosHorizontal;
+            if (cantidadVarillas == 4) {
+                numeroEstribosHorizontal = 2;
+            } else if (cantidadVarillas == 6 || cantidadVarillas == 8 || cantidadVarillas == 10) {
+                numeroEstribosHorizontal = 3;
+            } else {
+                numeroEstribosHorizontal = 4;
+            }
+
+            if (noEstribosHor != numeroEstribosHorizontal) {
+                ///se debe disminuir la separacion  hasta 50mm
+                document.getElementById('reducir_separacionHor').style.display = 'block';
+                document.getElementById('NOcumple_estribosHor').innerHTML = `<b class="text-warning">La cantidad de estribos sobrepasa la cantidad de las varillas a amarrar. Se debe disminuir la separación hasta 50mm.</b>`;
+                separacion = 50;
+                //refuerzo minimo (vertical)
+                ash1Horizontal = ((0.3 * separacion * h * Fc) / Fy) * (((b * h) / (ach)) - 1);
+                ash2Horizontal = ((0.09 * separacion * h * Fc) / Fy);
+                ashHorizontal = Math.max(ash1Horizontal, ash2Horizontal);
+                noEstribosHor = Math.max(2, Math.floor(ashHorizontal / areaBarraEstribo));
+                document.getElementById('ash1CortRHor').innerHTML = `${ash1Horizontal.toFixed(2)}mm<sup>2</sup>`;
+                document.getElementById('ash2CortRHor').innerHTML = `${ash2Horizontal.toFixed(2)}mm<sup>2</sup>`;
+
+                document.getElementById('ashReducHor').innerHTML = `(${ash1Horizontal.toFixed(2)}mm<sup>2</sup>; ${ash2Horizontal.toFixed(2)}mm<sup>2</sup>) = ${ashHorizontal.toFixed(2)}mm<sup>2</sup>`;
+                document.getElementById('NoEstribsRedHor').innerHTML = `${noEstribosHor} und`;
+
+                if (noEstribosHor != numeroEstribosHorizontal) {
+                    //se debe cambiar la barra longitudinal
+                    document.getElementById('NoEstribsRedHor').innerHTML = `${noEstribosHor} und`;
+                    document.getElementById('NOcumple_estribos2Hor').innerHTML = `<b class="text-warning">Se recomienda cambiar de barra longitudinal supuesta para tener un número de estribos suficiente.</b>
+                `;
+
+                } else {
+                    //se muestra resultados
+                    document.getElementById('cumple_estribos2Hor').innerHTML = `<b class="green">El Número de estribos es suficiente</b>`;
+                }
+            } else {
+                //se muestra resultados
+                document.getElementById('reducir_separacionHor').style.display = 'none';
+                document.getElementById('cumple_estribosHor').innerHTML = `<b class="green">El Número de estribos es suficiente</b>`;
+            }
         }
     }
+}
+
+function calcularLongEst() {
+    document.getElementById("TXTluzLibreLong").textContent = '';
+    document.getElementById("TXTalturaCol").textContent = '';
+    document.getElementById("TXTluzLibre").textContent = '';
+    let b = Number(document.getElementById("b").value); //
+    let h = Number(document.getElementById("h").value); //
+    let  diametro = Number(document.getElementById("diametro").value);
+
+    let luzLibreLong = Number(document.getElementById("luzLibreLong").value);
+    let alturaCol = Number(document.getElementById("alturaCol").value);
+    if (b == '' || h == '') {
+        console.log("Hay campos vacíos");
+        document.getElementById("bh").innerHTML = '<h3 class="text-danger">Debe ingresar base y altura</h3>';
+        document.getElementById("base").textContent = '(*) Complete los campos vacios';
+        document.getElementById("TXTluzLibre").innerHTML = '<h3 class="text-danger">Verifique los datos de base y altura iniciales</h3>';
+    }
+    else if (luzLibreLong == '' || alturaCol == '') {
+        console.log("Hay campos vacíos");
+        document.getElementById("TXTluzLibre").innerHTML = '<h3 class="text-danger">Debe ingresar los datos</h3>';
+    } else if (luzLibreLong < 0 || alturaCol < 0) {
+        console.log("Hay campos incorrectos");
+        document.getElementById("TXTluzLibre").innerHTML = '<h3 class="text-danger">Debe ingresar valores correctos</h3>';
+    } else {
+        document.getElementById('zonConf').style.display = 'block';
+        let h2mm = alturaCol / 2;
+        document.getElementById("h2mm").innerHTML = `<h3>Por lo tanto: H/2 = ${h2mm}mm</h3>`;
+
+        let minDimCol = Math.min(b, h);
+        document.getElementById("minDimCol").innerHTML = minDimCol;
+
+        let sextoCol=1/6*luzLibreLong;
+        document.getElementById("sextoCol").innerHTML=sextoCol.toFixed(2);
+
+        let minDimColSep=1/4*Math.min(b,h);
+        document.getElementById("minDimColSep").innerHTML=minDimColSep;
+
+        let ochoDiametro=8*diametro;
+        document.getElementById("ochoDiametro").innerHTML=ochoDiametro;
+    }
+
 }

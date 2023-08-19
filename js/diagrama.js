@@ -36,7 +36,7 @@ function diagramaInteraccion() {
         }
 
         ////Datos para concreto
-        let numFibras = b / 25;
+        let numFibras = Math.round(b / 20);
         let longFibra = h / numFibras;
         let es_concreto = esConcreto(fc);
 
@@ -84,7 +84,7 @@ function diagramaInteraccion() {
             let listaGi_Concreto = [];
             let listaPi_Concreto = [];
             let listaMi_Concreto = [];
-            for (let nF = 1; nF <= numFibras; nF += 1) {
+            for (let nF = 1; nF <= 20; nF += 1) {
                 // console.log(nF);
                 // let Ai = ai_Concreto(Ac, numFibras);
                 let Yi_Concreto = yi_Concreto(h, longFibra, nF);
