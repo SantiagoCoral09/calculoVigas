@@ -120,6 +120,8 @@ function calcular_cortante_columna() {
             } else {
                 numeroEstribosVertical = 4;
             }
+            document.getElementById("refMinVert2").innerHTML = `<img src="./img/refVertical_${numeroEstribosVertical}_${cantidadVarillas}.png" alt="" width="250">`;
+            document.getElementById("refMinVert1").innerHTML = `<img src="./img/refVertical_${numeroEstribosVertical}_${cantidadVarillas}.png" alt="" width="250">`;
 
             if (noEstribosVert != numeroEstribosVertical) {
                 ///se debe disminuir la separacion  hasta 50mm
@@ -176,6 +178,8 @@ function calcular_cortante_columna() {
             } else {
                 numeroEstribosHorizontal = 4;
             }
+            document.getElementById("refMinHor1").innerHTML = `<img src="./img/refHorizontal_${numeroEstribosHorizontal}_${cantidadVarillas}.png" alt="" width="250">`;
+            document.getElementById("refMinHor2").innerHTML = `<img src="./img/refHorizontal_${numeroEstribosHorizontal}_${cantidadVarillas}.png" alt="" width="250">`;
 
             if (noEstribosHor != numeroEstribosHorizontal) {
                 ///se debe disminuir la separacion  hasta 50mm
@@ -211,6 +215,11 @@ function calcular_cortante_columna() {
                 document.getElementById('cumple_estribosHor').innerHTML = `<b class="green">El Número de estribos es suficiente</b>`;
             }
             console.log(`Horiz: ${noEstribosHor} de ${numeroEstribosHorizontal}. Vert: ${noEstribosVert} de ${numeroEstribosVertical}`);
+            
+            document.getElementById("refFinal").innerHTML = `<div class="text-center">
+                <h3>Por lo tanto, el refuerzo final debe ser:</h3><br><br><img src="./img/refFinal_${numeroEstribosHorizontal}_${numeroEstribosVertical}.png" alt=""
+                   style="width: 300px;">
+             </div>`;
             if (noEstribosHor == numeroEstribosHorizontal && noEstribosVert == numeroEstribosVertical) {
                 document.getElementById("refFinal").innerHTML = `<div class="text-center">
                 <h3>Por lo tanto, el refuerzo final debe ser:</h3><br><br><img src="./img/refFinal_${noEstribosHor}_${noEstribosVert}.png" alt=""
