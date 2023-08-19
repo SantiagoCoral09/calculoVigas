@@ -133,7 +133,7 @@ function separacionBarrasBase(b, recubrimiento, dEstribo, NoVarillas, dLong) {
         case 12:
             return (b - recubrimiento * 2 - 2 * dEstribo - 4 * dLong) / 3;
         default:
-            return 0;
+            return (b - recubrimiento * 2 - 2 * dEstribo - NoVarillas*dLong) / (NoVarillas-1);
     }
 }
 function separacionBarrasAltura(h, recubrimiento, dEstribo, NoVarillas, dLong) {
@@ -150,7 +150,7 @@ function separacionBarrasAltura(h, recubrimiento, dEstribo, NoVarillas, dLong) {
         case 12:
             return (h - recubrimiento * 2 - 2 * dEstribo - 4 * dLong) / 3;
         default:
-            return 0;
+            return (h - recubrimiento * 2 - 2 * dEstribo - NoVarillas*dLong) / (NoVarillas-1);
     }
 }
 function separacionMinimaVars(diametroVarLong, Ag) {
