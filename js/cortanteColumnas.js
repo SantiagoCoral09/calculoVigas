@@ -312,29 +312,29 @@ function reducirSeparacionHor(separacion, b, Fc, Fy, h, ach, areaBarraEstribo, n
 
 function calcularLongEst() {
     document.getElementById("TXTluzLibreLong").textContent = '';
-    document.getElementById("TXTalturaCol").textContent = '';
+    // document.getElementById("TXTalturaCol").textContent = '';
     document.getElementById("TXTluzLibre").textContent = '';
     let b = Number(document.getElementById("b").value); //
     let h = Number(document.getElementById("h").value); //
     let diametro = Number(document.getElementById("diametro").value);
 
     let luzLibreLong = Number(document.getElementById("luzLibreLong").value);
-    let alturaCol = Number(document.getElementById("alturaCol").value);
+    // let alturaCol = Number(document.getElementById("alturaCol").value);
     if (b == '' || h == '') {
         console.log("Hay campos vacíos");
         document.getElementById("bh").innerHTML = '<h3 class="text-danger">Debe ingresar base y altura</h3>';
         document.getElementById("base").textContent = '(*) Complete los campos vacios';
         document.getElementById("TXTluzLibre").innerHTML = '<h3 class="text-danger">Verifique los datos de base y altura iniciales</h3>';
     }
-    else if (luzLibreLong == '' || alturaCol == '') {
+    else if (luzLibreLong == '') {
         console.log("Hay campos vacíos");
         document.getElementById("TXTluzLibre").innerHTML = '<h3 class="text-danger">Debe ingresar los datos</h3>';
-    } else if (luzLibreLong < 0 || alturaCol < 0) {
+    } else if (luzLibreLong < 0) {
         console.log("Hay campos incorrectos");
         document.getElementById("TXTluzLibre").innerHTML = '<h3 class="text-danger">Debe ingresar valores correctos</h3>';
     } else {
         document.getElementById('zonConf').style.display = 'block';
-        let h2mm = alturaCol / 2;
+        let h2mm = luzLibreLong / 2;
         document.getElementById("h2mm").innerHTML = `<h3>Por lo tanto: H/2 = ${h2mm}mm</h3>`;
 
         let minDimCol = Math.min(b, h);

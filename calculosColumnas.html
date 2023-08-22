@@ -1107,45 +1107,46 @@
                      <table class="table table-borderless">
                         <tbody>
                            <tr>
-                              <td style="width: 300px; text-align: right;">
-                                 <h4 class="mt-1">Ingrese la luz libre de la columna (longitud de la viga - mm)</h4>
+                              <td style="width: 300px; text-align: center;">
+                                 <h4 class="">Ingrese la luz libre de la columna (mm)</h4>
                               </td>
+                              <tr class="d-flex justify-content-center">
                               <td style="width: 200px;">
-                                 <input style="width: 100%; min-width: 100px;" type="number" class="form-control mt-1"
+                                 <input style="width: 100%; min-width: 100px;" type="number" class="form-control"
                                     min="1" onkeydown="validarTeclaMenos(event,'luzLibreLong')"
                                     onblur="validarValorPositivo('luzLibreLong','TXTluzLibreLong');" id="luzLibreLong"
                                     name="luzLibreLong" placeholder="" onended="" required autofocus />
-                                 <div id="TXTluzLibreLong" class="text-center " style="color: red;"></div>
                               </td>
+                           </tr>
                               <!-- <td style="width: 100px;"></td> -->
 
-                              <td rowspan="3" style="vertical-align: top;">
-                                 <!-- <h4 class="nota">LUZ LIBRE</h4> -->
+                              <!-- <td rowspan="3" style="vertical-align: top;">
                                  <img src="./img/luzLibre.png" alt="imagen1" style="min-width: 200px;">
-                              </td>
-                              <td style="width: 300px; text-align: right;">
+                              </td> -->
+                              <!-- <td style="width: 300px; text-align: right;">
                                  <h4 class="mt-1">Ingrese la altura de la columna (mm)</h4>
-                              </td>
-                              <td style="width: 200px;">
+                              </td> -->
+                              <!-- <td style="width: 200px;">
                                  <input style="width: 100%; min-width: 100px;" type="number" class="form-control mt-1"
                                     id="alturaCol" name="alturaCol" min="1" required autofocus
                                     onkeydown="validarTeclaMenos(event,'alturaCol')"
                                     onblur="validarValorPositivo('alturaCol','TXTalturaCol'); validarValorMinimo('alturaCol',200,'TXTalturaCol');" />
                                  <div id="TXTalturaCol" class="text-center " style="color: red;"></div>
-                              </td>
+                              </td> -->
 
                            </tr>
                            <tr>
-                              <td colspan="5">
+                              <td colspan="">
 
                               </td>
                            </tr>
                            <tr>
-                              <td colspan="5">
+                              <td colspan="">
 
                            </tr>
                         </tbody>
                      </table>
+                     <div id="TXTluzLibreLong" class="text-center " style="color: red;"></div>
                      <div id="TXTluzLibre" class="text-center " style="color: red;"></div>
                      <br>
                   </div>
