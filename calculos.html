@@ -953,10 +953,10 @@
                </div><br><br>
                <li class="li_formulas">Acero suministrado</li>
                <div class="text-center"><br>
-                  <p>\(A_{\text{v sum}} = (\text{Cantidad de varillas de estribo}) \cdot (\text{Área de la varilla de estribo})\)
+                  <p>\(A_{\text{v sum}} = (\text{Cantidad de varillas de estribo}) * (\text{Área de la varilla de estribo})\)
                   </p>
                   <p>Por norma:</p>
-                  <p>\(A_s = 2 \cdot 71 \, \text{mm}^2 = 142 \, \text{mm}^2\)</p><br>
+                  <p>\(A_s = 2 * 71 \, \text{mm}^2 = 142 \, \text{mm}^2\)</p><br>
                   <div class="resultado">
                      <div id="condicion_acero"></div><br>
                      <span id="noCumpleAvMin"></span>
@@ -972,8 +972,20 @@
 
          <h2 class="text-center" style="font-size: 30px; font-weight: bolder;">Chequeo de Resistencia</h2><br>
          <div class="text-center">
-            <p style="font-size: 20px;"> \(\varphi V_n = \dfrac{{\varphi \cdot 𝐴_{{\text{v sum}}} \cdot 𝐹_y \cdot
+            <br>
+            <p style="font-size: 20px;">\(\varphi V_n = (V_c + V_s) \)</p>
+               <br>
+               <p>Donde: 	
+                  <i>Vc</i>=cortante del concreto. 
+                  <i>Vs</i>=cortante del acero
+                  </p>
+                  <br>
+            <p>Como la resistencia a cortante del cortante es igual a cero, toda la responsabilidad del cortante es del acero, así que:</p>
+            <br>
+            <p style="font-size: 20px;"> \(\varphi V_n = V_s = \dfrac{{\varphi \cdot 𝐴_{{\text{v sum}}} \cdot 𝐹_y \cdot
                𝑑}}{{s}}\) = <span id="cortante_fin"></span></p>
+            
+            
          </div><br>
          <p>Tenga en cuenta que \(\varphi\) = 0.75 por cortante</p>
          <h3 class="text-center"><b>Vn > Vu</b></h3><br>
