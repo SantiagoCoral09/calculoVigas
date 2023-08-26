@@ -127,6 +127,7 @@ function calcular_cortante_columna() {
                 // ///se debe disminuir la separacion
 
                 document.getElementById('reducir_separacion').style.display = 'block';
+                
                 reducirSeparacionVert(separacion, b, Fc, Fy, h, ach, areaBarraEstribo, numeroEstribosVertical, cantidadVarillas);
 
                 // document.getElementById('NOcumple_estribos').innerHTML = `<b class="text-warning">La cantidad de estribos sobrepasa la cantidad de las varillas a amarrar. Se debe disminuir la separación hasta 50mm.</b>`;

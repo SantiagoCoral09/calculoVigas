@@ -56,7 +56,14 @@ function calcular_cortante() {
     document.getElementById("inputVu").textContent = '';
     document.getElementById('chequeo_acero').style.display = 'none';
     document.getElementById('formulas_cortante').style.display = 'none';
-    let msgResistencia ='';
+    document.getElementById('tabla_resultado_cortante').style.display = 'none';
+    document.getElementById('sep_long').innerHTML = '';
+    document.getElementById('av_min').innerHTML = '';
+    document.getElementById('condicion_acero').innerHTML = '';
+    document.getElementById('condicion_resistencia').innerHTML = '';
+    document.getElementById('resultado_cortante').innerHTML = '';
+    let msgResistencia = '';
+    let msgAcero = '';
 
 
     //Necesitamos los valores de:
@@ -75,10 +82,10 @@ function calcular_cortante() {
     diametroEstribo = Number(document.getElementById("diametro_estribo").value); //
     Vu = Number(document.getElementById("Vu").value);
     if (Fc == '') {
-        Fc=Fc1;
-        console.log("Valor de FC: ",Fc);
+        Fc = Fc1;
+        console.log("Valor de FC: ", Fc);
         document.getElementById("fc").value = Fc;
-     }
+    }
     let NoVarillaSup = (document.getElementById("nvarilla_superior").value); //
     let indiceSup = numerosVarilla.indexOf(NoVarillaSup);
     let diametroVarSup = Number(diametrosVarillas[indiceSup]);
@@ -116,6 +123,8 @@ function calcular_cortante() {
         document.getElementById("datos_cortante").textContent = "(*) NOTA: Tener en cuenta el valor de Vu";
         document.getElementById("inputVu").innerHTML = '<h3 class="text-danger">El valor no puede ser negativo</h3>';
     } else {
+
+        document.getElementById('formulas_cortante').style.display = 'block';
 
         //Obtener valoRes de una etiqueta html con id
         console.log("Valor de la tabla assumsup" + document.getElementById("asSumSup").innerHTML);
@@ -156,123 +165,145 @@ function calcular_cortante() {
 
         let acero_refuerzo_minimo = aceroRefuerzoMinimo(Fc, b, separacion_longitudinal, Fy);//av_min
         console.log("acero_refuerzo_minimo => " + acero_refuerzo_minimo);
-        let msgAcero='';
+        document.getElementById('av_min').innerHTML = `${acero_refuerzo_minimo.toFixed(2)}mm<sup>2</sup>`;
 
         let cantidad_varillas = 2;
         areaEstribo = 71;
+        //acero_suministrado=2*71=142
         let acero_suministrado = aceroSuministradoCortante(cantidad_varillas, areaEstribo);//av_suministrado
         console.log("acero_suministrado => " + acero_suministrado);
-        
+
+        document.getElementById('tabla_resultado_cortante').style.display = 'block';
+
+        document.getElementById("resultado_cortante").innerHTML = `
+        <h1>Resumen de los valores calculados</h1>
+        <table class="peque">
+        <thead>
+            <tr>
+              <th scope="col">Dato</th>
+              <th scope="col">Valor</th>
+              <th scope="col">Unidades</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td>d</td>
+              <td>${d.toFixed(2)}</td>
+              <td>mm</td>
+            </tr>
+            <tr>
+              <td>Separación longitudinal</td>
+              <td id="sep_Long">${separacion_longitudinal}</td>
+              <td>mm</td>
+            </tr>
+            <tr>
+              <td>Acero de refuerzo mínimo</td>
+              <td id="acero_ref_Min">${acero_refuerzo_minimo.toFixed(2)}</td>
+              <td>mm<sup>2</sup></td>
+            </tr>
+            <tr>
+              <td>Acero suministrado</td>
+              <td>${acero_suministrado}</td>
+              <td>mm<sup>2</sup></td>
+            </tr>
+            <tr>
+              <td>Cortante Nominal</td>
+              <td id="res_OVN"></td>
+              <td>kN</td>
+            </tr>
+        </tbody>
+        </table>`;
+
+
         if (acero_refuerzo_minimo >= acero_suministrado) {
-            separacion_longitudinal = 50;
-            acero_refuerzo_minimo = aceroRefuerzoMinimo(Fc, b, separacion_longitudinal, Fy);
-            console.log("No cumple, entonces acero_refuerzo_minimo => " + acero_refuerzo_minimo);
-            acero_suministrado = aceroSuministradoCortante(cantidad_varillas, areaEstribo);//av_suministrado
-            console.log("acero_suministrado => " + acero_suministrado);
-            msgAcero = `Para este caso <b class="red">no se cumple</b> con el acero de refuerzo mínimo ${acero_refuerzo_minimo.toFixed(2)}mm<sup>2</sup> >= ${acero_suministrado}mm<sup>2</sup>, por lo que se disminuye la separación longitudinal como mínimo hasta 50mm y se volvió a calcular. Preferiblemente ingrese otros valores`;
-            if (acero_refuerzo_minimo >= acero_suministrado) {
-                console.log("Aun No cumple acero minimo");
-            }
-            else {
-                console.log("Ya cumple acero minimo");
-            }
-        }else{
-            msgAcero = `Para este caso <b class="green">si se cumple</b> con el acero de refuerzo mínimo. ${acero_refuerzo_minimo.toFixed(2)}mm<sup>2</sup> < ${acero_suministrado}mm<sup>2</sup>`;
-
+            //Disminuir maximo hasta 50mm la separacion longitudinal y recalcular av_min
+            recalcularAvMin(separacion_longitudinal, acero_refuerzo_minimo, Fc, b, Fy);
+            
+        } else {
+            document.getElementById('condicion_acero').innerHTML = `Para este caso <b class="green">si se cumple</b> con el acero de refuerzo mínimo. ${acero_refuerzo_minimo.toFixed(2)}mm<sup>2</sup> < ${acero_suministrado}mm<sup>2</sup>`;
         }
-        document.getElementById('condicion_acero').innerHTML = msgAcero;
-        document.getElementById('av_min').innerHTML = `${acero_refuerzo_minimo.toFixed(2)}mm<sup>2</sup>`;
 
+
+        console.log(`Calcular resistencia, para esto, aceroSuministrado=${acero_suministrado}, d=${d}, separacionLong=${separacion_longitudinal}`);
 
 
         let resistenciaOVn = resistenciaVigaCortante(acero_suministrado, Fy, d, separacion_longitudinal);
         console.log("resistenciaOVn => " + resistenciaOVn);
+        document.getElementById('res_OVN').innerHTML = resistenciaOVn;
+
 
         document.getElementById('cortante_fin').innerHTML = `${resistenciaOVn.toFixed(2)}kN`;
 
-        
+
         // Vu = 81.49;
         if (resistenciaOVn <= Vu) {
-            msgResistencia = `Para este caso <b class="red">no se cumple</b> que la resistencia Vn>Vu( ${resistenciaOVn.toFixed(2)}kN <= ${Vu}kN ). Por lo tanto, se disminuye la separación longitudinal como mínimo hasta 50mm y se volvió a calcular. Preferiblemente ingrese otros valores.`;
-            
-            ///////////////////////Hacer otra funcion mejorrrr//////////////
-            separacion_longitudinal = 50;
-            acero_refuerzo_minimo = aceroRefuerzoMinimo(Fc, b, separacion_longitudinal, Fy);
-            console.log("No cumple, entonces acero_refuerzo_minimo => " + acero_refuerzo_minimo);
-            acero_suministrado = aceroSuministradoCortante(cantidad_varillas, areaEstribo);//av_suministrado
-            console.log("acero_suministrado => " + acero_suministrado);
+            //Disminuir maximo hasta 50mm la separacion longitudinal y recalcular resistencia
+            chequearResistencia(separacion_longitudinal, resistenciaOVn, Vu, Fy, d);
 
-            if (acero_refuerzo_minimo >= acero_suministrado) {
-                msgAcero = `Para este caso <b class="red">no se cumple</b> con el acero de refuerzo mínimo ${acero_refuerzo_minimo.toFixed(2)}mm<sup>2</sup> >= ${acero_suministrado}mm<sup>2</sup>, por lo que se disminuye la separación longitudinal como mínimo hasta 50mm y se volvió a calcular. Preferiblemente ingrese otros valores`;
-                
-                separacion_longitudinal = 50;
-                acero_refuerzo_minimo = aceroRefuerzoMinimo(Fc, b, separacion_longitudinal, Fy);
-                console.log("Para resistencia No cumple, entonces acero_refuerzo_minimo => " + acero_refuerzo_minimo);
-                acero_suministrado = aceroSuministradoCortante(cantidad_varillas, areaEstribo);//av_suministrado
-                console.log("acero_suministrado => " + acero_suministrado);
-
-                if (acero_refuerzo_minimo >= acero_suministrado) {
-                    console.log("Aun No cumple acero minimo");
-                }
-                else {
-                    console.log("Ya cumple acero minimo");
-                }
-            }
-            resistenciaOVn = resistenciaVigaCortante(acero_suministrado, Fy, d, separacion_longitudinal);
-            console.log("y la resistenciaOVn => " + resistenciaOVn);
-            
-            if (resistenciaOVn <= Vu) {
-                console.log("Aun No cumple resistencia");
-            }
-            else {
-                console.log("Ya cumple resistencia");
-            }
-
-        }else{
-            msgResistencia = `Para este caso <b class="green">si se cumple</b> que la resistencia Vn>Vu. ${resistenciaOVn.toFixed(2)}kN > ${Vu}kN`;
+        } else {
+            //si
+            document.getElementById('condicion_resistencia').innerHTML = `Para este caso <b class="green">si se cumple</b> que la resistencia Vn>Vu. ${resistenciaOVn.toFixed(2)}kN > ${Vu}kN`;
         }
-        document.getElementById('tabla_resultado_cortante').style.display = 'block';
-        document.getElementById('chequeo_acero').style.display = 'block';
-        document.getElementById('formulas_cortante').style.display = 'block';
+    }
+}
 
-        
-        document.getElementById("resultado_cortante").innerHTML = `<h1>Resumen de los valores calculados</h1><table class="peque">
-        <thead>
-           <tr>
-              <th scope="col">Dato</th>
-              <th scope="col">Valor</th>
-              <th scope="col">Unidades</th>
-           </tr>
-        </thead>
-        <tbody>
-           <tr>
-              <td>d</td>
-              <td>${d.toFixed(2)}</td>
-              <td>mm</td>
-           </tr>
-           <tr>
-              <td>Separación longitudinal</td>
-              <td>${separacion_longitudinal}</td>
-              <td>mm</td>
-           </tr>
-           <tr>
-              <td>Acero de refuerzo mínimo</td>
-              <td>${acero_refuerzo_minimo.toFixed(2)}</td>
-              <td>mm<sup>2</sup></td>
-           </tr>
-           <tr>
-              <td>Acero suministrado</td>
-              <td>${acero_suministrado}</td>
-              <td>mm<sup>2</sup></td>
-           </tr>
-           <tr>
-              <td>Cortante Nominal</td>
-              <td>${resistenciaOVn.toFixed(2)}</td>
-              <td>kN</td>
-           </tr>
-        </tbody>
-     </table>`;
-        document.getElementById('condicion_resistencia').innerHTML = msgResistencia;
+
+function recalcularAvMin(separacion_longitudinal, acero_refuerzo_minimo, Fc, b, Fy) {
+    separacion_longitudinal -= 5;
+
+    document.getElementById('condicion_acero').innerHTML = `Para este caso <b class="red">no se cumple</b> con el acero de refuerzo mínimo ${acero_refuerzo_minimo.toFixed(2)}mm<sup>2</sup> >= 142mm<sup>2</sup>, por lo que se disminuye la separación longitudinal a ${separacion_longitudinal}mm y se volvió a calcular.`;
+
+    console.log("Separacion longitudinal en: ", separacion_longitudinal);
+    acero_refuerzo_minimo = aceroRefuerzoMinimo(Fc, b, separacion_longitudinal, Fy);
+
+    document.getElementById('acero_ref_Min').innerHTML = acero_refuerzo_minimo.toFixed(2);
+
+    console.log("No cumple, entonces acero_refuerzo_minimo => " + acero_refuerzo_minimo);
+
+    let acero_suministrado = 142;//av_suministrado
+    console.log("acero_suministrado => " + acero_suministrado);
+
+    if (acero_refuerzo_minimo >= acero_suministrado) {
+        console.log("Aun No cumple acero minimo");
+        if (separacion_longitudinal >= 50) {
+            recalcularAvMin(separacion_longitudinal, acero_refuerzo_minimo, Fc, b, Fy);
+        } else {
+            document.getElementById('noCumpleAvMin').innerHTML = `Se recomienda cambiar de valores`;
+        }
+    }
+    else {
+        console.log("Ya cumple acero minimo");
+        document.getElementById('noCumpleAvMin').innerHTML = `Se obtiene: ${acero_refuerzo_minimo.toFixed(2)}mm<sup>2</sup> < ${acero_suministrado}mm<sup>2</sup>`;
+    }
+}
+
+function chequearResistencia(separacion_longitudinal, resistenciaOVn, Vu, Fy, d) {
+
+    separacion_longitudinal -= 5;
+
+    document.getElementById('condicion_resistencia').innerHTML = `Para este caso <b class="red">no se cumple</b> que la resistencia Vn>Vu( ${resistenciaOVn.toFixed(2)}kN <= ${Vu}kN ). Por lo tanto, se disminuye la separación longitudinal hasta ${separacion_longitudinal}mm y se volvió a calcular.`;
+
+    console.log("Separacion longitudinal en: ", separacion_longitudinal);
+    document.getElementById('sep_Long').innerHTML = separacion_longitudinal;
+
+    let acero_suministrado = 142;//av_suministrado
+    console.log("acero_suministrado => " + acero_suministrado);
+
+    resistenciaOVn = resistenciaVigaCortante(acero_suministrado, Fy, d, separacion_longitudinal);
+    console.log("y la resistenciaOVn => " + resistenciaOVn);
+    document.getElementById('res_OVN').innerHTML = resistenciaOVn.toFixed(2);
+
+    if (resistenciaOVn <= Vu) {
+        console.log("Aun No cumple resistencia");
+        if (separacion_longitudinal >= 50) {
+            chequearResistencia(separacion_longitudinal, resistenciaOVn, Vu, Fy, d);
+        } else {
+            document.getElementById('cambioValores').innerHTML = 'Se recomineda cambiar de valores';
+        }
+    }
+    else {
+        console.log("Ya cumple resistencia");
+        document.getElementById('cambioValores').innerHTML = `Se obtiene la resistencia: ${resistenciaOVn.toFixed(2)}kN > ${Vu}kN`;
     }
 }
 

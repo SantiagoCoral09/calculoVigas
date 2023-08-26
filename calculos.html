@@ -842,7 +842,7 @@
       <div class="text-center">
          <h3 class="flexion">Diseño a Cortante</h3>
          <div class="card">
-            <form>
+            <div>
                <!-- <div class="card-header text-center">
                      
                   </div> -->
@@ -902,7 +902,7 @@
 
                   <h3 id="datos_cortante" class="text-danger"></h3>
                </div>
-            </form>
+            </div>
          </div>
          <div id="chequeo_acero" class="resultado" style="display: none;">
             <br>
@@ -953,15 +953,21 @@
                </div><br><br>
                <li class="li_formulas">Acero suministrado</li>
                <div class="text-center"><br>
-                  <p>\(A_{\text{v sum}} = (\text{Cantidad de varillas de estribo}) \cdot (\text{Área de la varilla de
-                     estribo})\)
+                  <p>\(A_{\text{v sum}} = (\text{Cantidad de varillas de estribo}) \cdot (\text{Área de la varilla de estribo})\)
                   </p>
                   <p>Por norma:</p>
                   <p>\(A_s = 2 \cdot 71 \, \text{mm}^2 = 142 \, \text{mm}^2\)</p><br>
-                  <div class="resultado" id="condicion_acero">Para si cumple</div><br>
+                  <div class="resultado">
+                     <div id="condicion_acero"></div><br>
+                     <span id="noCumpleAvMin"></span>
+                  </div><br>
                   <hr>
                </div>
             </ul>
+         </div>
+         <!-- Si no se cumple se mostrará -->
+         <div id="recalcularAvMin" style="display: none;">
+            
          </div>
 
          <h2 class="text-center" style="font-size: 30px; font-weight: bolder;">Chequeo de Resistencia</h2><br>
@@ -971,7 +977,11 @@
          </div><br>
          <p>Tenga en cuenta que \(\varphi\) = 0.75 por cortante</p>
          <h3 class="text-center"><b>Vn > Vu</b></h3><br>
-         <div id="condicion_resistencia" class="resultado text-center"></div><br>
+         <div class="resultado text-center">
+            <div  id="condicion_resistencia" ></div><br>
+            <span id="cambioValores"></span>
+
+         </div><br>
       </div>
 
 
