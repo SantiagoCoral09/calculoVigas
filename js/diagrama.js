@@ -208,16 +208,8 @@ function diagramaInteraccion() {
         /////Llenar la tabla
         llenarTabla(listaMn, listaPn, listaPhiMn, listaPhiPn, h, longFibra);
         graficar(listaMn, listaPn, listaPhiMn, listaPhiPn);
-        document.getElementById('campos_cortante').style.display = 'block';
-        document.getElementById('formulas_cortante').style.display = 'none';
-        document.getElementById('rec_cortante').innerHTML = recubrimiento;
-        document.getElementById('noVar_cortante').innerHTML = numeroVarillaLong;
-        document.getElementById('areaVar_cortante').innerHTML = areaBarraLong;
-        document.getElementById('diametroVar_cortante').innerHTML = diametroBarraLong;
-        document.getElementById('cantVar_cortante').innerHTML = cantidadVarillas;
-        document.getElementById('noVarEstribo').innerHTML = numeroBarraEstribo;
-        document.getElementById('diamEstribo').innerHTML = diametroBarraEstribo;
-        document.getElementById('areaEstribo').innerHTML = areaBarraEstribo;
+
+        
     }
 }
 

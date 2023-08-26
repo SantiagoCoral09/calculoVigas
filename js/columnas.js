@@ -21,7 +21,7 @@ function limpiar() {
     document.getElementById('tabla_resultado').style.display = 'none';
     document.getElementById('diagrama_interaccion').style.display = 'none';
     document.getElementById('condiciones').style.display = 'none';
-    document.getElementById('condiciones').innerHTML = '';
+    document.getElementById('condicion_separacionF').innerHTML = '';
     document.getElementById('tabla_diagrama').style.display = 'none';
     document.getElementById('campos_cortante').style.display = 'none';
 }
@@ -99,8 +99,12 @@ function minimoExcesoCol(b, h, recubrimiento, diametroBarraEstribo, Ag) {
         console.log(`No.${numeroVarilla} sep=${separacion.toFixed(2)} >= sepMin=${separacionMinima}, sepMax:${separacionMaxima}, cantVars:${NoVarillas}, AsMin:${AsMin}, asSUM:${AsSuministrado},exceso:${excesAs}`);
 
         if (separacion >= separacionMinima && separacion <= separacionMaxima) {
-            excesos.push(Number(excesAs.toFixed(4)));
-            noVars.push(numeroVarilla);
+
+            //solo si cantidad de varillas: 4 o mayor
+            if (NoVarillas >= 4) {
+                excesos.push(Number(excesAs.toFixed(4)));
+                noVars.push(numeroVarilla);
+            }
         }
         //Debemos verificar que cumpla la separacion 
 
@@ -133,7 +137,7 @@ function separacionBarrasBase(b, recubrimiento, dEstribo, NoVarillas, dLong) {
         case 12:
             return (b - recubrimiento * 2 - 2 * dEstribo - 4 * dLong) / 3;
         default:
-            return (b - recubrimiento * 2 - 2 * dEstribo - NoVarillas*dLong) / (NoVarillas-1);
+            return (b - recubrimiento * 2 - 2 * dEstribo - NoVarillas * dLong) / (NoVarillas - 1);
     }
 }
 function separacionBarrasAltura(h, recubrimiento, dEstribo, NoVarillas, dLong) {
@@ -150,7 +154,7 @@ function separacionBarrasAltura(h, recubrimiento, dEstribo, NoVarillas, dLong) {
         case 12:
             return (h - recubrimiento * 2 - 2 * dEstribo - 4 * dLong) / 3;
         default:
-            return (h - recubrimiento * 2 - 2 * dEstribo - NoVarillas*dLong) / (NoVarillas-1);
+            return (h - recubrimiento * 2 - 2 * dEstribo - NoVarillas * dLong) / (NoVarillas - 1);
     }
 }
 function separacionMinimaVars(diametroVarLong, Ag) {
@@ -192,8 +196,8 @@ function yi_Concreto(h, lFibra, FIBRA) {
     let Yi;
     if (FIBRA <= 10) {
         Yi = h / 2 - (lFibra / 2 + lFibra * (FIBRA - 1));
-    }else{
-        Yi = -(h / 2 - (lFibra / 2 + lFibra * (20-FIBRA)));
+    } else {
+        Yi = -(h / 2 - (lFibra / 2 + lFibra * (20 - FIBRA)));
 
     }
     return Yi;
@@ -494,6 +498,8 @@ function calcularColumna() {
     ///Ocultar formulario de resistencia
     document.getElementById('diagrama_interaccion').style.display = 'none';
     document.getElementById('campos_cortante').style.display = 'none';
+    document.getElementById("condicion_separacionF").textContent = '';
+
     document.getElementById('tabla_diagrama').style.display = 'none';
 
     let b, h, Fc, Fy, ag, recubrimiento, numeroVarilla, diametro, area, numeroBarraEstribo, diametroBarraEstribo;
@@ -676,9 +682,14 @@ function calcularColumna() {
         }
         //Verificar condicion
         document.getElementById('condiciones').style.display = 'block';
+        if(NoVarillas<4){
+            document.getElementById('cumpleNoVarilla').innerHTML=`La norma NSR-10 recomienda como cantidad mínima 4 varillas longitudinales y en este caso <b style="color:rgba(255,0,0,0.8);"> No cumple </b>&nbsp;`;
+        }else{
+            document.getElementById('cumpleNoVarilla').innerHTML=``;
+        }
         if (separacion >= sep_minima && separacion <= separacionMaxima) {
             console.log(`Si cumple separacion entre varillas (${separacion}mm) >= sepMinima ${sep_minima} y ${separacion}<= separación máxima (${separacionMaxima}`);
-            document.getElementById("condiciones").innerHTML = `<b style="color:rgba(0,255,0,1);">Si cumple</b>&nbsp; la condición: separación entre varillas (${separacion.toFixed(2)}mm) >= separación
+            document.getElementById("condicion_separacionF").innerHTML = `<b style="color:rgba(0,255,0,1);">Si cumple</b>&nbsp; la condición: separación entre varillas (${separacion.toFixed(2)}mm) >= separación
               mínima (${sep_minima.toFixed(2)}mm) y ${separacion.toFixed(2)}mm <= separación máxima (${separacionMaxima}mm)`;
             document.getElementById('diagrama_interaccion').style.display = 'block';
             document.getElementById('boton_gra').disabled = false;
@@ -686,10 +697,10 @@ function calcularColumna() {
         else {
             console.log(`No cumple separacion ${separacion} >= sepMinima ${separacionMaxima}`);
             if (separacion < sep_minima) {
-                document.getElementById("condiciones").innerHTML = `<b style="color:rgba(255,0,0,0.8);"> No cumple </b>&nbsp; la condición: separacion entre varillas (${separacion.toFixed(2)}mm) < separación
+                document.getElementById("condicion_separacionF").innerHTML = `<b style="color:rgba(255,0,0,0.8);"> No cumple </b>&nbsp; la condición: separacion entre varillas (${separacion.toFixed(2)}mm) < separación
             mínima (${sep_minima.toFixed(2)}mm).`;
             } else if (separacion > separacionMaxima) {
-                document.getElementById("condiciones").innerHTML = `<b style="color:rgba(255,0,0,0.8);"> No cumple </b>&nbsp; la condición: separacion entre varillas (${separacion.toFixed(2)}mm) <= separación
+                document.getElementById("condicion_separacionF").innerHTML = `<b style="color:rgba(255,0,0,0.8);"> No cumple </b>&nbsp; la condición: separacion entre varillas (${separacion.toFixed(2)}mm) <= separación
                 máxima (${separacionMaxima.toFixed(2)}mm).`;
             } else {
                 alert("Separación fuera de rango");
@@ -713,5 +724,18 @@ function calcularColumna() {
         document.getElementById("dvlong").innerHTML = diametro;
         document.getElementById("avlong").innerHTML = area;
         document.getElementById("destribo").innerHTML = diametroBarraEstribo;
+
+        let areaBarraEstribo = Number(document.getElementById("area_estribo").value);
+        document.getElementById('campos_cortante').style.display = 'block';
+        document.getElementById('formulas_cortante').style.display = 'none';
+        document.getElementById('rec_cortante').innerHTML = recubrimiento;
+        document.getElementById('noVar_cortante').innerHTML = numeroVarilla;
+        document.getElementById('areaVar_cortante').innerHTML = area;
+        document.getElementById('diametroVar_cortante').innerHTML = diametro;
+        document.getElementById('cantVar_cortante').innerHTML = NoVarillas;
+        document.getElementById('noVarEstribo').innerHTML = numeroBarraEstribo;
+        document.getElementById('diamEstribo').innerHTML = diametroBarraEstribo;
+        document.getElementById('areaEstribo').innerHTML = areaBarraEstribo;
     }
+
 }
