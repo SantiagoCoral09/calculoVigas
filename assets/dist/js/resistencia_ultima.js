@@ -135,7 +135,7 @@ function resistencia(numeroVarilla, Fc, Fy, h, recubrimiento, diametro, diametro
    document.getElementById("resultadoFinal").style.display = 'block';
 
    if (resMn > MuMaxSuperior) {
-      msgSup = `Para la parte superior <b style="color:rgba(0,255,0,1);">si se cumple</b> que Mn>Mu <br>`;
+      msgSup = `Para la viga superior <b style="color:rgba(0,255,0,1);">si se cumple</b> que ϕMn>ϕMu <br>`;
       cumpleSup = true;
       resMnSup = resMn;
       as_calcSup = AsMin;
@@ -170,7 +170,7 @@ function resistencia(numeroVarilla, Fc, Fy, h, recubrimiento, diametro, diametro
    let as_calcInf, NoVarillasInf, AsSuministradoInf, InfexcesAs, Infseparacion, InfseparacionMinimaBarras;
    let resMnInf;
    if (resMn > MuMaxInferior) {
-      msgInf = `Para la parte inferior <b style="color:rgba(0,255,0,1);">si se cumple</b> que Mn>Mu <br>`;
+      msgInf = `Para la viga inferior <b style="color:rgba(0,255,0,1);">si se cumple</b> que ϕMn>ϕMu <br>`;
       cumpleInf = true;
       resMnInf = resMn;
       as_calcInf = AsMin;
@@ -214,13 +214,13 @@ function condicion_separacion(tabla, Supseparacion, SupseparacionMinimaBarras,nv
    if (Supseparacion >= SupseparacionMinimaBarras) {
       console.log(`Si cumple separacion ${Supseparacion} >= sepMinima ${SupseparacionMinimaBarras}`);
 
-      document.getElementById(etiquetaCondicion).innerHTML = `<br>Para este caso, en la parte ${tabla} de la viga <b class="green">si se cumple</b> con la separación mínima entre varillas. `;
+      document.getElementById(etiquetaCondicion).innerHTML = `<br>Para este caso, en la viga ${tabla} <b class="green">si se cumple</b> con la separación mínima entre varillas. `;
 
       document.getElementById(`check_separacion_${tabla}`).value = "true";
    }
    else {
       console.log(`No cumple separacion ${Supseparacion} >= sepMinima ${SupseparacionMinimaBarras}`);
-      document.getElementById(etiquetaCondicion).innerHTML = `<br>Para este caso, en la parte ${tabla} de la viga <b class="red">no se cumple</b> con la
+      document.getElementById(etiquetaCondicion).innerHTML = `<br>Para este caso, en la viga ${tabla} <b class="red">no se cumple</b> con la
       separación mínima entre varillas, por lo tanto, para esta parte suponga otro número de
       varilla.
       `;
@@ -337,8 +337,8 @@ function resistenciaIteracion(tabla, numeroVarilla, b, Fc, Fy, d, MuMaxSuperior,
 
    document.getElementById(etiquetaMsg).innerHTML = `<div class="col-1">
    <img src="./img/wrong.png"  ></div><div class="col-8">
-   Para la parte ${tabla} <b style="color:rgba(255,0,0,0.8);">no se cumple</b> que
-   Mn>Mu, por lo tanto, la cantidad de varillas
+   Para la viga ${tabla} <b style="color:rgba(255,0,0,0.8);">no se cumple</b> que
+   ϕMn>ϕMu, por lo tanto, la cantidad de varillas
    con el número de varilla supuesta anteriormente <b>no es la correcta</b>.</div>`;
 
    condicion_separacion(tabla, Supseparacion, SupseparacionMinimaBarras,numeroVarilla);
@@ -426,7 +426,7 @@ function recalcularResistencia(tabla) {
       document.getElementById("resultadoFinal").style.display = 'block';
 
       if (resMn > MuMaxSuperior) {
-         msgSup = `Para la parte ${tabla} <b style="color:rgba(0,255,0,1);">si se cumple</b> que Mn>Mu <br>`;
+         msgSup = `Para la viga ${tabla} <b style="color:rgba(0,255,0,1);">si se cumple</b> que ϕMn>ϕMu <br>`;
          cumpleSup = true;
          resMnSup = resMn;
          as_calcSup = AsMin;
@@ -453,7 +453,7 @@ function recalcularResistencia(tabla) {
          console.log(Fy, d, Fc, b, resMn);
          cumpleSup = false;
 
-         msgSup = `Para la parte ${tabla} no se cumple que Mn>Mu, por lo tanto, la cantidad de varillas con el número de varilla supuesta anteriormente <b>no es la correcta</b>.`;
+         msgSup = `Para la viga ${tabla} no se cumple que ϕMn>ϕMu, por lo tanto, la cantidad de varillas con el número de varilla supuesta anteriormente <b>no es la correcta</b>.`;
 
          resistenciaIteracion(tabla, numeroVarillaSup, b, Fc, Fy, d, MuMaxSuperior, area, recubrimiento, diametroBarraEstribo, diametro, ag);
          //    document.getElementById(etiquetaMsg).innerHTML = `<div class="col-2">
