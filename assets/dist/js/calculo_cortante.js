@@ -214,11 +214,16 @@ function calcular_cortante() {
         </tbody>
         </table>`;
 
+        document.getElementById('avMinSep').innerHTML = '';
+        //document.getElementById('acero_ref_Min').innerHTML = '';
+        document.getElementById('noCumpleAvMin').innerHTML = '';
+        document.getElementById('condicion_acero').innerHTML = '';
 
         if (acero_refuerzo_minimo >= acero_suministrado) {
             //Disminuir maximo hasta 50mm la separacion longitudinal y recalcular av_min
+            document.getElementById('condicion_acero').innerHTML = `Para este caso <b class="red">no se cumple</b> con el acero de refuerzo mínimo ${acero_refuerzo_minimo.toFixed(2)}mm<sup>2</sup> >= 142mm<sup>2</sup>.`;
             recalcularAvMin(separacion_longitudinal, acero_refuerzo_minimo, Fc, b, Fy);
-            
+
         } else {
             document.getElementById('condicion_acero').innerHTML = `Para este caso <b class="green">si se cumple</b> con el acero de refuerzo mínimo. ${acero_refuerzo_minimo.toFixed(2)}mm<sup>2</sup> < ${acero_suministrado}mm<sup>2</sup>`;
         }
@@ -235,9 +240,15 @@ function calcular_cortante() {
         document.getElementById('cortante_fin').innerHTML = `${resistenciaOVn.toFixed(2)}kN`;
 
 
+        document.getElementById('resSep').innerHTML = '';
+        //document.getElementById('sep_Long').innerHTML = '';
+        //document.getElementById('res_OVN').innerHTML = '';
+        document.getElementById('cambioValores').innerHTML = '';
+
         // Vu = 81.49;
         if (resistenciaOVn <= Vu) {
             //Disminuir maximo hasta 50mm la separacion longitudinal y recalcular resistencia
+            document.getElementById('condicion_resistencia').innerHTML = `Para este caso <b class="red">no se cumple</b> que la resistencia Vn>Vu( ${resistenciaOVn.toFixed(2)}kN <= ${Vu}kN ).`;
             chequearResistencia(separacion_longitudinal, resistenciaOVn, Vu, Fy, d);
 
         } else {
@@ -251,7 +262,10 @@ function calcular_cortante() {
 function recalcularAvMin(separacion_longitudinal, acero_refuerzo_minimo, Fc, b, Fy) {
     separacion_longitudinal -= 5;
 
-    document.getElementById('condicion_acero').innerHTML = `Para este caso <b class="red">no se cumple</b> con el acero de refuerzo mínimo ${acero_refuerzo_minimo.toFixed(2)}mm<sup>2</sup> >= 142mm<sup>2</sup>, por lo que se disminuye la separación longitudinal a ${separacion_longitudinal}mm y se volvió a calcular.`;
+    document.getElementById('avMinSep').innerHTML = '';
+    // document.getElementById('acero_ref_Min').innerHTML = '';
+    document.getElementById('noCumpleAvMin').innerHTML = '';
+    document.getElementById('avMinSep').innerHTML = `Se disminuye la separación longitudinal a ${separacion_longitudinal}mm y se volvió a calcular.`;
 
     console.log("Separacion longitudinal en: ", separacion_longitudinal);
     acero_refuerzo_minimo = aceroRefuerzoMinimo(Fc, b, separacion_longitudinal, Fy);
@@ -268,20 +282,29 @@ function recalcularAvMin(separacion_longitudinal, acero_refuerzo_minimo, Fc, b, 
         if (separacion_longitudinal >= 50) {
             recalcularAvMin(separacion_longitudinal, acero_refuerzo_minimo, Fc, b, Fy);
         } else {
-            document.getElementById('noCumpleAvMin').innerHTML = `Se recomienda cambiar de valores`;
+            document.getElementById('noCumpleAvMin').innerHTML = `Se recomienda cambiar de valores. Se obtiene el acero de refuerzo mínimo: ${acero_refuerzo_minimo.toFixed(2)}mm<sup>2</sup> < ${acero_suministrado}mm<sup>2</sup>, pero la separación longitudinal es menor a 50mm`;
         }
     }
     else {
         console.log("Ya cumple acero minimo");
-        document.getElementById('noCumpleAvMin').innerHTML = `Se obtiene: ${acero_refuerzo_minimo.toFixed(2)}mm<sup>2</sup> < ${acero_suministrado}mm<sup>2</sup>`;
+        console.log(separacion_longitudinal);
+        if (separacion_longitudinal < 50) {
+            document.getElementById('noCumpleAvMin').innerHTML = `Se recomienda cambiar de valores. Se obtiene el acero de refuerzo mínimo: ${acero_refuerzo_minimo.toFixed(2)}mm<sup>2</sup> y la separación longitudinal es menor a 50mm`;
+        } else {
+            document.getElementById('noCumpleAvMin').innerHTML = `Se obtiene el acero de refuerzo mínimo: ${acero_refuerzo_minimo.toFixed(2)}mm<sup>2</sup> < ${acero_suministrado}mm<sup>2</sup>`;
+        }
     }
 }
 
 function chequearResistencia(separacion_longitudinal, resistenciaOVn, Vu, Fy, d) {
+    document.getElementById('resSep').innerHTML = '';
+    //document.getElementById('sep_Long').innerHTML = '';
+    //document.getElementById('res_OVN').innerHTML = '';
+    document.getElementById('cambioValores').innerHTML = '';
 
     separacion_longitudinal -= 5;
 
-    document.getElementById('condicion_resistencia').innerHTML = `Para este caso <b class="red">no se cumple</b> que la resistencia Vn>Vu( ${resistenciaOVn.toFixed(2)}kN <= ${Vu}kN ). Por lo tanto, se disminuye la separación longitudinal hasta ${separacion_longitudinal}mm y se volvió a calcular.`;
+    document.getElementById('resSep').innerHTML = `Se disminuye la separación longitudinal hasta ${separacion_longitudinal}mm y se volvió a calcular.`;
 
     console.log("Separacion longitudinal en: ", separacion_longitudinal);
     document.getElementById('sep_Long').innerHTML = separacion_longitudinal;
@@ -298,12 +321,16 @@ function chequearResistencia(separacion_longitudinal, resistenciaOVn, Vu, Fy, d)
         if (separacion_longitudinal >= 50) {
             chequearResistencia(separacion_longitudinal, resistenciaOVn, Vu, Fy, d);
         } else {
-            document.getElementById('cambioValores').innerHTML = 'Se recomineda cambiar de valores';
+            document.getElementById('cambioValores').innerHTML = `Se recomineda cambiar de valores. Se obtiene la resistencia: ${resistenciaOVn.toFixed(2)}kN y la separación longitudinal es menor a 50mm`;
         }
     }
     else {
         console.log("Ya cumple resistencia");
-        document.getElementById('cambioValores').innerHTML = `Se obtiene la resistencia: ${resistenciaOVn.toFixed(2)}kN > ${Vu}kN`;
+        if (separacion_longitudinal < 50) {
+            document.getElementById('cambioValores').innerHTML = `Se recomienda cambiar valores. Se obtiene la resistencia: ${resistenciaOVn.toFixed(2)}kN > ${Vu}kN, pero la separación longitudinal es menor a 50mm`;
+        } else {
+            document.getElementById('cambioValores').innerHTML = `Se obtiene la resistencia: ${resistenciaOVn.toFixed(2)}kN > ${Vu}kN`;
+        }
     }
 }
 

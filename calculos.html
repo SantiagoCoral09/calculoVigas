@@ -666,12 +666,12 @@
                      </div>
                   </div>
                   <hr>
-                  <h4 class="card-title">Ingrese el momento máximo que se solicita (Mu) para la parte superior e
+                  <h4 class="card-title">Ingrese el momento máximo que se solicita (Mu) para la fibra superior e
                      inferior de la viga</h4>
                   <br>
                   <div class="row">
                      <div class="col-3">
-                        <h4 class="mt-3">Mu máximo viga superior (kN - m)</h4>
+                        <h4 class="mt-3">Mu máximo fibra superior (kN - m)</h4>
                      </div>
                      <div class="col-3">
                         <input type="number" class="form-control" id="muSup" name="muSup" placeholder="" required
@@ -680,7 +680,7 @@
                            onblur="validarValorPositivo('muSup','val_ms');validarValorMinimo('muSup',0,'val_ms');" />
                      </div>
                      <div class="col-3">
-                        <h4 class="mt-3">Mu máximo viga inferior (kN - m)</h4>
+                        <h4 class="mt-3">Mu máximo fibra inferior (kN - m)</h4>
                      </div>
                      <div class="col-3">
                         <input type="number" class="form-control" id="muInf" name="muInf" placeholder="" required
@@ -717,9 +717,9 @@
                                     <img src="./img/wrong.png">
                                  </div>
                                  <div class="col-8">
-                                    Para la viga superior <b style="color:rgba(255,0,0,0.8);">no se cumple</b> que
+                                    Para la fibra superior <b style="color:rgba(255,0,0,0.8);">no se cumple</b> que
                                     ϕMn>ϕMu,
-                                    por lo tanto, la cantidad de varillas
+                                    por lo tanto, la cantidad de varillas longitudinales obtenidas
                                     con el número de varilla supuesta anteriormente <b>no es la correcta</b>.</div>
                               </div>
                            </div>
@@ -729,8 +729,8 @@
                                     <img src="./img/wrong.png">
                                  </div>
                                  <div class="col-8">
-                                    Para la viga inferior <b style="color:rgba(255,0,0,0.8);">no se cumple</b> que
-                                    ϕMn>ϕMu, por lo tanto, la cantidad de varillas
+                                    Para la fibra inferior <b style="color:rgba(255,0,0,0.8);">no se cumple</b> que
+                                    ϕMn>ϕMu, por lo tanto, la cantidad de varillas longitudinales obtenidas
                                     con el número de varilla supuesta anteriormente <b>no es la correcta</b>.</div>
                               </div>
 
@@ -742,12 +742,12 @@
                         <h1>Diseño a flexión recomendado</h1><br>
                         <div class="row">
                            <div class="col-6">
-                              <h3>Datos recomendados viga superior</h3>
+                              <h3>Datos recomendados fibra superior</h3>
                               <div id="superior">tabla</div>
 
                               <div>
                                  <div id="condicionSup">
-                                    Para este caso, en la viga superior <b class="red">no
+                                    Para este caso, en la fibra superior de la viga <b class="red">no
                                        se cumple</b> con la separación mínima entre varillas, por lo tanto, para esta
                                     parte
                                     suponga otro número de varilla en los datos de entrada y vuelva a ingresar el
@@ -777,12 +777,12 @@
 
                            </div>
                            <div class="col-6">
-                              <h3>Datos recomendados viga inferior</h3>
+                              <h3>Datos recomendados fibra inferior</h3>
                               <div id="inferior">tabla</div>
 
                               <div>
                                  <div id="condicionInf">
-                                    Para este caso, en la viga inferior <b class="red">no se cumple</b>
+                                    Para este caso, en la fibra inferior de la viga<b class="red">no se cumple</b>
                                     con
                                     la
                                     separación mínima entre varillas, por lo tanto, para esta parte suponga otro número
@@ -907,7 +907,7 @@
          <div id="chequeo_acero" class="resultado" style="display: none;">
             <br>
             <h3 class="card-title">NOTA: Tenga en cuenta que para el diseño en vigas se selecciona el diámetro
-               de la varilla menor entre la parte superior e inferior de la viga</h3>
+               de la varilla menor entre la fibra superior e inferior de la viga</h3>
             <div class="d-flex justify-content-center" id="menor_varilla">
                <div class="col-3">
                   <h4>Datos de la varilla longitudinal mínima a flexión:</h4>
@@ -958,7 +958,10 @@
                   <p>Por norma:</p>
                   <p>\(A_s = 2 * 71 \, \text{mm}^2 = 142 \, \text{mm}^2\)</p><br>
                   <div class="resultado">
-                     <div id="condicion_acero"></div><br>
+                     <div id="condicion_acero"></div>
+                     <br>
+                     <span id="avMinSep"></span>
+                     <br>
                      <span id="noCumpleAvMin"></span>
                   </div><br>
                   <hr>
@@ -990,7 +993,10 @@
          <p>Tenga en cuenta que \(\varphi\) = 0.75 por cortante</p>
          <h3 class="text-center"><b>Vn > Vu</b></h3><br>
          <div class="resultado text-center">
-            <div  id="condicion_resistencia" ></div><br>
+            <div  id="condicion_resistencia" ></div>
+            <br>
+            <span id="resSep"></span>
+            <br>
             <span id="cambioValores"></span>
 
          </div><br>
