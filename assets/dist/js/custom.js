@@ -121,7 +121,7 @@ function normas(titulo) {
 	    document.getElementById("Normas").innerHTML="<h3>CARGAS</h3><iframe src='http://www.uptc.edu.co/export/sites/default/facultades/f_ingenieria/pregrado/civil/documentos/NSR-10_Titulo_B.pdf ' style='border: none; width: 95%; height: 780px;'></iframe>";
 	}
 	if (titulo=="c"){
-	    document.getElementById("Normas").innerHTML="<h3>CARGAS</h3><iframe src='http://www.uptc.edu.co/export/sites/default/facultades/f_ingenieria/pregrado/civil/documentos/NSR-10_Titulo_C.pdf' style='border: none; width: 95%; height: 780px;'></iframe>";
+	    document.getElementById("Normas").innerHTML="<h3>Concreto Estructural</h3><iframe src='http://www.uptc.edu.co/export/sites/default/facultades/f_ingenieria/pregrado/civil/documentos/NSR-10_Titulo_C.pdf' style='border: none; width: 95%; height: 780px;'></iframe>";
 	}
 	if (titulo=="j"){
 	    document.getElementById("Normas").innerHTML="<h3>REQUISITOS DE PROTECCIÓN CONTRA INCENDIOS </h3><iframe src='http://www.uptc.edu.co/export/sites/default/facultades/f_ingenieria/pregrado/civil/documentos/NSR-10_Titulo_J.pdf' style='border: none; width: 95%; height: 780px;'></iframe>";
