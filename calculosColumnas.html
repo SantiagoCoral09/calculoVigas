@@ -38,6 +38,9 @@
    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script> -->
+<script src="./js/jspdf.umd.min.js"></script>
 
 </head>
 <!-- body -->
@@ -351,8 +354,8 @@
                   </div>
                   <div class="card-body text-center">
                      <div class="row d-flex justify-content-center">
-                        <div class="columna-2">
-                           <h4 for="fc">Resistencia a la compresion (f'c) MPa</h4>
+                        <div class="col-2">
+                           <h4 for="fc">Resistencia a la compresion del concreto(f'c) MPa</h4>
                         </div>
                         <div class="columna-1">
                            <select class="mpa" name="fc" id="fc1" onchange="actualizar_fc(this); limpiar(); ">
@@ -509,9 +512,9 @@
                      <hr>
                      <h3 class="nota">TABLA 1: Dimensiones de la varilla de acuerdo al Número</h3>
                      <div class="row d-flex justify-content-center">
-                        <div class="col-6">
+                        <div class="col-6" >
 
-                           <table class="peque">
+                           <table class="peque" id="tabla_varillas">
                               <thead>
                                  <tr>
                                     <th>Número de Varilla</th>
@@ -576,6 +579,7 @@
                      <button type="submit" id="btn_calcular1" class="btn btn-primary"
                         onclick="calcularColumna()">Calcular</button>
                      <button type="button" class="btn btn-success" onclick="limpiar(); borrar()">Limpiar</button>
+                     
 
                      <h3 id="base" class="text-danger"></h3>
                   </div>
@@ -634,8 +638,7 @@
                </div>
 
             </div>
-            <div id="condiciones" class="resultado text-center"
-               style="display: none; padding-bottom:10px;">
+            <div id="condiciones" class="resultado text-center" style="display: none; padding-bottom:10px;">
                <div id="cumpleNoVarilla"></div><br>
                <div id="condicion_separacionF"> </div>
             </div>
@@ -1113,7 +1116,7 @@
                               <td style="width: 300px; text-align: center;">
                                  <h4 class="">Ingrese la luz libre de la columna (mm)</h4>
                               </td>
-                              <tr class="d-flex justify-content-center">
+                           <tr class="d-flex justify-content-center">
                               <td style="width: 200px;">
                                  <input style="width: 100%; min-width: 100px;" type="number" class="form-control"
                                     min="1" onkeydown="validarTeclaMenos(event,'luzLibreLong')"
@@ -1121,15 +1124,15 @@
                                     name="luzLibreLong" placeholder="" onended="" required autofocus />
                               </td>
                            </tr>
-                              <!-- <td style="width: 100px;"></td> -->
+                           <!-- <td style="width: 100px;"></td> -->
 
-                              <!-- <td rowspan="3" style="vertical-align: top;">
+                           <!-- <td rowspan="3" style="vertical-align: top;">
                                  <img src="./img/luzLibre.png" alt="imagen1" style="min-width: 200px;">
                               </td> -->
-                              <!-- <td style="width: 300px; text-align: right;">
+                           <!-- <td style="width: 300px; text-align: right;">
                                  <h4 class="mt-1">Ingrese la altura de la columna (mm)</h4>
                               </td> -->
-                              <!-- <td style="width: 200px;">
+                           <!-- <td style="width: 200px;">
                                  <input style="width: 100%; min-width: 100px;" type="number" class="form-control mt-1"
                                     id="alturaCol" name="alturaCol" min="1" required autofocus
                                     onkeydown="validarTeclaMenos(event,'alturaCol')"
@@ -1365,6 +1368,10 @@
    </footer>
    <!-- end footer -->
    <!-- Javascript files-->
+
+   <!-- <script src="./js/jspdf.umd.min.js"></script> -->
+   <script src="./js/pdf.js"></script>
+
    <script src="./assets/dist/js/jquery.min.js"></script>
    <script src="./assets/dist/js/bootstrap.bundle.min.js"></script>
    <script src="./assets/dist/js/custom.js"></script>
@@ -1376,7 +1383,6 @@
    <script src="./js/columnas.js"></script>
    <script src="./js/cortanteColumnas.js"></script>
    <script src="./js/diagrama.js"></script>
-
 
 </body>
 
