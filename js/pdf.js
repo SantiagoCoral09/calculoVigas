@@ -28,11 +28,11 @@ function generarPDFVigas(){
     let style = '<style>h1 { font-size: 24px; font-weight: bold; text-align: center; font-family: Arial, Helvetica, sans-serif; color: black;}h2 { font-size: 20px; font-weight: bold; text-align: center;}table { text-align: center; }</style>';
 
     // Crear un elemento HTML que contenga las tres tablas con títulos y subtítulos
-    let content = '<h1>REPORTE DE RESULTADOS EN CÁLCULO DE VIGAS</h1><hr><br><br><h1>DISEÑO A FLEXIÓN</h1><div><br><br><h2>Datos para fibra superior</h2>';
+    let content = '<h1>REPORTE DE RESULTADOS: CÁLCULO DE VIGAS</h1><hr><br><br><h1>DISEÑO A FLEXIÓN</h1><div><br><br><h2>Datos fibra superior</h2>';
     content += table_superior.innerHTML;
-    content += '</div><div><br><br><br><h2>Datos para fibra inferior</h2>';
+    content += '</div><div><br><br><br><h2>Datos fibra inferior</h2>';
     content += table_medio.innerHTML;
-    content += '</div><br><br><br><br><br><br><br><div><h1>CÁLCULOS POR CORTANTE</h1><br>';
+    content += '</div><br><br><br><br><br><br><br><div><h1>CÁLCULOS CORTANTE</h1><br>';
     content += table_inferior.innerHTML;
     content += '</div>';
 
@@ -43,7 +43,7 @@ function generarPDFVigas(){
             //window.open(doc.output('bloburl'),'_blank');
             doc.save('calculo_vigas.pdf');
         },
-        margin:[30,5,15,30],
+        margin:[30,5,30,25],
         x:0,
         y:0,
         width:150,
