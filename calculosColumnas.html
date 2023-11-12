@@ -38,9 +38,12 @@
    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.1/purify.min.js"></script>
+
    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script> -->
-<script src="./js/jspdf.umd.min.js"></script>
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+   <script src="./js/jspdf.umd.min.js"></script>
 
 </head>
 <!-- body -->
@@ -512,7 +515,7 @@
                      <hr>
                      <h3 class="nota">TABLA 1: Dimensiones de la varilla de acuerdo al Número</h3>
                      <div class="row d-flex justify-content-center">
-                        <div class="col-6" >
+                        <div class="col-6">
 
                            <table class="peque" id="tabla_varillas">
                               <thead>
@@ -579,7 +582,7 @@
                      <button type="submit" id="btn_calcular1" class="btn btn-primary"
                         onclick="calcularColumna()">Calcular</button>
                      <button type="button" class="btn btn-success" onclick="limpiar(); borrar()">Limpiar</button>
-                     
+
 
                      <h3 id="base" class="text-danger"></h3>
                   </div>
@@ -1096,11 +1099,24 @@
                      </div>
                   </ul>
                </div><br><br><br>
+
             </div>
 
             <br><br>
             <div class="d-flex justify-content-center" id="refFinal">
 
+            </div>
+            <br><br>
+            <div class="resultado text-center" style="display: none;" id="tabla_resultado_cortante_cols"><br>
+               <div class="d-flex justify-content-center">
+                  <div class="col-7">
+                     <div id="resultado_cortante_cols" class=""></div><br>
+                  </div>
+               </div>
+            </div>
+            <br><br>
+            <div class="container d-flex justify-content-center">
+               <button class="btn btn-success" onclick="generarPDFColumnas()">Generar reporte PDF</button>
             </div>
             <br>
             <hr><br>
@@ -1369,7 +1385,6 @@
    <!-- end footer -->
    <!-- Javascript files-->
 
-   <!-- <script src="./js/jspdf.umd.min.js"></script> -->
    <script src="./js/pdf.js"></script>
 
    <script src="./assets/dist/js/jquery.min.js"></script>
