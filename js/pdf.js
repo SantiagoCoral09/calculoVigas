@@ -92,12 +92,13 @@ function generarPDFColumnas(){
     let table_superior = document.getElementById('resultado');
     let table_medio = document.getElementById('myChart');
     let table_inferior = document.getElementById('resultado_cortante_cols');
+    let table_inferior2 = document.getElementById('zona_confinamiento_resultado');
 
     // Agregar estilos CSS al encabezado del documento HTML
     let style = '<style>h1 { font-size: 24px; font-weight: bold; text-align: center; font-family: Arial, Helvetica, sans-serif; color: black;}h2 { font-size: 20px; font-weight: bold; text-align: center;}table { text-align: center; } </style>';
 
     // Crear un elemento HTML que contenga las tres tablas con títulos y subtítulos
-    let content = '<h1>REPORTE RESULTADOS: CÁLCULO DE COLUMNAS</h1><hr><br><br><h1>DISEÑO A FLEXIÓN</h1><div><br>';
+    let content = '<h1>REPORTE RESULTADOS: CÁLCULO DE COLUMNAS</h1><hr><br><br><h1>DISEÑO A FLEXIÓN</h1><br><div>';
     content += table_superior.innerHTML;
 
 
@@ -105,14 +106,16 @@ function generarPDFColumnas(){
     let imgData = table_medio.toDataURL('image/png');
     if(imgData!=''){
 
-        content += '</div><div><br><br><br><h2>Gráfico</h2>';
+        content += '</div><br><br><div><h2>Gráfico</h2>';
 
         content += '<img src="' + imgData + '" width="800px">';
     
     }
-    content += '</div><br><br><br><br><br><br><br><div><h1>CÁLCULOS CORTANTE</h1><br>';
+    content += '</div><br><br><br><br><div><h1>CÁLCULOS CORTANTE</h1>';
     content += table_inferior.innerHTML;
-    content += '</div>';
+    content += '</div><br><br>';
+    content += table_inferior2.innerHTML;
+
 
     // Agregar contenido HTML con estilos CSS al PDF utilizando el método doc.html()
     doc.html(content+style,{

@@ -1,7 +1,6 @@
 
 
 function calcular_cortante_columna() {
-    document.getElementById('formulas_cortante').style.display = 'block';
     document.getElementById('tabla_resultado_cortante_cols').style.display = 'none';
     document.getElementById("resultado_cortante_cols").innerHTML = "";
 
@@ -29,6 +28,9 @@ function calcular_cortante_columna() {
     let diametroVarLong = Number(document.getElementById("diametro").value);
     let areaBarraLong = Number(document.getElementById("area").value);
     let recubrimiento = Number(document.getElementById("recubrimiento").value);
+    let numeroBarraEstribo = Number(document.getElementById("numeroVarillaEstribo").value); //
+    let Vu = Number(document.getElementById("Vu_col").value);
+
     let diametroBarraEstribo = Number(document.getElementById("diametro_estribo").value);
     let ag = Number(document.getElementById("ag").value);
 
@@ -60,6 +62,14 @@ function calcular_cortante_columna() {
         console.log("Hay campos incorrectos");
         document.getElementById("max_ag").innerHTML = '<h3 class="text-danger">Debe ingresar un tamaño máximo mayor a 10 mm</h3>';
         document.getElementById("base").textContent = '(*) Complete los campos incorrectos';
+    } else if (Vu == '') {
+        console.log('NOTA: No puede ser vacío');
+        document.getElementById("datos_cortante").textContent = "(*) NOTA: Tener en cuenta el valor de Vu";
+        document.getElementById("inputVu_col").innerHTML = '<h3 class="text-danger">El valor no puede estar vacío</h3>';
+    } else if (Vu < 0) {
+        console.log('NOTA: No puede ser negativo');
+        document.getElementById("datos_cortante").textContent = "(*) NOTA: Tener en cuenta el valor de Vu";
+        document.getElementById("inputVu_col").innerHTML = '<h3 class="text-danger">El valor no puede ser negativo</h3>';
     } else {
         if (Fc == '') {
             Fc = Fc1;
@@ -81,6 +91,9 @@ function calcular_cortante_columna() {
         let sepC = 150;
         let sep = Math.min(sepA, sepB, sepC);
         let separacion = Math.round(sep / 10) * 10;///
+
+        document.getElementById('formulas_cortante').style.display = 'block';
+
 
         document.getElementById('sep_varillas').innerHTML = `${separacion}mm`;
         if (separacion < 50) {
@@ -115,6 +128,11 @@ function calcular_cortante_columna() {
               <td>mm<sup>2</sup></td>
             </tr>
             <tr>
+              <td>No. Varilla Estribo</td>
+              <td>${numeroBarraEstribo}</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
               <td>Refuerzo mínimo vertical</td>
               <td id="ref_min_vertical"></td>
               <td>mm<sup>2</sup></td>
@@ -134,7 +152,16 @@ function calcular_cortante_columna() {
               <td id="no_est_horizontal"></td>
               <td>und</td>
             </tr>
-            
+            <tr>
+              <td>Cortante Nominal (Vn)</td>
+              <td id="res_OVN"></td>
+              <td>kN</td>
+            </tr>
+            <tr>
+              <td>Cortante Última (Vu)</td>
+              <td id="res_Vu">${Vu}</td>
+              <td>kN</td>
+            </tr>
         </tbody>
         </table>`;
 
@@ -182,9 +209,9 @@ function calcular_cortante_columna() {
 
                 reducirSeparacionVert(separacion, b, Fc, Fy, h, ach, areaBarraEstribo, numeroEstribosVertical, cantidadVarillas);
 
-                
 
-              
+
+
             } else {
                 //se muestra resultados
                 if (cantidadVarillas == 4 || cantidadVarillas == 6 || cantidadVarillas == 8 || cantidadVarillas == 10 || cantidadVarillas == 12) {
@@ -267,15 +294,88 @@ function calcular_cortante_columna() {
             document.getElementById('tabla_resultado_cortante_cols').style.display = 'block';
 
 
+
+
+            //////////Resistencia Vu
+            let d=h-recubrimiento-diametroVarLong/2-diametroBarraEstribo;
+            let acero_suministrado=142;
+            let resistenciaOVn = ((0.75 * acero_suministrado * Fy * d) / separacion)/1000;
+            console.log("resistenciaOVn => " + resistenciaOVn);
+            document.getElementById('res_OVN').innerHTML = resistenciaOVn.toFixed(2);
+
+
+            document.getElementById('cortante_fin').innerHTML = `${resistenciaOVn.toFixed(2)}kN`;
+
+
+            document.getElementById('resSep').innerHTML = '';
+            //document.getElementById('sep_Long').innerHTML = '';
+            //document.getElementById('res_OVN').innerHTML = '';
+            document.getElementById('cambioValores').innerHTML = '';
+
+            // Vu = 81.49;
+            if (resistenciaOVn <= Vu) {
+                //Disminuir maximo hasta 50mm la separacion longitudinal y recalcular resistencia
+                document.getElementById('condicion_resistencia').innerHTML = `Para este caso <b class="red">no se cumple</b> que la resistencia ϕVn>Vu( ${resistenciaOVn.toFixed(2)}kN <= ${Vu}kN ).`;
+                chequearResistencia(separacion, resistenciaOVn, Vu, Fy, d);
+
+            } else {
+                //si
+                document.getElementById('condicion_resistencia').innerHTML = `Para este caso <b class="green">si se cumple</b> que la resistencia ϕVn>Vu. ${resistenciaOVn.toFixed(2)}kN > ${Vu}kN`;
+            }
+
+
         }
     }
 }
+
+function chequearResistencia(separacion_longitudinal, resistenciaOVn, Vu, Fy, d) {
+    document.getElementById('res_OVN').innerHTML = resistenciaOVn.toFixed(2);
+
+    document.getElementById('resSep').innerHTML = '';
+    //document.getElementById('separacion_vars').innerHTML = '';
+    //document.getElementById('res_OVN').innerHTML = '';
+    document.getElementById('cambioValores').innerHTML = '';
+
+    separacion_longitudinal -= 5;
+
+    document.getElementById('resSep').innerHTML = `Se disminuye la separación hasta ${separacion_longitudinal}mm y se volvió a calcular.`;
+
+    console.log("Separacion en: ", separacion_longitudinal);
+    // document.getElementById('separacion_vars').innerHTML = separacion_longitudinal;
+
+    let acero_suministrado = 142;//av_suministrado
+    console.log("acero_suministrado => " + acero_suministrado);
+
+    resistenciaOVn = ((0.75 * acero_suministrado * Fy * d) / separacion_longitudinal)/1000;
+    console.log("y la resistenciaOVn => " + resistenciaOVn);
+    document.getElementById('res_OVN').innerHTML = resistenciaOVn.toFixed(2);
+
+    if (resistenciaOVn <= Vu) {
+        console.log("Aun No cumple resistencia");
+        if (separacion_longitudinal >= 50) {
+            chequearResistencia(separacion_longitudinal, resistenciaOVn, Vu, Fy, d);
+        } else {
+            document.getElementById('cambioValores').innerHTML = `Se recomineda cambiar de valores. Se obtiene la resistencia: ${resistenciaOVn.toFixed(2)}kN y la separación es menor a 50mm`;
+        }
+    }
+    else {
+        console.log("Ya cumple resistencia");
+        if (separacion_longitudinal < 50) {
+            document.getElementById('cambioValores').innerHTML = `Se recomienda cambiar valores. Se obtiene la resistencia: ${resistenciaOVn.toFixed(2)}kN > ${Vu}kN, pero la separación es menor a 50mm`;
+        } else {
+            document.getElementById('cambioValores').innerHTML = `Se obtiene la resistencia: ${resistenciaOVn.toFixed(2)}kN > ${Vu}kN`;
+        }
+    }
+}
+
+
+
 
 function reducirSeparacionVert(separacion, b, Fc, Fy, h, ach, areaBarraEstribo, numeroEstribosVertical, cantidadVarillas) {
     ///se debe disminuir la separacion maximo hasta 50mm
     //Volver a colocar los nuevos valores
     // document.getElementById("separacion_vars").innerHTML = separacion;
-    
+
     // document.getElementById('reducir_separacion').style.display = 'block';
     document.getElementById('NOcumple_estribos').innerHTML = `<b class="text-warning">La cantidad de estribos sobrepasa la cantidad de las varillas a amarrar. Se debe disminuir la separación máximo hasta 50mm</b>`;
     separacion -= 5;
@@ -316,7 +416,7 @@ function reducirSeparacionVert(separacion, b, Fc, Fy, h, ach, areaBarraEstribo, 
 
     }
 
-    
+
 
 }
 
@@ -324,7 +424,7 @@ function reducirSeparacionHor(separacion, b, Fc, Fy, h, ach, areaBarraEstribo, n
     ///se debe disminuir la separacion maximo hasta 50mm
     //Volver a colocar los valores
     // document.getElementById("separacion_vars").innerHTML = separacion;
-    
+
     // document.getElementById('reducir_separacionHor').style.display = 'block';
     document.getElementById('NOcumple_estribosHor').innerHTML = `<b class="text-warning">La cantidad de estribos sobrepasa la cantidad de las varillas a amarrar. Se debe disminuir la separación máximo hasta 50mm.</b>`;
     separacion -= 5;
@@ -363,10 +463,12 @@ function reducirSeparacionHor(separacion, b, Fc, Fy, h, ach, areaBarraEstribo, n
         document.getElementById('cumple_estribos2Hor').innerHTML = `<b class="green">El Número de estribos es suficiente</b>`;
 
     }
-    
+
 }
 
 function calcularLongEst() {
+    document.getElementById('zonConf').style.display = 'none';
+
     document.getElementById("TXTluzLibreLong").textContent = '';
     // document.getElementById("TXTalturaCol").textContent = '';
     document.getElementById("TXTluzLibre").textContent = '';
