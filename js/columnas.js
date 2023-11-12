@@ -717,7 +717,7 @@ function calcularColumna() {
         let es_acero = 200000;
 
         document.getElementById("nfibras").innerHTML = numFibras;
-        document.getElementById("lfibra").innerHTML = longFibra;
+        document.getElementById("lfibra").innerHTML = longFibra.toFixed(2);
         document.getElementById("es_concreto").innerHTML = es_concreto.toFixed(2);
         document.getElementById("es_acero").innerHTML = es_acero;
         document.getElementById("recub").innerHTML = recubrimiento;
