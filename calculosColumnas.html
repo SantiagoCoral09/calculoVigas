@@ -762,11 +762,10 @@
                      <div class="row">
                         <div class="col">
                            <h6 class="card-title text-center"><b>Resistencia a compresión pura:</b></h6>
-                           <h5 class="card-title text-center"><i><b>ϕPn</b> = 0.85 x F'<sub>c</sub> x (A<sub>g</sub> -
-                                 A<sub>s</sub>) + A<sub>s</sub> x F<sub>y</sub></i></h5>
+                           <h5 class="card-title text-center"><i><b>ϕPn</b> = 0.85 x F'<sub>c</sub> x (A<sub>g</sub> - A<sub>s</sub>) + A<sub>s</sub> x F<sub>y</sub></i><br><i class="small">(NSR-10. C.19-1)</i></h5>
                            <br>
                            <h6 class="card-title text-center"><b>Resistencia a tensión pura:</b></h6>
-                           <h5 class="card-title text-center"><i><b>ϕPt</b> = A<sub>s</sub> x F<sub>y</sub></i></h5>
+                           <h5 class="card-title text-center"><i><b>ϕPt</b> = A<sub>s</sub> x F<sub>y</sub></i><br><i class="small">(NSR-10. Sección C.10.3.7)</i></h5>
                         </div>
                         <div class="col">
                            <h5>Donde: <br><b>F'<sub>c</sub></b> = Resistencia a la compresión del
@@ -913,6 +912,7 @@
                         <p>\( S = \min\left(\dfrac{\min(h,b)}{4}; 6d_{\text{blong}}; 150\text{mm}\right) = \)
                            <span id="sep_varillas">70mm</span>
                         </p>
+                        <i class="">(NSR-10. Sección C.21.6.4.3)</i>
                      </div>
                   </ul>
                </div>
@@ -960,10 +960,12 @@
                         <div class="col-7">
                            <p>\(Ash_a = \dfrac{{0.3 \cdot (S \cdot bc \cdot F`c)}}{{Fy}} \cdot \left(\dfrac{{Ag}}{{Ach}}
                               -
-                              1\right) = \) <span id="ash1Cort">70mm</span></p><br>
+                              1\right) = \) <span id="ash1Cort">70mm</span></p>
+                              <i class="">(NSR-10. C.21-7)</i>
+                              <br><br>
                            <p>\(Ash_b = \dfrac{{0.09 \cdot (S \cdot bc \cdot F`c)}}{{Fy}} = \) <span
                                  id="ash2Cort">70mm</span>
-                           </p><br>
+                           </p><i class="">(NSR-10. C.21-8)</i><br><br>
                            <p>\( Ash1 = \max(Ash_a; Ash_b) = \)<br>\(\ máx \)
                               <span id="ref_min">70mm</span>
                            </p><br>
@@ -1004,9 +1006,9 @@
                               </p><br><br>
                               <p>\(Ash_a = \dfrac{{0.3 \cdot (S \cdot bc \cdot F`c)}}{{Fy}} \cdot
                                  \left(\dfrac{{Ag}}{{Ach}} -
-                                 1\right) = \) <span id="ash1CortR">70mm</span></p><br>
+                                 1\right) = \) <span id="ash1CortR">70mm</span></p><i class="">(NSR-10. C.21-7)</i><br><br>
                               <p>\(Ash_b = \dfrac{{0.09 \cdot (S \cdot bc \cdot F`c)}}{{Fy}} = \) <span
-                                    id="ash2CortR">70mm</span></p><br>
+                                    id="ash2CortR">70mm</span></p><i class="">(NSR-10. C.21-8)</i><br><br>
                               <p>\( Ash1 = \max(Ash_a; Ash_b) = \)<br>\(\ máx \)
                                  <span id="ashReduc">70mm</span>
                               </p><br>
@@ -1045,10 +1047,10 @@
 
                            <p>\(Ash_a = \dfrac{{0.3 \cdot (S \cdot bc \cdot F`c)}}{{Fy}} \cdot \left(\dfrac{{Ag}}{{Ach}}
                               -
-                              1\right) = \) <span id="ash1CortHor">70mm</span></p><br>
+                              1\right) = \) <span id="ash1CortHor">70mm</span></p><i class="">(NSR-10. C.21-7)</i><br><br>
                            <p>\(Ash_b = \dfrac{{0.09 \cdot (S \cdot bc \cdot F`c)}}{{Fy}} = \) <span
                                  id="ash2CortHor">70mm</span>
-                           </p><br>
+                           </p><i class="">(NSR-10. C.21-8)</i><br><br>
                            <p>\( Ash2 = \max(Ash_a; Ash_b) = \)<br>\(\ máx \)
                               <span id="ref_minHor">70mm</span>
                            </p><br>
@@ -1087,9 +1089,9 @@
                               </p><br><br>
                               <p>\(Ash_a = \dfrac{{0.3 \cdot (S \cdot bc \cdot F`c)}}{{Fy}} \cdot
                                  \left(\dfrac{{Ag}}{{Ach}} -
-                                 1\right) = \) <span id="ash1CortRHor">70mm</span></p><br>
+                                 1\right) = \) <span id="ash1CortRHor">70mm</span></p><i class="">(NSR-10. C.21-7)</i><br><br>
                               <p>\(Ash_b = \dfrac{{0.09 \cdot (S \cdot bc \cdot F`c)}}{{Fy}} = \) <span
-                                    id="ash2CortRHor">70mm</span></p><br>
+                                    id="ash2CortRHor">70mm</span></p><i class="">(NSR-10. C.21-8)</i><br><br>
                               <p>\( Ash2 = \max(Ash1; Ash2) = \)<br>\(\ máx \)
                                  <span id="ashReducHor">70mm</span>
                               </p><br>
@@ -1124,7 +1126,8 @@
             <div class="text-center">
                <br>
                <p style="font-size: 20px;">\(\varphi V_n = (V_c + V_s) \)</p>
-               <br>
+               <i class="">(NSR-10. C.11-2)</i>
+               <br><br>
                <p>Donde:
                   <i>Vc</i>=cortante del concreto.
                   <i>Vs</i>=cortante del acero
@@ -1137,11 +1140,11 @@
                <p style="font-size: 20px;"> \(\varphi V_n = V_s = \dfrac{{\varphi \cdot 𝐴_{{\text{v sum}}} \cdot 𝐹_y
                   \cdot
                   𝑑}}{{s}}\) = <span id="cortante_fin"></span></p>
-
+                  <i class="">(NSR-10. C.11-15)</i>
 
             </div><br>
             <p>Tenga en cuenta que \(\varphi\) = 0.75 por cortante</p>
-            <h3 class="text-center"><b>ϕVn > Vu</b></h3><br>
+            <h3 class="text-center"><b>ϕVn > Vu</b> <i class="small">(NSR-10. C.11-1)</i></h3><br>
             <div class="resultado text-center">
                <div id="condicion_resistencia"></div>
                <br>
@@ -1150,7 +1153,7 @@
                <span id="cambioValores"></span>
 
             </div><br>
-            
+
             <div class="resultado text-center" style="display: none;" id="tabla_resultado_cortante_cols"><br>
                <div class="d-flex justify-content-center">
                   <div class="col-7">
