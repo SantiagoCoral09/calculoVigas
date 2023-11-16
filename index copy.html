@@ -28,9 +28,6 @@
 
    <!-- Custom CSS -->
    <link rel="stylesheet" href="./assets/dist/css/style.css">
-
-
-
 </head>
 
 <!-- body -->
@@ -41,7 +38,6 @@
       <div class="loader"><img src="./img/loading.gif" alt="..." /></div>
    </div>
    <!-- end loader -->
-
    <div id="mySidepanel" class="sidepanel">
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
       <a href="index.html">Inicio</a>
@@ -80,13 +76,11 @@
       </div>
 
    </div>
-
-
    <nav class="navbar navbar-expand-lg barra_nav">
       <div class="container-fluid">
-         <div class="navbar-brand">
+         <div class="">
             <a target="_blank" href="https://www.umariana.edu.co/index.html"><img src="./img/logo_footer.png"
-                  width="150px" /></a>
+                  width="180px" /></a>
          </div>
          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"
@@ -96,23 +90,20 @@
                <path fill-rule="evenodd"
                   d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z">
                </path>
-            </svg>
+            </svg></span>
          </button>
          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav ms-auto">
+            <ul class="navbar-nav ml-auto">
                <li class="nav-item">
                   <a href="index.html"><button type="button" class="btn d_none_primary me-5">Inicio</button></a>
                </li>
-               <hr>
                <li class="nav-item">
                   <a href="Introduccion.html"><button type="button"
                         class="btn d_none_light me-5">Introducción</button></a>
                </li>
-               <p style="margin-bottom: 10px;"></p>
                <li class="nav-item">
-                  <a href="Normas.html"><button type="button" class="btn d_none_light me-5">Normas</button></a>
+                  <a href="Normas.html"><button type="button" class="btn d_none_light me-5">Normas</button>
                </li>
-               <p style="margin-bottom: 10px;"></p>
                <li class="nav-item dropdown">
                   <a class="btn dropdown-toggle d_none_light me-5" href="#" id="navbarDropdown1" role="button"
                      data-bs-toggle="dropdown" aria-expanded="false">
@@ -122,28 +113,30 @@
                      <li><a class="dropdown-item" href="calculos.html"><button type="button" class="btn">Diseño de
                               Vigas</button></a></li>
                      <li><a class="dropdown-item" href="calculosColumnas.html"><button type="button" class="btn">Diseño
-                              de Columnas</button></a></li>
+                              de
+                              Columnas</button></a></li>
                   </ul>
                </li>
-               <p style="margin-bottom: 10px;"></p>
                <li class="nav-item">
                   <div class="dropdown">
-                     <button class="btn dropdown-toggle d_none_light me-5" type="button" id="dropdownMenuButton1"
+                     <button class="btn d_none_light dropdown-toggle me-5" type="button" id="dropdownMenuButton1"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         Información
                      </button>
                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><a class="dropdown-item" href="manual.html"><button type="button" class="btn">Manual de
-                                 Usuario</button></a></li>
+                        <li><a class="dropdown-item" href="manual.html"><button type="button" class="btn">Manual
+                                 de Usuario</button></a>
+                        </li>
                         <li><a class="dropdown-item" href="tutorial.html"><button type="button" class="btn">Video
-                                 Tutorial</button></a></li>
+                                 Tutorial</button></a>
+                        </li>
+
                         <li><a class="dropdown-item" href="autores.html"><button type="button"
                                  class="btn">Autores</button></a>
                         </li>
                      </ul>
                   </div>
                </li>
-               <li class="nav-item">&nbsp;</li>
                <li class="nav-item">
                   <button class="openbtn" onclick="openNav()"><img src="./img/menu_btn.png"></button>
                </li>
@@ -151,29 +144,27 @@
          </div>
       </div>
    </nav>
-   <!-- end nabvar -->
-
+   <!-- end header -->
    <!-- start slider section -->
    <div class="banner_main">
-      <div id="myCarousel" class="carousel slide pt-3" data-bs-ride="carousel">
+      <div id="myCarousel" class="carousel slide" data-ride="carousel">
          <ol class="carousel-indicators">
-            <li data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"></li>
-            <li data-bs-target="#myCarousel" data-bs-slide-to="1"></li>
-            <li data-bs-target="#myCarousel" data-bs-slide-to="2"></li>
-            <li data-bs-target="#myCarousel" data-bs-slide-to="3"></li>
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+            <li data-target="#myCarousel" data-slide-to="3"></li>
          </ol>
          <div class="carousel-inner">
             <div class="carousel-item active">
                <div class="container">
                   <div class="carousel-caption relative">
                      <div class="bg_white">
-                        <h1><span style="font-size: 60px;">Bienvenido al aplicativo web</span>
-                           <hr><span  style="font-size: 50px;" class="yello">Diseño de pórticos de concreto</span>
+                        <h1><span style="font-size: 65px;"> Bienvenido al aplicativo web</span>
+                           <hr><span class="yello">Diseño de pórticos de concreto</span>
                         </h1>
-                        <p>En este sitio, encontrarás información detallada y recursos útiles para aprender a
-                           diseñar pórticos de concreto basados en el reglamento colombiano NSR-10. </p>
+                        <p>En este sitio, encontrarás información detallada y recursos útiles para aprender a diseñar
+                           pórticos de concreto basados en el reglamento colombiano NSR-10. </p>
                      </div>
-                     <hr>
                      <a class="read_more ban_btn" href="#inicio">Leer Más</a>
                   </div>
                </div>
@@ -182,12 +173,11 @@
                <div class="container">
                   <div class="carousel-caption relative">
                      <div class="bg_white">
-                        <h1 style="font-size: 50px;">Información que debes conocer para <span class="yello">diseñar
+                        <h1 style="font-size: 60px;">Información que debes conocer para <span class="yello">diseñar
                               pórticos de concreto</span></h1>
-                        <p>Para diseñar pórticos de concreto de manera efectiva, debes conocer algunos conceptos
-                           básicos e información detallada sobre el tema. </p>
+                        <p>Para diseñar pórticos de concreto de manera efectiva, debes conocer algunos conceptos básicos
+                           e información detallada sobre el tema. </p>
                      </div>
-                     <hr>
                      <a class="read_more ban_btn" href="Introduccion.html">Leer Más</a>
                   </div>
                </div>
@@ -196,14 +186,14 @@
                <div class="container">
                   <div class="carousel-caption relative">
                      <div class="bg_white">
-                        <h1 style="font-size: 50px;">Norma para <br>
+                        <h1>Norma para <br>
                            <span class="yello">diseño de pórticos de concreto</span>
                         </h1>
+
                         <h2 style="font-size: 25px; color: black; font-weight: bold;">Reglamento NSR-10</h2>
                         <a href="https://www.academia.edu/7206246/Decreto_092_de_20110" target="_blank"
                            rel="noopener noreferrer" style="font: 22px italic">Seguir el link Decreto_092_de_20110 </a>
                      </div>
-                     <hr>
                      <a class="read_more ban_btn" href="Normas.html">Leer Más</a>
                   </div>
                </div>
@@ -212,10 +202,9 @@
                <div class="container">
                   <div class="carousel-caption relative">
                      <div class="bg_white">
-                        <h1  style="font-size: 50px;">Diseña aquí <br><span class="yello">tu pórtico de concreto</span></h1>
+                        <h1 style="padding:80px;">Diseña aquí <br><span class="yello">tu pórtico de concreto</span></h1>
                         <p>Cálculo de estructuras de concreto</p>
                      </div>
-                     <hr>
                      <div class="dropdown">
                         <button class="read_more ban_btn dropdown-toggle" type="button" id="dropdownMenuButton1"
                            data-bs-toggle="dropdown" aria-expanded="false">
@@ -234,18 +223,16 @@
                </div>
             </div>
          </div>
-         <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+         <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Anterior</span>
-         </button>
-         <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+            <span class="sr-only">Anterior</span>
+         </a>
+         <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Siguiente</span>
-         </button>
+            <span class="sr-only">Siguiente</span>
+         </a>
       </div>
-      <br>
    </div>
-
 
    <div class="building" id="inicio">
       <div class="container">
@@ -283,10 +270,10 @@
    <!-- footer -->
    <footer>
       <div class="footer">
-         <div class="container">
+         <div class="container1">
             <div class="row">
-               <div class="col-lg-10 offset-lg-1 text-center">
-                  <ul class="social_icon">
+               <div class="col-md-10 offset-md-1">
+                  <ul class="social_icon text_align_center">
                      <li> <a target="_blank" href="https://www.facebook.com/UniversidadMariana.Pasto"><i
                               class="fa fa-facebook-f"></i></a></li>
                      <li> <a target="_blank" href="https://twitter.com/UMarianaPasto"><i class="fa fa-twitter"></i></a>
@@ -303,25 +290,27 @@
                            </svg></a></li>
                   </ul>
                </div>
-            </div>
-            <div class="d-flex justify-content-center">
-            <div class="col-lg-4">
-               <div class="reader text-center">
-                  <a target="_blank" id="universidad" href="https://www.umariana.edu.co/index.html"><img
-                        src="./img/logo.jfif" alt="#" width="400" /><br><span>Página principal Universidad
-                        Mariana</span></a>
+               <div class="colf_4">
+                  <div class="reader text-center">
+                     <ul class="xple_menu">
+
+                        <a target="_blank" id="universidad" href="https://www.umariana.edu.co/index.html"><img
+                              src="./img/logo.jfif" alt="#" width="400px" /><span>Página principal Universidad
+                              Mariana</span></a>
+                     </ul>
+
+                  </div>
                </div>
-               <p style="margin-bottom: 60px;"></p>
-            </div></div>
-            <div class="row">
-               
-               <div class="col">
+               <div class="col-md-2 col-sm-6">
                   <div class="reader">
                      <h3>Explorar</h3>
                      <ul class="xple_menu">
-                        <li><a href="index.html">Inicio</a></li>
-                        <li><a href="Introduccion.html">Introducción</a></li>
-                        <li><a href="Normas.html">Normas</a></li>
+                        <li><a href="index.html">Inicio</a>
+                        </li>
+                        <li><a href="Introduccion.html">Introducción</a>
+                        </li>
+                        <li><a href="Normas.html">Normas</a>
+                        </li>
                         <li>
                            <div class="dropdown">
                               <a href="#" type="button" class="dropdown-toggle" data-bs-toggle="dropdown"
@@ -330,9 +319,13 @@
                               </a>
                               <ul class="dropdown-menu">
                                  <li><a class="dropdown-item" href="calculos.html"><button type="button"
-                                          class="btn btn-light">Diseño de Vigas</button></a></li>
+                                          class="btn btn-light">Diseño de
+                                          Vigas</button></a>
+                                 </li>
                                  <li><a class="dropdown-item" href="calculosColumnas.html"><button type="button"
-                                          class="btn btn-light">Diseño de Columnas</button></a></li>
+                                          class="btn btn-light">Diseño de
+                                          Columnas</button></a>
+                                 </li>
                               </ul>
                            </div>
                         </li>
@@ -344,22 +337,23 @@
                               </a>
                               <ul class="dropdown-menu">
                                  <li><a class="dropdown-item" href="manual.html"><button type="button"
-                                          class="btn btn-light">Manual de Usuario</button></a></li>
+                                          class="btn btn-light">Manual de Usuario</button></a>
+                                 </li>
                                  <li><a class="dropdown-item" href="tutorial.html"><button type="button"
-                                          class="btn btn-light">Video Tutorial</button></a></li>
+                                          class="btn btn-light">Video Tutorial</button></a>
+                                 </li>
                                  <li><a class="dropdown-item" href="autores.html"><button type="button"
-                                          class="btn btn-light">Autores</button></a></li>
+                                          class="btn btn-light">Autores</button></a>
+                                 </li>
                               </ul>
                            </div>
                         </li>
                      </ul>
                   </div>
-                  <p style="margin-bottom: 50px;"></p>
                </div>
-
-               <div class="col">
-                  <div class="reader text-center">
-                     <h3 class="">Anexos</h3>
+               <div class="col-md-3 col-sm-6">
+                  <div class="reader">
+                     <h3 style="padding-left: 55px;">Anexos</h3>
                      <ul class="re_post">
                         <li><img src="./img/re_img1.jpg" alt="#" /></li>
                         <li><img src="./img/re_img2.jpg" alt="#" /></li>
@@ -367,32 +361,27 @@
                         <li><img src="./img/re_img4.jpg" alt="#" /></li>
                      </ul>
                   </div>
-                  <p style="margin-bottom: 100px;"></p>
-                  <hr>
                </div>
-
-               <div class="col  d-flex justify-content-center">
+               <div class="col-md-3 col-sm-6">
                   <div class="reader">
                      <h3 class="text-center">Contacto</h3>
                      <ul class="" id="em">
-                        <li><i class="fa fa-map-marker" aria-hidden="true" style="font-size: 30px;"></i>&nbsp;&nbsp;
-                           &nbsp;
-                           Calle 18 No. 34-104 Pasto (N)<br>&nbsp; Bloque María Inmaculada - Oficina 204</li><br>
+                        <li> <i class="fa fa-map-marker" aria-hidden="true" style="font-size: 30px;"></i>&nbsp;&nbsp;
+                           &nbsp; Calle 18 No. 34-104 Pasto (N)<br>&nbsp; Bloque María Inmaculada - Oficina 204</li><br>
                         <li><i class="fa fa-phone" aria-hidden="true" style="font-size: 30px;"></i>&nbsp;&nbsp;&nbsp;
-                           &nbsp;
-                           52 +7244460 Ext 174</li>
-                        <li><a class="correo" href="#"><i class="fa fa-envelope" aria-hidden="true"
-                                 style="font-size: 30px;"></i><span
-                                 class="it_correo">ingenieriacivil@umariana.edu.co</span></a></li>
-                        <li><a class="correo" href="#"><i class="fa fa-envelope" aria-hidden="true"
-                                 style="font-size: 30px;"></i><span
-                                 class="it_correo">avgomeza@umariana.edu.co</span></a></li>
+                           &nbsp; 52 +7244460 Ext 174</a></li>
+                        <li> <a class="correo" href="#"><i class="fa fa-envelope" aria-hidden="true"
+                                 style="font-size: 30px;"></i><span class="it_correo">
+                                 ingenieriacivil@umariana.edu.co</span></a>
+                        </li>
+                        <li> <a class="correo" href="#"><i class="fa fa-envelope" aria-hidden="true"
+                                 style="font-size: 30px;"></i><span class="it_correo">
+                                 avgomeza@umariana.edu.co</span></a>
+                        </li>
                      </ul>
                   </div>
                </div>
             </div>
-
-
          </div>
          <div class="copyright text_align_center">
             <div class="container">
@@ -406,11 +395,10 @@
       </div>
    </footer>
    <!-- end footer -->
-
    <!-- Javascript files-->
    <script src="./assets/dist/js/jquery.min.js"></script>
+   <!-- <script src="./assets/dist/js/bootstrap.bundle.min.js"></script> -->
    <script src="./assets/dist/js/custom.js"></script>
-
 
 </body>
 
