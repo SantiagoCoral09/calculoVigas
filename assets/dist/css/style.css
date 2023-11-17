@@ -393,7 +393,7 @@ ul.email li img {
 
 .introduccion {
      background: rgba(255, 255, 255, 0.9);
-     padding: 45px 20px 15px 20px;
+     padding: 45px 3% 15px 3%;
 }
 
 .manual {
@@ -455,8 +455,8 @@ ul.email li img {
      top: -257px;
 }*/
 .grupo-parrafo {
-     padding: 10px 25px 5px 25px;
-     text-align: justify;
+     padding: 10px 15px 5px 15px;
+     text-align: left;
      font-size: 18px;
 }
 
@@ -1166,7 +1166,7 @@ td {
      font-size: 20px;
      font-weight: bolder;
      color: #000;
-     padding-left: 15px;
+     padding-left: 25px;
 }
 
 #formulas_cortante {
