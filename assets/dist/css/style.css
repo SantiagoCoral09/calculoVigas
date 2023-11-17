@@ -472,12 +472,12 @@ ul.email li img {
 }
 
 .about_box {
-     padding: 20px 0;
+     padding: 20px;
      box-shadow: 4px 0 27px rgba(02, 3, 8, 0.20);
 }
 
 .about_box_text {
-     padding-left: 50px;
+     padding-left: 0px;
 }
 
 .about_box_text h3 {
