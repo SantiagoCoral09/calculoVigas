@@ -315,6 +315,19 @@ function graficar(listaMn, listaPn, listaPhiMn, listaPhiPn) {
             ]
         },
         options: {
+            plugins: {
+                zoom: {
+                    zoom: {
+                        wheel: {
+                            enabled: true,
+                        },
+                        pinch: {
+                            enabled: true,
+                        },
+                        mode: 'xy',
+                    }
+                }
+            },
 
 // Opciones del gráfico
             pan: {
