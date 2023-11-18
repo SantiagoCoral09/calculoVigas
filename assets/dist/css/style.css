@@ -1094,6 +1094,19 @@ ul.re_post li {
      color: white;
 }
 
+.custom-input {
+     border-radius: 11px;
+     padding: 0 5px;
+     margin: 0 5px;
+     background: transparent;
+     box-shadow: 4px 0 14px rgba(2, 3, 8, 0.20);
+     height: 55px;
+     max-width: 130px;
+     width: 130px;
+     font-size: 17px;
+     font-weight: 400;
+  }
+
 .nota {
      color: rgb(0, 0, 0);
      /* font-family: 'Times New Roman', Times, serif; */
